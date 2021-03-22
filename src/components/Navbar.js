@@ -4,70 +4,60 @@ import {Button} from "./Button";
 import './Navbar.css';
 
 function Navbar(){
-    const [click, setClick] = useState(false)
-    const [button, setButton] = useState(true)
-
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () =>setClick(false)
-
-    const showButton = () =>{
-        if(window.innerWidth<=960){
-            setButton(false)
-        }else{
-            setButton(true)
-        }
+    const [navLinkOpen, navLinkToggle] = useState(false)
+    const handleNavLinksToggle = () =>{
+        navLinkToggle(!navLinkOpen)
     }
-
-    window.addEventListener('resize', showButton)
+    const renderClasses = () =>{
+        let classes = "navlinks";
+        if(navLinkOpen){
+            classes += " active"
+        }
+        return classes;
+    };
 
     return(
         <>
             <nav className="navbar">
-                <div className="navbar-container">
-                    <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+                    <Link to="/" className="navbar-logo" >
                         eGineRight <i className="fas fa-leaf"></i>
                     </Link>
-                    <div className="menu-icon" onClick={handleClick}>
-                        <i className={click ? 'fas fa-times': 'fas fa-bars'} />
-                    </div>
-                    <ul className={click ? 'nave-menu active': 'nav-menu'}>
+
+                    <ul className={renderClasses()}>
                         <li className='nav-item'>
-                            <Link to="/" className='nav-links' onClick={closeMobileMenu}>
+                            <Link to="/" className='link' >
                                 Home
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/customer" className='nav-links' onClick={closeMobileMenu}>
+                            <Link to="/customer" className='link' >
                                 Customer
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/automobile" className='nav-links' onClick={closeMobileMenu}>
+                            <Link to="/automobile" className='link' >
                                 Automobile
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/inspection" className='nav-links' onClick={closeMobileMenu}>
+                            <Link to="/inspection" className='link' >
                                 Inspection
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/inventory" className='nav-links' onClick={closeMobileMenu}>
+                            <Link to="/inventory" className='link' >
                                 Inventory
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/invoice" className='nav-links' onClick={closeMobileMenu}>
+                            <Link to="/invoice" className='link'>
                                 Invoice
                             </Link>
                         </li>
-                        <li className='nav-item'>
-                            <Link to="/sign-up" className='nav-links-mobile' onClick={closeMobileMenu}>
-                                Sign up
-                            </Link>
-                        </li>
                     </ul>
-                    {button && <Button buttonStyle='btn--outline'>SIGN UP</Button> }
+
+                <div className="menu-icon" onClick={handleNavLinksToggle}>
+                    <i className='fas fa-bars' />
                 </div>
             </nav>
         </>
