@@ -3,18 +3,18 @@ import CardItem from "./CardItems"
 import './Cards.css'
 import car_1 from '../images/Car_1.jpg'
 import Customer from '../images/Customer.jpg'
-import Inspection from '../images/Car_1.jpg'
-import car_1 from '../images/Car_1.jpg'
-import car_1 from '../images/Car_1.jpg'
+import Inspection from '../images/Inspection.jpg'
+import Inventory from '../images/Inventory_1.jpg'
+import Invoices_1 from '../images/Invoices_1.jpg'
 
 
 function Cards(){
     return(
         <div className='cards'>
-            <h1>Customers</h1>
+            <h1 className='cards-title'>Check out our facilities!</h1>
             <div className='cards__container'>
                 <div className='cards_wrapper'>
-                    <ul className='cards__item'>
+                    <ul className='cards__items'>
                         <CardItem
                             imgSrc = {Customer}
                             text ='We value our customer as they value our service'
@@ -25,20 +25,24 @@ function Cards(){
                             text ='We value our customer as they value our service'
                             path ='/Cars'
                         />
+                    </ul>
+                </div>
+                <div className='cards_wrapper'>
+                    <ul className='cards__items'>
                         <CardItem
-                            imgSrc = {car_1}
+                            imgSrc = {Inspection}
                             text ='We value our customer as they value our service'
-                            path ='/Customer'
+                            path ='/Inspections'
                         />
                         <CardItem
-                            imgSrc = {car_1}
+                            imgSrc = {Inventory}
                             text ='We value our customer as they value our service'
-                            path ='/Customer'
+                            path ='/Inventories'
                         />
                         <CardItem
-                            imgSrc = {car_1}
+                            imgSrc = {Invoices_1}
                             text ='We value our customer as they value our service'
-                            path ='/Customer'
+                            path ='/Invoices'
                         />
                     </ul>
 
