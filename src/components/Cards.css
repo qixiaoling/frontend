@@ -1,6 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 .cards {
     padding: 4rem;
     background:#fff;
+    font-family:'Roboto', sans-serif;
 }
 
 .cards__container{
@@ -32,14 +36,19 @@
     /*padding: 50px;*/
     width: 237px;
     height: 193px;
-    border-radius: 3px;
-    border-bottom-color: lightsalmon;
-    border-bottom-width: 10px;
+    border-radius: 10px;
     box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
 
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease-out;
+
+
+
+}
+.cards__item:hover {
+    transform: translateY(-5%);
 }
 
 .cards_item_link{
@@ -54,6 +63,23 @@
 
 
 }
-i{
+#cardLogo {
     font-size: xx-large;
+    color: darkgrey;
 }
+h3 {
+    color: dimgrey;
+}
+.button--arrow{
+    display: flex;
+    background-color: lightslategrey;
+    justify-content: center;
+    align-items: center;
+    width:18px;
+}
+
+.button--wrapper{
+    display: flex;
+
+}
+

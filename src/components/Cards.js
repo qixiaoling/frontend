@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import CardItem from "./CardItems"
 import './Cards.css'
+import {Button} from "./Button";
 
 
 
@@ -15,6 +16,7 @@ function Cards(){
                             title = 'CUSTOMER'
                             text ='Read More'
                             path ='/Customers'
+
                         />
                         <CardItem
                             cardLogo = "fas fa-car-alt"

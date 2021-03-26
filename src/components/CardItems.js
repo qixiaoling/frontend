@@ -9,13 +9,22 @@ function CardItem(props){
         <>
             <li className='cards__item'>
                     <Link className='cards_item_link' to={props.path}>
-                        <i className={props.cardLogo}></i>
+                        <i id="cardLogo" className={props.cardLogo}></i>
                         <h3>{props.title}</h3>
-                        <Button
-                            className='cards__btns'
-                        >
-                            {props.text}
-                        </Button>
+                        <div className="button--wrapper">
+                            <Button
+                                className='btn'
+                                buttonStyle='btn--primary--card'
+                                buttonSize='btn--small'
+                            >
+                                Read More
+                            </Button>
+                            <div className="button--arrow">
+                                <i id="button--arrow--self" className="fas fa-angle-right"></i>
+                            </div>
+
+                        </div>
+
                     </Link>
 
 

@@ -23,6 +23,10 @@
     border: 1px solid var(--primary);
     transition: all 0.3s ease-out;
 }
+.btn--primary--card {
+    background-color: lightslategrey;
+    color: #242424;
+}
 
 .btn--medium {
     padding: 8px 20px;
@@ -32,6 +36,17 @@
 .btn--large {
     padding: 12px 26px;
     font-size: 20px;
+}
+.btn--small {
+    padding: 10px 15px;
+    font-size: 15px;
+
+}
+
+.btn--small:hover{
+    transition: all 0.3s ease-out;
+    background-color: darkgrey;
+    transition: 250ms;
 }
 
 .btn--large:hover,
