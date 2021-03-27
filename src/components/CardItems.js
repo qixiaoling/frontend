@@ -14,8 +14,8 @@ function CardItem(props){
                         <div className="button--wrapper">
                             <Button
                                 className='btn'
-                                buttonStyle='btn--primary--card'
-                                buttonSize='btn--medium'
+                                buttonStyle='btn--card'
+                                buttonSize='btn--small'
                             >
                                 Read More
                             </Button>

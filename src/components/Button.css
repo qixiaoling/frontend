@@ -15,12 +15,6 @@
     color: #242424;
     border: 1px solid var(--primary);
 }
-.btn--primary--card{
-    background-color: #242424;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-}
-
 .btn--outline {
     background-color: transparent;
     color: #fff;
@@ -29,7 +23,39 @@
     transition: all 0.3s ease-out;
 }
 
+.btn--card{
+    background-color: #242424;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    transition: ease-out 0.3s;
+    border: 3px solid #BEAF6F;
+    position: relative;
+    z-index:1;
+}
+.btn--small:hover {
+    color: #fff;
+    cursor: pointer;
+}
 
+.btn--small:before{
+    transition: 0.5s all ease;
+    position: absolute;
+    top:0;
+    left:50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: #BEAF6F;
+}
+.btn--small:hover:before {
+    transition: 0.5s all ease;
+    left:0;
+    right:0;
+    opacity: 1;
+    z-index: -1;
+}
 .btn--medium {
     padding: 8px 20px;
     font-size: 18px;
@@ -38,6 +64,10 @@
 .btn--large {
     padding: 12px 26px;
     font-size: 20px;
+}
+.btn--small{
+    padding: 8px 20px;
+    font-size: 18px;
 }
 
 
