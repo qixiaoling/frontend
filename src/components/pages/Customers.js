@@ -1,5 +1,11 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export default function Customers(){
-    return <h1>Customers data</h1>
+export default class Customers extends Component {
+    render(props){
+        return(
+            <div>
+                <h2>Customer data</h2>
+            </div>
+        )
+    }
 }

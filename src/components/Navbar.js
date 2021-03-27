@@ -60,7 +60,7 @@ function Navbar(){
                                 buttonStyle='btn--primary'
                                 buttonSize='btn--large'
                             >
-                                Sign up
+                                Sign In
                             </Button>
                         </li>
                     </ul>
