@@ -78,3 +78,9 @@
     color: #242424;
     transition: 250ms;
 }
+.sign-up-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

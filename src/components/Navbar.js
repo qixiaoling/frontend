@@ -30,29 +30,38 @@ function Navbar(){
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/customer" className='link' >
+                            <Link to="/customers" className='link' >
                                 Customer
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/automobile" className='link' >
+                            <Link to="/automobiles" className='link' >
                                 Automobile
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/inspection" className='link' >
+                            <Link to="/inspections" className='link' >
                                 Inspection
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/inventory" className='link' >
+                            <Link to="/inventories" className='link' >
                                 Inventory
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to="/invoice" className='link'>
+                            <Link to="/invoices" className='link'>
                                 Invoice
                             </Link>
+                        </li>
+                        <li className='sign-up-button'>
+                            <Button
+                                className='btns'
+                                buttonStyle='btn--primary'
+                                buttonSize='btn--large'
+                            >
+                                Sign up
+                            </Button>
                         </li>
                     </ul>
 
