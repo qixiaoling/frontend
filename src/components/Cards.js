@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import CardItem from "./CardItems"
 import './Cards.css'
-import {Button} from "./Button";
-
-
+import customer from "../images/Customer.jpg"
+import Car_1 from "../images/Car_1.jpg"
+import Inspection from "../images/Inspection.jpg"
+import Inventory_1 from "../images/Inventory_1.jpg"
+import Invoices_1 from "../images/Invoices_1.jpg"
 
 function Cards(){
     return(
@@ -12,14 +14,14 @@ function Cards(){
                 <div className='card__wrapper'>
                     <ul className='cards__items'>
                         <CardItem
-                            cardLogo = "fa fa-address-card"
+                            depImage = {customer}
                             title = 'CUSTOMER'
                             text ='Read More'
                             path ='/Customers'
 
                         />
                         <CardItem
-                            cardLogo = "fas fa-car-alt"
+                            depImage = {Car_1}
                             title = 'CAR'
                             text ='Read More'
                             path ='/Cars'
@@ -29,19 +31,19 @@ function Cards(){
                 <div className='card__wrapper'>
                     <ul className='cards__items'>
                         <CardItem
-                            cardLogo = "fas fa-drafting-compass"
+                            depImage = {Inspection}
                             title = 'INSPECTION'
                             text ='Read More'
                             path ='/Inspections'
                         />
                         <CardItem
-                            cardLogo = "fas fa-boxes"
+                            depImage = {Inventory_1}
                             title = 'INVENTORY'
                             text ='Read More'
                             path ='/Inventories'
                         />
                         <CardItem
-                            cardLogo ="fas fa-file-invoice-dollar"
+                            depImage = {Invoices_1}
                             title = 'INVOICE'
                             text ='Read More'
                             path ='/Invoices'

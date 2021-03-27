@@ -7,21 +7,18 @@ import {Button} from "./Button";
 function CardItem(props){
     return(
         <>
-            <li className='cards__item'>
+            <li className='card__item'>
                     <Link className='cards_item_link' to={props.path}>
-                        <i id="cardLogo" className={props.cardLogo}></i>
+                        <img src={props.depImage} alt={props.text} className="dep-img"/>
                         <h3>{props.title}</h3>
                         <div className="button--wrapper">
                             <Button
                                 className='btn'
                                 buttonStyle='btn--primary--card'
-                                buttonSize='btn--small'
+                                buttonSize='btn--medium'
                             >
                                 Read More
                             </Button>
-                            <div className="button--arrow">
-                                <i id="button--arrow--self" className="fas fa-angle-right"></i>
-                            </div>
 
                         </div>
 
