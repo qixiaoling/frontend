@@ -4,6 +4,26 @@ import axios from "axios";
 
 export default class Login extends Component{
 
+    // componentDidMount() {
+    //     const config = {
+    //         headers: {
+    //             Authorization: 'Bearer ' + localStorage.getItem('token')
+    //         }
+    //     }
+    //
+    //     axios.get('/invoices', config).then(
+    //         res => {
+    //             console.log(res);
+    //         },
+    //         err =>{
+    //             console.log(err)
+    //         }
+    //     )
+    // };
+
+
+
+
     // function closeLogin(){
     //     document.querySelector('.login-popup').style.display = 'none';
     // }
@@ -18,7 +38,10 @@ export default class Login extends Component{
         username: this.username,
         password: this.password
     }
-    axios.post('http://localhost:8080/login', data)
+    axios.post('/login', data)
+        .then(res =>{
+            localStorage.setItem('token', res.data.token);
+        })
 
 }
 
@@ -52,7 +75,7 @@ export default class Login extends Component{
                                     <label>   Remember Me
                                     </label>
                                 </div>
-                                <button type="button" className="btn" onSubmit={this.handleSubmit}>Sign In</button>
+                                <button type="button" className="btn" onClick={this.handleSubmit}>Sign In</button>
                             </form>
                         </div>
 
