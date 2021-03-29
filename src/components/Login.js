@@ -3,6 +3,15 @@ import './Login.css'
 
 function Login(){
 
+    function closeLogin(){
+        document.querySelector('.login-popup').style.display = 'none';
+    }
+    const quitLogin= document.querySelector('.close');
+    if(quitLogin){
+        quitLogin.addEventListener('click', closeLogin);
+    }
+
+
         return (
             <div className="login-popup">
                 <div className="box">
