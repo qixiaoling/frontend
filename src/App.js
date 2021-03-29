@@ -6,13 +6,7 @@ import Customers from "./components/pages/Customers";
 import './App.css'
 
 function App() {
-    function noneToFlex (){
-        document.querySelector(".login-popup").add.classList("show");
-    }
-    const openLogin = document.querySelector(".btn btn--primary btn--large");
-    if(openLogin){
-        openLogin.addEventListener("click",noneToFlex);
-    }
+
 
   return (
     <>

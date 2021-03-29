@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {Button} from "./Button";
 import './Navbar.css';
+import Login from "./Login";
 
 function Navbar(){
     const [navLinkOpen, navLinkToggle] = useState(false)
@@ -15,7 +16,6 @@ function Navbar(){
         }
         return classes;
     };
-
 
 
 
@@ -73,7 +73,9 @@ function Navbar(){
                 <div className="menu-icon" onClick={handleNavLinksToggle}>
                     <i className='fas fa-bars' />
                 </div>
+
             </nav>
+
         </>
     )
 }
