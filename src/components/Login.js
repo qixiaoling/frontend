@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import './Login.css'
 
-export default class Login extends Component{
+function Login(){
 
-    render() {
         return (
             <div className="login-popup">
                 <div className="box">
@@ -34,5 +33,6 @@ export default class Login extends Component{
                 </div>
             </div>
         );
-    }
+
 }
+export default Login

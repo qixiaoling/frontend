@@ -16,6 +16,10 @@
     height: 100%;
     z-index: 1099;
     background-color: rgba(0,0,0,0.6);
+    display: none;
+}
+.login-popip show{
+    display: flex;
 }
 
 .login-popup .box{
