@@ -1,36 +1,20 @@
 import React, {Component} from 'react'
 import './Login.css'
 import axios from "axios";
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
 
-export default class Login extends Component{
+class Login extends Component{
 
-    // componentDidMount() {
-    //     const config = {
-    //         headers: {
-    //             Authorization: 'Bearer ' + localStorage.getItem('token')
-    //         }
-    //     }
-    //
-    //     axios.get('/invoices', config).then(
-    //         res => {
-    //             console.log(res);
-    //         },
-    //         err =>{
-    //             console.log(err)
-    //         }
-    //     )
-    // };
+    constructor() {
+        super();
 
+        this.state = {
 
+        }
+    }
 
-
-    // function closeLogin(){
-    //     document.querySelector('.login-popup').style.display = 'none';
-    // }
-    // const quitLogin= document.querySelector('.close');
-    // if(quitLogin){
-    //     quitLogin.addEventListener('click', closeLogin);
-    // }
     handleSubmit = e =>{
         e.preventDefault();
 
@@ -38,9 +22,14 @@ export default class Login extends Component{
         username: this.username,
         password: this.password
     }
+    console.log(data)
     axios.post('/login', data)
         .then(res =>{
-            localStorage.setItem('token', res.data.token);
+            // console.log(res.headers.authorization)
+            localStorage.setItem('token', res.headers.authorization);
+            this.setState({
+                loggedIn: true
+            })
         })
 
 }
@@ -49,6 +38,9 @@ export default class Login extends Component{
 
 
     render(){
+        if(this.state.loggedIn){
+            return <Redirect to={'/'} />
+        }
         return (
 
                 <div className="login-popup">
@@ -88,4 +80,5 @@ export default class Login extends Component{
     }
 
 }
+export default Login
 
