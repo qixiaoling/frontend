@@ -35,9 +35,13 @@ class CreateCustomers extends Component {
             gender:this.state.gender, email:this.state.email};
         console.log('customer =>' +JSON.stringify(customer));
 
-        CustomerService.createCustomers(customer).then(res =>{
-            this.props.history.push('/customers')
-        });
+        CustomerService.createCustomers(customer)
+            .then(res =>{ this.props.history.push('/customers')})
+        //     console.log(res)
+        // })
+        // .catch(err =>{
+        //     console.log(err)
+        // })
     }
     cancel(){
         this.props.history.push('/customers');
