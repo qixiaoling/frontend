@@ -37,11 +37,6 @@ class CreateCustomers extends Component {
 
         CustomerService.createCustomers(customer)
             .then(res =>{ this.props.history.push('/customers')})
-        //     console.log(res)
-        // })
-        // .catch(err =>{
-        //     console.log(err)
-        // })
     }
     cancel(){
         this.props.history.push('/customers');

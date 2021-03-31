@@ -8,21 +8,23 @@ class ListCustomers extends Component {
         this.state = {
             customers: []
         }
-
+        this.addCustomer = this.addCustomer.bind(this);
     }
     componentDidMount(){
-        console.log("i am about to get the customer from the server")
+        console.log("hallo")
         CustomerService.getCustomers().then((res) =>{
             this.setState({customers : res.data});
         })
     }
 
-
+    addCustomer(){
+        this.props.history.push('/add-customer');
+    }
 
     render(){
         return(
             <div>
-                {this.state.customers.firstName}
+                <button className="btn btn--primary" onClick={this.addCustomer}>Add Customer</button>
             </div>
             )
 

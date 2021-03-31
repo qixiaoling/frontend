@@ -23,7 +23,7 @@ class Login extends Component{
         password: this.password
     }
     console.log(data)
-    axios.post('/login', data)
+    axios.post('http://localhost:8080/login', data)
         .then(res =>{
             // console.log(res.headers.authorization)
             localStorage.setItem('token', res.headers.authorization);
@@ -33,9 +33,6 @@ class Login extends Component{
         })
 
 }
-
-
-
 
     render(){
         if(this.state.loggedIn){
