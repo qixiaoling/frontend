@@ -1,0 +1,35 @@
+.main-container {
+    background: #E9E7D1;
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.information-container {
+    width: 90%;
+    height: 80%;
+    padding: 10px;
+}
+h2{
+    text-align: center;
+}
+table{
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    border-collapse: collapse;
+
+}
+th, td {
+    padding: 20px;
+}
+td {
+    border: 1px solid lightgrey;
+}
+tbody > tr:nth-child(even){
+    background-color: #e9e2af ;
+}
+tbody > tr:nth-child(odd){
+    background-color: lightgoldenrodyellow;
+}

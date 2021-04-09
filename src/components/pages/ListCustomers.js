@@ -2,6 +2,13 @@ import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
 import '../Button.css'
 import axios from "axios";
+import './ListCustomers.css'
+import {Button} from "../Button";
+
+
+
+
+
 const accessToken =
     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfVEVDIn0seyJhdXRob3JpdHkiOiJVU0VSX0JBQyJ9LHsiYXV0aG9yaXR5IjoiVVNFUl9GUk8ifSx7ImF1dGhvcml0eSI6IkFETUlOIn0seyJhdXRob3JpdHkiOiJVU0VSX1RSRSJ9XSwiaWF0IjoxNjE3MTczNzU3LCJleHAiOjE2MTgzNTEyMDB9.hQ5gjmX2OurT09SzCjJeeSI6l08wr-uVYXJ83sc_-yWJG-birFAlO_p-ybIBQZ8OOHIUnw0ZU61rvYUHd4-9MA'
 const apiUrl = 'http://localhost:8080/customers';
@@ -30,6 +37,7 @@ class ListCustomers extends Component {
     componentDidMount(){
         console.log("hallo")
         CustomerService.getCustomers().then((res) =>{
+            console.log(res)
             this.setState({customers : res.data});
             console.log("I am ListCustomers")
         })
@@ -41,8 +49,52 @@ class ListCustomers extends Component {
 
     render(){
         return(
-            <div>
-                <button className="btn btn--primary" onClick={this.addCustomer}>Add Customer</button>
+            <div className="main-container">
+                <div className="information-container">
+                    <h2>Customers List</h2>
+                    <div>
+                        <button  className='btn--card' onClick={this.addCustomer}>Add Customer</button>
+                    </div>
+                    <br />
+                    <div>
+                        <table >
+                            <thead>
+                            <tr>
+                                <th> Customer First Name </th>
+                                <th> Customer Last Name </th>
+                                <th> Customer Gender </th>
+                                <th> Customer Email </th>
+                                <th> Actions </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                this.state.customers.map(
+                                    cus =>{
+                                        return(
+                                            <tr key={cus.id}>
+                                                <td>{cus.firstName}</td>
+                                                <td>{cus.lastName}</td>
+                                                <td>{cus.gender}</td>
+                                                <td>{cus.email}</td>
+                                                <td>
+                                                    <button className='btn--card'>Update </button>
+                                                    <button className='btn--card'>Delete </button>
+                                                    <button className='btn--card'>View </button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
+
+                                )
+
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
             </div>
             )
 
