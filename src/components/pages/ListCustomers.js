@@ -53,7 +53,7 @@ class ListCustomers extends Component {
                 <div className="information-container">
                     <h2>Customers List</h2>
                     <div>
-                        <button  className='btn--card' onClick={this.addCustomer}>Add Customer</button>
+                        <button  className='btn--list-customer' onClick={this.addCustomer}>Add Customer</button>
                     </div>
                     <br />
                     <div>
@@ -78,9 +78,9 @@ class ListCustomers extends Component {
                                                 <td>{cus.gender}</td>
                                                 <td>{cus.email}</td>
                                                 <td>
-                                                    <button className='btn--card'>Update </button>
-                                                    <button className='btn--card'>Delete </button>
-                                                    <button className='btn--card'>View </button>
+                                                    <button className='btn--list-customer'>Update </button>
+                                                    <button className='btn--list-customer'>Delete </button>
+                                                    <button className='btn--list-customer'>View </button>
                                                 </td>
                                             </tr>
                                         )
