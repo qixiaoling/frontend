@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
+import './CreateCustomers.css'
 
 class CreateCustomers extends Component {
     constructor(props) {
@@ -44,36 +45,43 @@ class CreateCustomers extends Component {
 
     render(){
         return(
-            <div>
-                <div>
-                    <h3>Add Customer</h3>
+            <div className="main-container-create-customer">
+                <div className="information-container-create-customer">
+                    <h2>Add Customer</h2>
                     <div className="customer-card-body">
-                        <form>
-                            <div>
+                        <form className="form-create-customer">
+                            <div className="form-element">
                                 <label>First Name: </label>
+                                <br/>
                                 <input placeholder="First Name" name="firstName" className="form-control"
                                        value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
                             </div>
-                            <div>
+                            <div className="form-element">
                                 <label>Last Name: </label>
+                                <br/>
                                 <input placeholder="Last Name" name="Last Name" className="form-control"
                                        value={this.state.lastName} onChange={this.changeLastNameHandler}/>
                             </div>
-                            <div>
+                            <div className="form-element">
                                 <label>gender: </label>
+                                <br/>
                                 <input placeholder="gender" name="gender" className="form-control"
                                        value={this.state.gender} onChange={this.changeGenderHandler}/>
                             </div>
-                            <div>
+                            <div className="form-element">
                                 <label>email: </label>
+                                <br/>
                                 <input placeholder="email" name="email" className="form-control"
                                        value={this.state.email} onChange={this.changeEmailHandler}/>
                             </div>
-                            <button className="btn btn--medium" onClick={this.saveCustomer}>Save</button>
-                            <button className="btn btn--medium" onClick={this.cancel.bind(this)}
-                                    style={{marginLeft:"10px"}}>
+                            <div className="form-element-button">
+                                <button className='btn--create-customer' onClick={this.saveCustomer}>Save</button>
+                                <button className='btn--create-customer' onClick={this.cancel.bind(this)}
+                                        style={{marginLeft:"10px"}}>
                                     Cancel
-                            </button>
+                                </button>
+                            </div>
+
                         </form>
 
                     </div>
