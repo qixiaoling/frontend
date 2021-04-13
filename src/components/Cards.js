@@ -17,14 +17,14 @@ function Cards(){
                             depImage = {customer}
                             title = 'CUSTOMER'
                             text ='Read More'
-                            path ='/Customers'
+                            path ='/customers'
 
                         />
                         <CardItem
                             depImage = {Car_1}
                             title = 'CAR'
                             text ='Read More'
-                            path ='/Cars'
+                            path ='/cars'
                         />
                     </ul>
                 </div>
@@ -34,19 +34,19 @@ function Cards(){
                             depImage = {Inspection}
                             title = 'INSPECTION'
                             text ='Read More'
-                            path ='/Inspections'
+                            path ='/inspections'
                         />
                         <CardItem
                             depImage = {Inventory_1}
                             title = 'INVENTORY'
                             text ='Read More'
-                            path ='/Inventories'
+                            path ='/inventories'
                         />
                         <CardItem
                             depImage = {Invoices_1}
                             title = 'INVOICE'
                             text ='Read More'
-                            path ='/Invoices'
+                            path ='/invoices'
                         />
                     </ul>
                 </div>
