@@ -3,7 +3,7 @@ import CustomerService from "../../services/CustomerService";
 import '../Button.css'
 import axios from "axios";
 import './ListCustomers.css'
-import {Button} from "../Button";
+
 
 
 
@@ -23,25 +23,31 @@ axios.interceptors.request.use(
 )
 
 class ListCustomers extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             customers: []
         }
         this.addCustomer = this.addCustomer.bind(this);
+        // this.editCustomer= this.editCustomer.bind(this);
     }
 
 
 
 
     componentDidMount(){
-        console.log("hallo")
+        console.log(", I just mounted")
         CustomerService.getCustomers().then((res) =>{
             console.log(res)
             this.setState({customers : res.data});
-            console.log("I am ListCustomers")
+            console.log("I am a new ListCustomers")
         })
     }
+
+    // editCustomer(customerId){
+    //     this.props.history.push(`/update-customers/${this.props.match.params.id}`)
+    //     console.log("I am id"+customerId)
+    // }
 
     addCustomer(){
         this.props.history.push('/add-customer');
@@ -60,6 +66,7 @@ class ListCustomers extends Component {
                         <table >
                             <thead>
                             <tr>
+                                <th> Customer Id </th>
                                 <th> Customer First Name </th>
                                 <th> Customer Last Name </th>
                                 <th> Customer Gender </th>
@@ -72,13 +79,15 @@ class ListCustomers extends Component {
                                 this.state.customers.map(
                                     cus =>{
                                         return(
-                                            <tr key={cus.id}>
+                                            <tr key={cus.customerId}>
+                                                <td>{cus.customerId}</td>
                                                 <td>{cus.firstName}</td>
                                                 <td>{cus.lastName}</td>
                                                 <td>{cus.gender}</td>
                                                 <td>{cus.email}</td>
                                                 <td>
-                                                    <button className='btn--list-customer'>Update </button>
+                                                    {/*<button onClick={()=>{this.editCustomer(cus.id)}} className='btn--list-customer'>Update </button>*/}
+                                                    <a href={'/update-customers/' + cus.customerId} className="btn--list-customer">Update</a>
                                                     <button className='btn--list-customer'>Delete </button>
                                                     <button className='btn--list-customer'>View </button>
                                                 </td>

@@ -8,5 +8,11 @@ class CustomerService{
     createCustomers(customer){
         return axios.post(CUSTOMER_API_BASE_URL, customer)
     }
+    getCustomerById(customerId){
+        return axios.get(CUSTOMER_API_BASE_URL + '/'+ customerId)
+    }
+    updateCustomer(customer, customerId){
+        return axios.put(CUSTOMER_API_BASE_URL + '/'+ customerId, customer);
+    }
 }
 export default new CustomerService()
