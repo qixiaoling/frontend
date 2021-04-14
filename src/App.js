@@ -7,10 +7,9 @@ import ListCustomers from "./components/pages/ListCustomers";
 import './App.css'
 import CreateCustomers from "./components/pages/CreateCustomers"
 import UpdateCustomers from "./components/pages/UpdateCustomers";
-import ViewCustomers
+import ViewCustomers from "./components/pages/ViewCustomers";
 
 function App() {
-
 
   return (
     <>

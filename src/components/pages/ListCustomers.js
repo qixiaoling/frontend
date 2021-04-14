@@ -31,6 +31,7 @@ class ListCustomers extends Component {
         this.addCustomer = this.addCustomer.bind(this);
         this.editCustomer = this.editCustomer.bind(this);
         this.deleteCustomer = this.deleteCustomer.bind(this);
+        this.viewCustomer = this.viewCustomer.bind(this);
     }
 
     componentDidMount(){
@@ -55,6 +56,9 @@ class ListCustomers extends Component {
         CustomerService.deleteCustomer(customerId).then(res=>{
             this.setState({customers: this.state.customers.filter(customer => customer.customerId !== customerId)})
         })
+    }
+    viewCustomer(customerId){
+        this.props.history.push(`/view-customer/${customerId}`);
     }
 
     render(){
@@ -90,7 +94,7 @@ class ListCustomers extends Component {
                                                 <td>
                                                     <button onClick={()=>{this.editCustomer(cus.customerId)}} className='btn--list-customer'>Update </button>
                                                     <button onClick={()=>{this.deleteCustomer(cus.customerId)}} className='btn--list-customer'>Delete </button>
-                                                    <button className='btn--list-customer'>View </button>
+                                                    <button onClick={()=>{this.viewCustomer(cus.customerId)}} className='btn--list-customer'>View </button>
                                                 </td>
                                             </tr>
                                         )
