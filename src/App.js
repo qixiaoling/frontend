@@ -7,6 +7,7 @@ import ListCustomers from "./components/pages/ListCustomers";
 import './App.css'
 import CreateCustomers from "./components/pages/CreateCustomers"
 import UpdateCustomers from "./components/pages/UpdateCustomers";
+import ViewCustomers
 
 function App() {
 
@@ -20,7 +21,8 @@ function App() {
                 <Route path='/customers' exact component={ListCustomers}/>
                 <Route path='/add-customer' exact component={CreateCustomers}/>
                 <Route path='/sign-in' exact component={Login} />
-                <Route path="/update-customers/:id" exact component={UpdateCustomers} />
+                <Route path="/update-customer/:id" exact component={UpdateCustomers} />
+                <Route path="/view-customer/:id" exact component={ViewCustomers} />
             </Switch>
 
         </Router>
