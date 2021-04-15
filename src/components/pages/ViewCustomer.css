@@ -1,0 +1,43 @@
+
+
+
+.main-container-view-customer {
+    background: #E9E7D1;
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.information-container-view-customer {
+    width: 50%;
+    height: 70%;
+    padding: 10px;
+    border: 1px solid lightgrey;
+}
+h2{
+    text-align: center;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.view-customer-card-body{
+    width:100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.view-customer-element{
+    width: 100%;
+    height: 35px;
+    display: flex;
+}
+
+label{
+    color: black;
+}
