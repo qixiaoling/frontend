@@ -1,13 +1,14 @@
 import React from 'react';
 import Navbar from "./components/Navbar";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Home from "./components/pages/Home";
+import Home from "./components/CusotmerPages/Home";
 import Login from "./components/Login";
-import ListCustomers from "./components/pages/ListCustomers";
+import ListCustomers from "./components/CusotmerPages/ListCustomers";
 import './App.css'
-import CreateCustomers from "./components/pages/CreateCustomers"
-import UpdateCustomers from "./components/pages/UpdateCustomers";
-import ViewCustomers from "./components/pages/ViewCustomers";
+import CreateCustomers from "./components/CusotmerPages/CreateCustomers"
+import UpdateCustomers from "./components/CusotmerPages/UpdateCustomers";
+import ViewCustomers from "./components/CusotmerPages/ViewCustomers";
+import ListAutomobiles from "./components/AutomobilePages/ListAutomobiles";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                 <Route path='/sign-in' exact component={Login} />
                 <Route path="/update-customer/:id" exact component={UpdateCustomers} />
                 <Route path="/view-customer/:id" exact component={ViewCustomers} />
+                <Route path="/automobiles" exact component={ListAutomobiles} />
             </Switch>
 
         </Router>
