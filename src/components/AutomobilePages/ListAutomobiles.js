@@ -56,10 +56,10 @@ class ListAutomobiles extends Component{
                                     auto =>{
                                         console.log(auto)
                                         return(
-                                            <tr key={auto.numberPlate}>
-                                                <td>{auto.numberPlate}</td>
-                                                <td>{auto.make}</td>
-                                                <td>{auto.customer.customerId}</td>
+                                            <tr key={auto.car.numberPlate}>
+                                                <td>{auto.car.numberPlate}</td>
+                                                <td>{auto.car.make}</td>
+                                                <td>{auto.customerId}</td>
                                                 <td>
                                                     <button className='btn--list-customer'>Update </button>
                                                     <button className='btn--list-customer'>Delete </button>
