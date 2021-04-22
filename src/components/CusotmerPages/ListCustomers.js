@@ -32,6 +32,7 @@ class ListCustomers extends Component {
         this.editCustomer = this.editCustomer.bind(this);
         this.deleteCustomer = this.deleteCustomer.bind(this);
         this.viewCustomer = this.viewCustomer.bind(this);
+        this.addAutomobile = this.addAutomobile.bind(this);
     }
 
     componentDidMount(){
@@ -59,6 +60,9 @@ class ListCustomers extends Component {
     }
     viewCustomer(customerId){
         this.props.history.push(`/view-customer/${customerId}`);
+    }
+    addAutomobile(customerId){
+        this.props.history.push(`/add-automobile/${customerId}`);
     }
 
     render(){
@@ -95,6 +99,7 @@ class ListCustomers extends Component {
                                                     <button onClick={()=>{this.editCustomer(cus.customerId)}} className='btn--list-customer'>Update </button>
                                                     <button onClick={()=>{this.deleteCustomer(cus.customerId)}} className='btn--list-customer'>Delete </button>
                                                     <button onClick={()=>{this.viewCustomer(cus.customerId)}} className='btn--list-customer'>View </button>
+                                                    <button onClick={()=>{this.addAutomobile(cus.customerId)}} className='btn--list-customer'>Add Auto </button>
                                                 </td>
                                             </tr>
                                         )

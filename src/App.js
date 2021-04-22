@@ -9,6 +9,7 @@ import CreateCustomers from "./components/CusotmerPages/CreateCustomers"
 import UpdateCustomers from "./components/CusotmerPages/UpdateCustomers";
 import ViewCustomers from "./components/CusotmerPages/ViewCustomers";
 import ListAutomobiles from "./components/AutomobilePages/ListAutomobiles";
+import CreateAutomobiles from "./components/AutomobilePages/CreateAutomobiles";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/update-customer/:id" exact component={UpdateCustomers} />
                 <Route path="/view-customer/:id" exact component={ViewCustomers} />
                 <Route path="/automobiles" exact component={ListAutomobiles} />
+                <Route path='/add-automobile/:id' exact component={CreateAutomobiles} />
             </Switch>
 
         </Router>

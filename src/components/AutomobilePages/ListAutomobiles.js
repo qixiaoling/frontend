@@ -18,8 +18,8 @@ axios.interceptors.request.use(
 
 
 class ListAutomobiles extends Component{
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state={
             automobiles: []
         }
@@ -31,14 +31,16 @@ class ListAutomobiles extends Component{
             console.log("I am a new ListAutos")
         })
     }
+
+
     render(){
         return(
             <div className="main-container">
                 <div className="information-container">
                     <h2>Automobiles List</h2>
-                    <div>
-                        <button  className='btn--list-customer'>Add Automobile</button>
-                    </div>
+                    {/*<div>*/}
+                    {/*    <button  className='btn--list-customer' onClick={this.addAutomobile}>Add Automobile</button>*/}
+                    {/*</div>*/}
                     <br />
                     <div>
                         <table >
