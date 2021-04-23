@@ -9,6 +9,12 @@ class AutomobileService{
     createAutomobiles(automobile, customerId){
         return axios.post(AUTOMOBILE_API_BASE_URL + '/' + customerId, automobile)
     }
+    deleteAutomobiles(numberPlate){
+        return axios.delete(AUTOMOBILE_API_BASE_URL + '/' + numberPlate )
+    }
+    updateAutomobiles(automobile, numberPlate){
+        return axios.put(AUTOMOBILE_API_BASE_URL + '/' + numberPlate, automobile)
+    }
 
 }
 

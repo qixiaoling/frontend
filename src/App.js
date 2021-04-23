@@ -10,6 +10,7 @@ import UpdateCustomers from "./components/CusotmerPages/UpdateCustomers";
 import ViewCustomers from "./components/CusotmerPages/ViewCustomers";
 import ListAutomobiles from "./components/AutomobilePages/ListAutomobiles";
 import CreateAutomobiles from "./components/AutomobilePages/CreateAutomobiles";
+import UpdateAutomobiles from "./components/AutomobilePages/UpdateAutomobiles";
 
 function App() {
 
@@ -22,10 +23,11 @@ function App() {
                 <Route path='/customers' exact component={ListCustomers}/>
                 <Route path='/add-customer' exact component={CreateCustomers}/>
                 <Route path='/sign-in' exact component={Login} />
-                <Route path="/update-customer/:id" exact component={UpdateCustomers} />
-                <Route path="/view-customer/:id" exact component={ViewCustomers} />
-                <Route path="/automobiles" exact component={ListAutomobiles} />
+                <Route path='/update-customer/:id' exact component={UpdateCustomers} />
+                <Route path='/view-customer/:id' exact component={ViewCustomers} />
+                <Route path='/automobiles' exact component={ListAutomobiles} />
                 <Route path='/add-automobile/:id' exact component={CreateAutomobiles} />
+                <Route path='/update-automobiles/:id' exact component={UpdateAutomobiles} />
             </Switch>
 
         </Router>
