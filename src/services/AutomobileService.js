@@ -15,6 +15,9 @@ class AutomobileService{
     updateAutomobiles(automobile, numberPlate){
         return axios.put(AUTOMOBILE_API_BASE_URL + '/' + numberPlate, automobile)
     }
+    getAutomobilesById(numberPlate){
+        return axios.get(AUTOMOBILE_API_BASE_URL + '/' + numberPlate)
+    }
 
 }
 

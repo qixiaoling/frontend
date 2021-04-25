@@ -11,6 +11,7 @@ import ViewCustomers from "./components/CusotmerPages/ViewCustomers";
 import ListAutomobiles from "./components/AutomobilePages/ListAutomobiles";
 import CreateAutomobiles from "./components/AutomobilePages/CreateAutomobiles";
 import UpdateAutomobiles from "./components/AutomobilePages/UpdateAutomobiles";
+import ViewAutomobiles from "./components/AutomobilePages/ViewAutomobiles";
 
 function App() {
 
@@ -27,7 +28,8 @@ function App() {
                 <Route path='/view-customer/:id' exact component={ViewCustomers} />
                 <Route path='/automobiles' exact component={ListAutomobiles} />
                 <Route path='/add-automobile/:id' exact component={CreateAutomobiles} />
-                <Route path='/update-automobiles/:id' exact component={UpdateAutomobiles} />
+                <Route path='/update-automobile/:id' exact component={UpdateAutomobiles} />
+                <Route path='/view-automobile/:id' exact component={ViewAutomobiles} />
             </Switch>
 
         </Router>

@@ -22,9 +22,9 @@ class UpdateAutomobiles extends Component {
         super(props);
         this.state = {
             id: this.props.match.params.id,
-            numberPlate: '',
+            numberPlate: this.props.match.params.id,
             make: '',
-            model: ''
+            model: '',
         }
         this.changeNumberPlateHandler = this.changeNumberPlateHandler.bind(this)
         this.changeBrandHandler = this.changeBrandHandler.bind(this)
@@ -35,14 +35,13 @@ class UpdateAutomobiles extends Component {
     }
 
     componentDidMount() {
-        AutomobileService.getAutomobiles(this.state.id).then((res)=>{
+        AutomobileService.getAutomobilesById(this.state.id).then((res)=>{
             console.log("I update car info.")
             let auto = res.data;
-            this.setState(
-                {
+            this.setState({
                     numberPlate: auto.numberPlate,
                     make: auto.make,
-                    model: auto.make,
+                    model: auto.model,
                 }
             )
         })

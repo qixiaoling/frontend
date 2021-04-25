@@ -26,6 +26,7 @@ class ListAutomobiles extends Component{
         }
         this.deleteAutomobile = this.deleteAutomobile.bind(this)
         this.editAutomobile = this.editAutomobile.bind(this)
+        this.viewAutomobile = this.viewAutomobile.bind(this)
     }
     componentDidMount(){
         AutomobileService.getAutomobiles().then((res) =>{
@@ -41,8 +42,11 @@ class ListAutomobiles extends Component{
         })
     }
     editAutomobile(numberPlate){
-       this.props.history.push(`/update-automobiles/${numberPlate}`)
+       this.props.history.push(`/update-automobile/${numberPlate}`)
 
+    }
+    viewAutomobile(numberPlate){
+        this.props.history.push(`/view-automobile/${numberPlate}`)
     }
 
 
@@ -68,14 +72,14 @@ class ListAutomobiles extends Component{
                                     auto =>{
                                         console.log(auto)
                                         return(
-                                            <tr key={auto.car.numberPlate}>
-                                                <td>{auto.car.numberPlate}</td>
-                                                <td>{auto.car.make}</td>
+                                            <tr key={auto.car. numberPlate}>
+                                                <td>{auto.car. numberPlate}</td>
+                                                <td>{auto.car. make}</td>
                                                 <td>{auto.customerId}</td>
                                                 <td>
                                                     <button className='btn--list-customer' onClick={()=>{this.editAutomobile(auto.car.numberPlate)}}>Update </button>
                                                     <button className='btn--list-customer' onClick={()=>{this.deleteAutomobile(auto.car.numberPlate)}}>Delete </button>
-                                                    <button className='btn--list-customer'>View </button>
+                                                    <button className='btn--list-customer' onClick={()=>{this.viewAutomobile(auto.car.numberPlate)}}>View </button>
                                                 </td>
                                             </tr>
                                         )
