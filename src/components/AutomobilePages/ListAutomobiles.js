@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import AutomobileService from "../../services/AutomobileService";
 import'../CusotmerPages/ListCustomers.css'
 import axios from "axios";
-import CustomerService from "../../services/CustomerService";
+
 
 const accessToken =
     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOIn0seyJhdXRob3JpdHkiOiJVU0VSX1RSRSJ9LHsiYXV0aG9yaXR5IjoiVVNFUl9GUk8ifSx7ImF1dGhvcml0eSI6IlVTRVJfVEVDIn0seyJhdXRob3JpdHkiOiJVU0VSX0JBQyJ9XSwiaWF0IjoxNjE4MzkxNjIwLCJleHAiOjE2MTk1NjA4MDB9.dtSmT_MCQw8Z2OtVv8f_Yag8b_vsTflMkZdZ3M_NrcgtjtedGJaS77nFWTMcCx5ZvzB1n9AnNpcixOCDOIsYew'
@@ -27,6 +27,7 @@ class ListAutomobiles extends Component{
         this.deleteAutomobile = this.deleteAutomobile.bind(this)
         this.editAutomobile = this.editAutomobile.bind(this)
         this.viewAutomobile = this.viewAutomobile.bind(this)
+        this.addInspection = this.addInspection.bind(this)
     }
     componentDidMount(){
         AutomobileService.getAutomobiles().then((res) =>{
@@ -47,6 +48,9 @@ class ListAutomobiles extends Component{
     }
     viewAutomobile(numberPlate){
         this.props.history.push(`/view-automobile/${numberPlate}`)
+    }
+    addInspection(numberPlate){
+        this.props.history.push(`/add-inspection/${numberPlate}`)
     }
 
 
@@ -80,6 +84,7 @@ class ListAutomobiles extends Component{
                                                     <button className='btn--list-customer' onClick={()=>{this.editAutomobile(auto.car.numberPlate)}}>Update </button>
                                                     <button className='btn--list-customer' onClick={()=>{this.deleteAutomobile(auto.car.numberPlate)}}>Delete </button>
                                                     <button className='btn--list-customer' onClick={()=>{this.viewAutomobile(auto.car.numberPlate)}}>View </button>
+                                                    <button className='btn--list-customer' onClick={()=>{this.addInspection(auto.car.numberPlate)}}>Add Inspection</button>
                                                 </td>
                                             </tr>
                                         )

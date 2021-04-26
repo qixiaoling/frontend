@@ -12,6 +12,9 @@ import ListAutomobiles from "./components/AutomobilePages/ListAutomobiles";
 import CreateAutomobiles from "./components/AutomobilePages/CreateAutomobiles";
 import UpdateAutomobiles from "./components/AutomobilePages/UpdateAutomobiles";
 import ViewAutomobiles from "./components/AutomobilePages/ViewAutomobiles";
+import ListInspections from "./components/InspectionPages/ListInspections";
+import CreateInspections from "./components/InspectionPages/CreateInspections";
+import UpdateInspections from "./components/InspectionPages/UpdateInspections";
 
 function App() {
 
@@ -30,6 +33,9 @@ function App() {
                 <Route path='/add-automobile/:id' exact component={CreateAutomobiles} />
                 <Route path='/update-automobile/:id' exact component={UpdateAutomobiles} />
                 <Route path='/view-automobile/:id' exact component={ViewAutomobiles} />
+                <Route path='/inspections' exact component={ListInspections}/>
+                <Route path='/add-inspection/:id' exact component={CreateInspections} />
+                <Route path='/update-inspection/:id' exact component={UpdateInspections} />
             </Switch>
 
         </Router>
