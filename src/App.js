@@ -15,6 +15,7 @@ import ViewAutomobiles from "./components/AutomobilePages/ViewAutomobiles";
 import ListInspections from "./components/InspectionPages/ListInspections";
 import CreateInspections from "./components/InspectionPages/CreateInspections";
 import UpdateInspections from "./components/InspectionPages/UpdateInspections";
+import ViewInspections from "./components/InspectionPages/ViewInspections";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
                 <Route path='/inspections' exact component={ListInspections}/>
                 <Route path='/add-inspection/:id' exact component={CreateInspections} />
                 <Route path='/update-inspection/:id' exact component={UpdateInspections} />
+                <Route path='/view-inspection/:id' exact component={ViewInspections} />
             </Switch>
 
         </Router>

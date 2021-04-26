@@ -23,6 +23,9 @@ class ListInspections extends Component{
         this.state = {
             inspections : []
         }
+        this.editInspection = this.editInspection.bind(this);
+        this.deleteInspection = this.deleteInspection.bind(this);
+        this.viewInspection = this.viewInspection.bind(this);
     }
 
     componentDidMount() {
@@ -35,6 +38,14 @@ class ListInspections extends Component{
 
     editInspection(inspectionNumber){
         this.props.history.push(`/update-inspection/${inspectionNumber}`)
+    }
+    deleteInspection(inspectionNumber){
+        InspectionService.deleteInspections(inspectionNumber).then(res=>{
+            this.setState({inspections: this.state.ins.filter(ins => ins.inspectionNumber != inspectionNumber) })
+        })
+    }
+    viewInspection(inspectionNumber){
+        this.props.history.push(`/view-inspection/${inspectionNumber}`)
     }
 
     render(){
@@ -66,8 +77,8 @@ class ListInspections extends Component{
                                                 <td>{ins.repairDate}</td>
                                                 <td>
                                                     <button className='btn--list-customer' onClick={()=>{this.editInspection(ins.inspectionNumber)}} >Update </button>
-                                                    <button className='btn--list-customer' >Delete </button>
-                                                    <button className='btn--list-customer' >View </button>
+                                                    <button className='btn--list-customer' onClick={()=>{this.deleteInspection(ins.inspectionNumber)}}>Delete </button>
+                                                    <button className='btn--list-customer' onClick={()=>{this.viewInspection(ins.inspectionNumber)}}>View </button>
                                                 </td>
                                             </tr>
                                         )
