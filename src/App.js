@@ -16,6 +16,8 @@ import ListInspections from "./components/InspectionPages/ListInspections";
 import CreateInspections from "./components/InspectionPages/CreateInspections";
 import UpdateInspections from "./components/InspectionPages/UpdateInspections";
 import ViewInspections from "./components/InspectionPages/ViewInspections";
+import ListInventories from "./components/InventoryPages/ListInventories";
+import CreateInventories from "./components/InventoryPages/CreateInventories";
 
 function App() {
 
@@ -38,6 +40,8 @@ function App() {
                 <Route path='/add-inspection/:id' exact component={CreateInspections} />
                 <Route path='/update-inspection/:id' exact component={UpdateInspections} />
                 <Route path='/view-inspection/:id' exact component={ViewInspections} />
+                <Route path='/inventories' exact component={ListInventories} />
+                <Route path='/add-inventory' exact component={CreateInventories} />
             </Switch>
 
         </Router>
