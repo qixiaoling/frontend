@@ -43,7 +43,7 @@ class ListInventories extends Component{
     }
 
     editInventory(itemId){
-        console.log("straks")
+        this.props.history.push(`/update-inventory/${itemId}`)
     }
 
     deleteInventory(itemId){
@@ -53,7 +53,7 @@ class ListInventories extends Component{
     }
 
     viewInventory(itemId){
-        console.log("straks")
+        this.props.history.push(`/view-inventory/${itemId}`)
     }
 
     render(){

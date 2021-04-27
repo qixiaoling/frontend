@@ -12,5 +12,11 @@ class InventoryService{
     deleteInventory(itemId){
         return axios.delete(INVENTORY_API_BASE_URL + '/' + itemId)
     }
+    getInventoryById(itemId){
+        return axios.get(INVENTORY_API_BASE_URL + '/' + itemId)
+    }
+    updateInventory(inventory, itemId){
+        return axios.put(INVENTORY_API_BASE_URL + '/' + itemId, inventory)
+    }
 }
 export default new InventoryService()
