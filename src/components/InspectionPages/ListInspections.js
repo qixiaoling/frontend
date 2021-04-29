@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
 import'../CusotmerPages/ListCustomers.css'
 
+
 class ListInspections extends Component{
     constructor(props) {
         super(props);
@@ -19,6 +20,7 @@ class ListInspections extends Component{
             this.setState({inspections : res.data})
             console.log("I am a listed inspection object.")
         })
+
     }
 
     editInspection(inspectionNumber){
@@ -31,6 +33,9 @@ class ListInspections extends Component{
     }
     viewInspection(inspectionNumber){
         this.props.history.push(`/view-inspection/${inspectionNumber}`)
+    }
+    selectInventory(inspectionNumber){
+        this.props.history.push(`/list-inventory-for-inspection/${inspectionNumber}`)
     }
 
     render(){
@@ -64,6 +69,7 @@ class ListInspections extends Component{
                                                     <button className='btn--list-customer' onClick={()=>{this.editInspection(ins.inspectionNumber)}} >Update </button>
                                                     <button className='btn--list-customer' onClick={()=>{this.deleteInspection(ins.inspectionNumber)}}>Delete </button>
                                                     <button className='btn--list-customer' onClick={()=>{this.viewInspection(ins.inspectionNumber)}}>View </button>
+                                                    <button className='btn--list-customer' onClick={()=>{this.selectInventory(ins.inspectionNumber)}}>Select Inventory</button>
                                                 </td>
                                             </tr>
                                         )

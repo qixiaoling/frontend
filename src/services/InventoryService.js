@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from "axios";
-const INVENTORY_API_BASE_URL = "http://localhost:8080/inventories"
+const INVENTORY_API_BASE_URL = 'http://localhost:8080/inventories'
 
 class InventoryService{
     getInventories(){
