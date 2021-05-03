@@ -61,8 +61,6 @@ class ListInvoices extends Component {
                                 <th>Invoice id</th>
                                 <th>Total PreTax Amount</th>
                                 <th>Total Amount</th>
-                                <th>Send Status</th>
-                                <th>Pay Status</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -75,8 +73,6 @@ class ListInvoices extends Component {
                                                 <td>{inv.invoiceId}</td>
                                                 <td>{inv.totalPreTax}</td>
                                                 <td>{inv.totalFee}</td>
-                                                <td>{inv.invoiceSent}</td>
-                                                <td>{inv.invoicePaid}</td>
                                                 <td>
                                                     <button className='btn--list-customer' onClick={(e) => {
                                                         this.updateInvoice(inv.invoiceId)
