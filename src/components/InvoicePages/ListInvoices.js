@@ -24,7 +24,7 @@ class ListInvoices extends Component {
         }
         this.updateInvoice = this.updateInvoice.bind(this);
         this.viewInvoice = this.viewInvoice.bind(this);
-        // this.deleteInvoice = this.deleteInvoice.bind(this);
+        this.deleteInvoice = this.deleteInvoice.bind(this);
     }
 
     componentDidMount() {
@@ -42,11 +42,11 @@ class ListInvoices extends Component {
         this.props.history.push(`/view-invoice/${invoiceId}`)
     }
 
-    // deleteInvoice(invoiceId) {
-    //     InvoiceService.deleteInvoiceById(invoiceId).then((res) => {
-    //         this.setState({invoices: this.state.invoices.filter(inv => inv.invoiceId !== invoiceId)})
-    //     })
-    // }
+    deleteInvoice(invoiceId) {
+        InvoiceService.deleteInvoiceById(invoiceId).then((res) => {
+            this.setState({invoices: this.state.invoices.filter(inv => inv.invoiceId !== invoiceId)})
+        })
+    }
 
     render() {
         return (
@@ -78,7 +78,9 @@ class ListInvoices extends Component {
                                                         this.updateInvoice(inv.invoiceId)
                                                     }}>Update
                                                     </button>
-                                                    <button className='btn--list-customer' >Delete
+                                                    <button className='btn--list-customer' onClick={(e)=>{
+                                                        this.deleteInvoice(inv.invoiceId)
+                                                    }}>Delete
                                                     </button>
                                                     <button className='btn--list-customer' onClick={(e) => {
                                                         this.viewInvoice(inv.invoiceId)
