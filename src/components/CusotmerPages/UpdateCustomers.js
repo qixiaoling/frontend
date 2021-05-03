@@ -3,19 +3,6 @@ import CustomerService from "../../services/CustomerService";
 import './CreateCustomers.css'
 import axios from "axios";
 
-const accessToken =
-    'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfVEVDIn0seyJhdXRob3JpdHkiOiJVU0VSX0JBQyJ9LHsiYXV0aG9yaXR5IjoiVVNFUl9GUk8ifSx7ImF1dGhvcml0eSI6IkFETUlOIn0seyJhdXRob3JpdHkiOiJVU0VSX1RSRSJ9XSwiaWF0IjoxNjE3MTczNzU3LCJleHAiOjE2MTgzNTEyMDB9.hQ5gjmX2OurT09SzCjJeeSI6l08wr-uVYXJ83sc_-yWJG-birFAlO_p-ybIBQZ8OOHIUnw0ZU61rvYUHd4-9MA'
-const apiUrl = 'http://localhost:8080/customers';
-axios.interceptors.request.use(
-    config=> {
-        config.headers.authorization = `Bearer ${accessToken}`;
-        return config;
-    },
-    error => {
-        return Promise.reject(error);
-    }
-)
-
 
 class UpdateCustomers extends Component {
     constructor(props) {
