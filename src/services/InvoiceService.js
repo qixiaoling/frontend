@@ -14,6 +14,9 @@ class InvoiceService{
     updateInvoiceById(invoice, invoiceId){
         return axios.put(INVOICE_API_BASE_URL + '/' + invoiceId, invoice)
     }
+    deleteInvoiceById(invoiceId){
+        return axios.delete(INVOICE_API_BASE_URL + '/' + invoiceId)
+    }
 
 }
 export default new InvoiceService();
