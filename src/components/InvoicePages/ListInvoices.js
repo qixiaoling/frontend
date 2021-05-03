@@ -64,8 +64,8 @@ class ListInvoices extends Component{
                                                 <td>{inv.invoiceId}</td>
                                                 <td>{inv.totalPreTax}</td>
                                                 <td>{inv.totalFee}</td>
-                                                <td>{inv.invoiceSent}</td>
-                                                <td>{inv.invoicePaid}</td>
+                                                <td>{inv.invoiceSent.toString()}</td>
+                                                <td>{inv.invoicePaid.toString()}</td>
                                                 <td>
                                                     <button className='btn--list-customer' onClick={(e)=>{this.updateInvoice(inv.invoiceId)}} >Update </button>
                                                     <button className='btn--list-customer' >Delete </button>

@@ -51,11 +51,11 @@ class ViewInvoice extends Component {
                         </div>
                         <div className="view-customer-element">
                             <label>Send Status: </label>
-                            <div>{this.state.invoiceSent}</div>
+                            <div>{this.state.invoiceSent.toString()}</div>
                         </div>
                         <div className="view-customer-element">
                             <label>Pay Status: </label>
-                            <div>{this.state.invoicePaid}</div>
+                            <div>{this.state.invoicePaid.toString()}</div>
                         </div>
                     </div>
                 </div>
