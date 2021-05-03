@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
 import'../CusotmerPages/ListCustomers.css'
+import InvoiceService from "../../services/InvoiceService";
 
 
 class ListInspections extends Component{
@@ -12,6 +13,7 @@ class ListInspections extends Component{
         this.editInspection = this.editInspection.bind(this);
         this.deleteInspection = this.deleteInspection.bind(this);
         this.viewInspection = this.viewInspection.bind(this);
+        this.createInvoice = this.createInvoice.bind(this);
     }
 
     componentDidMount() {
@@ -36,6 +38,13 @@ class ListInspections extends Component{
     }
     selectInventory(inspectionNumber){
         this.props.history.push(`/list-inventory-for-inspection/${inspectionNumber}`)
+    }
+    createInvoice(inspectionNumber){
+        InvoiceService.createInvoice(inspectionNumber).then((res)=>{
+            console.log(JSON.stringify(res.data))
+            this.props.history.push('/invoices');
+        })
+
     }
 
     render(){
@@ -70,6 +79,7 @@ class ListInspections extends Component{
                                                     <button className='btn--list-customer' onClick={()=>{this.deleteInspection(ins.inspectionNumber)}}>Delete </button>
                                                     <button className='btn--list-customer' onClick={()=>{this.viewInspection(ins.inspectionNumber)}}>View </button>
                                                     <button className='btn--list-customer' onClick={()=>{this.selectInventory(ins.inspectionNumber)}}>Select Inventory</button>
+                                                    <button className='btn--list-customer' onClick={()=>{this.createInvoice(ins.inspectionNumber)}}>Create Invoice</button>
                                                 </td>
                                             </tr>
                                         )

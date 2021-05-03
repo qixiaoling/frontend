@@ -22,7 +22,9 @@ import UpdateInventories from "./components/InventoryPages/UpdateInventories";
 import ViewInventories from "./components/InventoryPages/ViewInventories";
 import ListInventoryForInspection from "./components/InspectionInventoryPages/ListInventoryForInspection";
 import InventoryLinkedWithInspection from "./components/InspectionInventoryPages/InventoryLinkedWithInspection";
-
+import ListInvoices from "./components/InvoicePages/ListInvoices";
+import UpdateInvoices from "./components/InvoicePages/UpdateInvoices";
+import ViewInvoice from "./components/InvoicePages/ViewInvoice";
 function App() {
 
   return (
@@ -50,6 +52,9 @@ function App() {
                 <Route path='/view-inventory/:id' exact component={ViewInventories} />
                 <Route path='/list-inventory-for-inspection/:id' exact component={ListInventoryForInspection} />
                 <Route path='/list-inventory-for-inspection/:idOne/:idTwo' exact component={InventoryLinkedWithInspection} />
+                <Route path='/invoices' exact component={ListInvoices}/>
+                <Route path='/update-invoice/:id' exact component={UpdateInvoices} />
+                <Route path='/view-invoice/:id' exact component={ViewInvoice} />
             </Switch>
 
         </Router>
