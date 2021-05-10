@@ -4,13 +4,13 @@ import '../Button.css'
 import axios from "axios";
 import './ListCustomers.css'
 
-// const accessToken =
-//     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfQkFDIn0seyJhdXRob3JpdHkiOiJVU0VSX0ZSTyJ9LHsiYXV0aG9yaXR5IjoiQURNSU4ifSx7ImF1dGhvcml0eSI6IlVTRVJfVFJFIn0seyJhdXRob3JpdHkiOiJVU0VSX1RFQyJ9XSwiaWF0IjoxNjE5NTkyMzg3LCJleHAiOjE2MjA3NzA0MDB9.mbEuNOQ4q8NQ7X0D316N8mea-MsJ90yV_MbNcOLGPjd9z0ur8JJtZ4i93BjyQ6zIsIkox2y9TKKpH1lT0c3eDQ'
+const accessToken =
+    'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfQkFDIn0seyJhdXRob3JpdHkiOiJVU0VSX0ZSTyJ9LHsiYXV0aG9yaXR5IjoiQURNSU4ifSx7ImF1dGhvcml0eSI6IlVTRVJfVFJFIn0seyJhdXRob3JpdHkiOiJVU0VSX1RFQyJ9XSwiaWF0IjoxNjE5NTkyMzg3LCJleHAiOjE2MjA3NzA0MDB9.mbEuNOQ4q8NQ7X0D316N8mea-MsJ90yV_MbNcOLGPjd9z0ur8JJtZ4i93BjyQ6zIsIkox2y9TKKpH1lT0c3eDQ'
 axios.interceptors.request.use(
     config=> {
-        // config.headers.authorization = `Bearer ${accessToken}`; //use for develop, overall access
-        config.headers.authorization = localStorage.getItem('token'); //real app
-        // console.log(config)
+        config.headers.authorization = `Bearer ${accessToken}`; //use for develop, overall access
+        // config.headers.authorization = localStorage.getItem('token'); //real app
+        console.log(config)
         return config;
     },
     error => {
