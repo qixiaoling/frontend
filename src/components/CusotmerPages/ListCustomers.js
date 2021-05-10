@@ -6,10 +6,11 @@ import './ListCustomers.css'
 
 const accessToken =
     'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfQkFDIn0seyJhdXRob3JpdHkiOiJVU0VSX0ZSTyJ9LHsiYXV0aG9yaXR5IjoiQURNSU4ifSx7ImF1dGhvcml0eSI6IlVTRVJfVFJFIn0seyJhdXRob3JpdHkiOiJVU0VSX1RFQyJ9XSwiaWF0IjoxNjE5NTkyMzg3LCJleHAiOjE2MjA3NzA0MDB9.mbEuNOQ4q8NQ7X0D316N8mea-MsJ90yV_MbNcOLGPjd9z0ur8JJtZ4i93BjyQ6zIsIkox2y9TKKpH1lT0c3eDQ'
-const apiUrl = 'http://localhost:8080/customers';
 axios.interceptors.request.use(
     config=> {
-        config.headers.authorization = `Bearer ${accessToken}`;
+        config.headers.authorization = `Bearer ${accessToken}`; //use for develop, overall access
+        // config.headers.authorization = localStorage.getItem('token'); //real app
+        console.log(config)
         return config;
     },
     error => {
@@ -28,6 +29,7 @@ class ListCustomers extends Component {
         this.deleteCustomer = this.deleteCustomer.bind(this);
         this.viewCustomer = this.viewCustomer.bind(this);
         this.addAutomobile = this.addAutomobile.bind(this);
+        this.sendMessage = this.sendMessage.bind(this);
     }
 
     componentDidMount(){
@@ -58,6 +60,9 @@ class ListCustomers extends Component {
     }
     addAutomobile(customerId){
         this.props.history.push(`/add-automobile/${customerId}`);
+    }
+    sendMessage(customerId){
+        this.props.history.push(`/send-message/${customerId}`);
     }
 
     render(){
@@ -95,6 +100,7 @@ class ListCustomers extends Component {
                                                     <button onClick={()=>{this.deleteCustomer(cus.customerId)}} className='btn--list-customer'>Delete </button>
                                                     <button onClick={()=>{this.viewCustomer(cus.customerId)}} className='btn--list-customer'>View </button>
                                                     <button onClick={()=>{this.addAutomobile(cus.customerId)}} className='btn--list-customer'>Add Auto </button>
+                                                    <button onClick={()=>{this.sendMessage(cus.customerId)}} className='btn--list-customer'>Send Message</button>
                                                 </td>
                                             </tr>
                                         )
