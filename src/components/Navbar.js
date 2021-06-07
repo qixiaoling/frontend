@@ -59,6 +59,11 @@ function Navbar(){
                                 Invoice
                             </Link>
                         </li>
+                        <li className='nav-item'>
+                            <Link to="/admin" className='link'>
+                                Admin
+                            </Link>
+                        </li>
                         <li className='sign-up-button'>
                             <Button
                                 className='btns'
