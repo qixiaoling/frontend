@@ -4,8 +4,7 @@ import '../Button.css'
 import axios from "axios";
 import './ListCustomers.css'
 
-const accessToken =
-    'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfQkFDIn0seyJhdXRob3JpdHkiOiJVU0VSX0ZSTyJ9LHsiYXV0aG9yaXR5IjoiQURNSU4ifSx7ImF1dGhvcml0eSI6IlVTRVJfVFJFIn0seyJhdXRob3JpdHkiOiJVU0VSX1RFQyJ9XSwiaWF0IjoxNjE5NTkyMzg3LCJleHAiOjE2MjA3NzA0MDB9.mbEuNOQ4q8NQ7X0D316N8mea-MsJ90yV_MbNcOLGPjd9z0ur8JJtZ4i93BjyQ6zIsIkox2y9TKKpH1lT0c3eDQ'
+const accessToken ='eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfRlJPIn0seyJhdXRob3JpdHkiOiJVU0VSX0JBQyJ9LHsiYXV0aG9yaXR5IjoiVVNFUl9URUMifSx7ImF1dGhvcml0eSI6IlVTRVJfVFJFIn0seyJhdXRob3JpdHkiOiJBRE1JTiJ9XSwiaWF0IjoxNjIyODA2OTA1LCJleHAiOjE2MjM5NjcyMDB9.zz8982WRAlWF3xfJe6A5wXRVx7iAjC5WNuJsv7QQXPIVjk3AMF3LpHw4kJxcSJMEcTKEA9En7EvDHj3C6toIOw'
 axios.interceptors.request.use(
     config=> {
         config.headers.authorization = `Bearer ${accessToken}`; //use for develop, overall access

@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import '../CusotmerPages/ViewCustomer.css'
 import AutomobileService from "../../services/AutomobileService";
 
+
+
+
 class ViewAutomobiles extends Component {
     constructor(props) {
         super(props)
