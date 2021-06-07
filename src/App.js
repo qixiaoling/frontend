@@ -29,6 +29,8 @@ import SendMessage from "./components/CusotmerPages/SendMessage";
 import SendMessageResult from "./components/CusotmerPages/SendMessageResult";
 import ListUsers from "./components/AdminPages/ListUsers";
 import AddRoles from "./components/AdminPages/AddRoles";
+import CreateUsers from "./components/AdminPages/CreateUsers";
+
 function App() {
 
   return (
@@ -63,6 +65,7 @@ function App() {
                 <Route path='/send-message-result/:id' exact component={SendMessageResult} />
                 <Route path='/admin' exact component={ListUsers} />
                 <Route path='/admin/add-role/:id' exact component={AddRoles} />
+                <Route path='/admin/add-user' exact component={CreateUsers} />
             </Switch>
 
         </Router>

@@ -59,7 +59,7 @@ function ListUsers(){
                                 <td>{roles.length>0 ? roles.length :
                                     <button
                                         className='btn--list-customer'
-                                        onClick={addRole(user_id)}
+                                        onClick={()=>addRole(user_id)}
                                 >Add Role</button>}</td>
                             </tr>
                         )
