@@ -18,7 +18,7 @@ class CreateCustomers extends Component {
         this.saveCustomer = this.saveCustomer.bind(this);
     }
 
-    changeFirstNameHandler =(e) =>{
+    changeFirstNameHandler =(e) =>{ //这里不能写function(), 要用()=>
         this.setState({firstName: e.target.value});
     }
     changeLastNameHandler =(e) =>{
