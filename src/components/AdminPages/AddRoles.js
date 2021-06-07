@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useForm} from "react-hook-form";
 import {useParams} from 'react-router-dom'
 import axios from "axios";
@@ -7,20 +7,28 @@ import axios from "axios";
 function AddRoles() {
     const {register, handleSubmit} = useForm()
     const {id} = useParams();
+    const url = 'http://localhost:8080/securityManagement/appusers/addroles/10'
+
+
     function onFormSubmit(data) {
 
+
         async function addRole(){
-            await axios.post(`http://localhost:8080/securityManagement/appusers/addroles/${id}`,
-                {
-                    roleName : data.roleName
-                })
-                .then((res)=>{
-                    console.log(res)
-                }, (error)=>{
-                    console.log(error)
-                })
+
+            console.log(data)
+            const body={
+                role:{
+                    roleName: data.roleName
+                }
+            }
+
+            await axios.post(url, body).then((res)=>{
+                console.log(res)
+            },(error)=>{
+                console.log(error)
+            })
         }
-        addRole()
+        addRole();
 
     }
 
@@ -32,14 +40,15 @@ function AddRoles() {
                 <div className='customer-card-body'>
                     <form className='form-create-customer' onSubmit={handleSubmit(onFormSubmit)}>
                         <div className='form-element'>
-                            <label htmlFor='roleName'>Role Name：</label>
+                            <label htmlFor='roleName_1'>Role Name 1：</label>
                             <input
                                 type='text'
-                                id='roleName'
+                                id='roleName_1'
                                 {...register('roleName')}
 
                             />
                         </div>
+
                         <button type='submit' className='btn--create-customer'>
                             Add Role(s)
                         </button>
