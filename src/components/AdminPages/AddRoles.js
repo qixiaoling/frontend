@@ -44,7 +44,16 @@ function AddRoles() {
                             <input
                                 type='text'
                                 id='roleName_1'
-                                {...register('roleName')}
+                                {...register('roleName_1')}
+
+                            />
+                        </div>
+                        <div className='form-element'>
+                            <label htmlFor='roleName_2'>Role Name 2：</label>
+                            <input
+                                type='text'
+                                id='roleName_2'
+                                {...register('roleName_2')}
 
                             />
                         </div>
