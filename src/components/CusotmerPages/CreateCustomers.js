@@ -9,7 +9,8 @@ class CreateCustomers extends Component {
             firstName: '',
             lastName: '',
             gender: '',
-            email: ''
+            email: '',
+
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -18,17 +19,21 @@ class CreateCustomers extends Component {
         this.saveCustomer = this.saveCustomer.bind(this);
     }
 
+
     changeFirstNameHandler =(e) =>{ //这里不能写function(), 要用()=>
         this.setState({firstName: e.target.value});
+
     }
     changeLastNameHandler =(e) =>{
         this.setState({lastName: e.target.value});
+
     }
     changeGenderHandler =(e) =>{
         this.setState({gender: e.target.value});
     }
     changeEmailHandler =(e) =>{
         this.setState({email: e.target.value});
+
     }
     saveCustomer = (e) =>{
         e.preventDefault();
