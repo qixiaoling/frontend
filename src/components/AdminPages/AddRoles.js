@@ -7,7 +7,7 @@ import axios from "axios";
 function AddRoles() {
     const {register, handleSubmit} = useForm()
     const {id} = useParams();
-    const url = 'http://localhost:8080/securityManagement/appusers/addroles/10'
+    const url = `http://localhost:8080/securityManagement/appusers/addroles/${id}`
 
 
     function onFormSubmit(data) {
