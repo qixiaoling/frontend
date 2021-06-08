@@ -96,7 +96,7 @@ class CreateCustomers extends Component {
             return false;
         }
 
-        if (!this.state.email.includes("@")) {
+        if (!this.state.email.includes("@") || (this.state.email.length === 0)) {
             emailError = 'invalid email';
         }
         if (emailError) {
