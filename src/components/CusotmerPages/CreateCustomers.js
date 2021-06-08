@@ -2,16 +2,24 @@ import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
 import './CreateCustomers.css'
 
+const initialState = {
+    firstName: '',
+    lastName: '',
+    gender: '',
+    email: '',
+    firstNameError: '',
+    lastNameError: '',
+    genderError: '',
+    emailError: '',
+
+}
+
+
 class CreateCustomers extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            firstName: '',
-            lastName: '',
-            gender: '',
-            email: '',
+        this.state = initialState;
 
-        }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
         this.changeGenderHandler = this.changeGenderHandler.bind(this);
@@ -20,36 +28,88 @@ class CreateCustomers extends Component {
     }
 
 
-    changeFirstNameHandler =(e) =>{ //这里不能写function(), 要用()=>
+    changeFirstNameHandler = (e) => { //这里不能写function(), 要用()=>
         this.setState({firstName: e.target.value});
 
     }
-    changeLastNameHandler =(e) =>{
+    changeLastNameHandler = (e) => {
         this.setState({lastName: e.target.value});
 
     }
-    changeGenderHandler =(e) =>{
+    changeGenderHandler = (e) => {
         this.setState({gender: e.target.value});
     }
-    changeEmailHandler =(e) =>{
+    changeEmailHandler = (e) => {
         this.setState({email: e.target.value});
 
     }
-    saveCustomer = (e) =>{
+    saveCustomer = (e) => {
         e.preventDefault();
-        let customer = {firstName: this.state.firstName, lastName: this.state.lastName,
-            gender:this.state.gender, email:this.state.email};
-        console.log('customer =>' +JSON.stringify(customer));
 
-        CustomerService.createCustomers(customer)
-            .then(res =>{ this.props.history.push('/customers')})
+        const isValid = this.validate();
+        if (isValid) {
+            let customer = {
+                firstName: this.state.firstName, lastName: this.state.lastName,
+                gender: this.state.gender, email: this.state.email
+            };
+            console.log('customer =>' + JSON.stringify(customer));
+
+            CustomerService.createCustomers(customer)
+                .then(res => {
+                    this.props.history.push('/customers')
+                })
+            this.setState(initialState)
+        }
+
+
     }
-    cancel(){
+
+    cancel() {
         this.props.history.push('/customers');
     }
 
-    render(){
-        return(
+    validate = () => {
+        let firstNameError = ''
+        let lastNameError = ''
+        let genderError = ''
+        let emailError = ''
+
+        if(this.state.firstName.length === 0){
+            firstNameError = 'This field cannot be empty';
+        }
+        if(firstNameError){
+            this.setState({firstNameError})
+            return false;
+        }
+        if(this.state.lastName.length === 0){
+            lastNameError = 'This field cannot be empty';
+        }
+        if(lastNameError){
+            this.setState({lastNameError})
+            return false;
+        }
+        if(this.state.gender.length === 0){
+            genderError = 'This field cannot be empty';
+        }
+        if(genderError){
+            this.setState({genderError})
+            return false;
+        }
+
+        if (!this.state.email.includes("@")) {
+            emailError = 'invalid email';
+        }
+        if (emailError) {
+            this.setState({emailError})
+            return false;
+        }
+
+        return true
+
+    }
+
+    render() {
+        return (
             <div className="main-container-create-customer">
                 <div className="information-container-create-customer">
                     <h2>Add Customer</h2>
@@ -60,29 +120,33 @@ class CreateCustomers extends Component {
                                 <input placeholder="First Name" name="firstName" className="form-control"
                                        value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
                             </div>
-                            <br />
+                            <div className='alert alert-danger'>{this.state.firstNameError}</div>
+                            <br/>
                             <div className="form-element">
                                 <label>Last Name: </label>
                                 <input placeholder="Last Name" name="Last Name" className="form-control"
                                        value={this.state.lastName} onChange={this.changeLastNameHandler}/>
                             </div>
-                            <br />
+                            <div className='alert alert-danger'>{this.state.lastNameError}</div>
+                            <br/>
                             <div className="form-element">
                                 <label>gender: </label>
                                 <input placeholder="gender" name="gender" className="form-control"
                                        value={this.state.gender} onChange={this.changeGenderHandler}/>
                             </div>
-                            <br />
+                            <div className='alert alert-danger'>{this.state.genderError}</div>
+                            <br/>
                             <div className="form-element">
                                 <label>email: </label>
                                 <input placeholder="email" name="email" className="form-control"
                                        value={this.state.email} onChange={this.changeEmailHandler}/>
                             </div>
-                            <br />
+                            <div className='alert alert-danger'>{this.state.emailError}</div>
+                            <br/>
                             <div className="form-element-button">
                                 <button className='btn--create-customer' onClick={this.saveCustomer}>Save</button>
                                 <button className='btn--create-customer' onClick={this.cancel.bind(this)}
-                                        style={{marginLeft:"10px"}}>
+                                        style={{marginLeft: "10px"}}>
                                     Cancel
                                 </button>
                             </div>
@@ -95,4 +159,5 @@ class CreateCustomers extends Component {
         )
     }
 }
+
 export default CreateCustomers
