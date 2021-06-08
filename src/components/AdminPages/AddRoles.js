@@ -16,11 +16,12 @@ function AddRoles() {
         async function addRole(){
 
             console.log(data)
-            const body={
-                role:{
-                    roleName: data.roleName
-                }
-            }
+            const body=[
+                {roleName: data.roleName_1},
+                {roleName: data.roleName_2}
+
+            ]
+
 
             await axios.post(url, body).then((res)=>{
                 console.log(res)
