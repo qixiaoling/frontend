@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useForm} from "react-hook-form";
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import axios from "axios";
 
 
@@ -8,7 +8,7 @@ function AddRoles() {
     const {register, handleSubmit} = useForm()
     const {id} = useParams();
     const url = `http://localhost:8080/securityManagement/appusers/addroles/${id}`
-
+    const history = useHistory()
 
     function onFormSubmit(data) {
 
@@ -20,10 +20,9 @@ function AddRoles() {
                 {roleName: data.roleName_1}
 
             ]
-
-
             await axios.post(url, body).then((res)=>{
                 console.log(res)
+                history.push('/admin')
             },(error)=>{
                 console.log(error)
             })
