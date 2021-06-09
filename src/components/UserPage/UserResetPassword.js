@@ -31,7 +31,7 @@ function UserResetPassword(){
     return(
         <div className="main-container-create-customer">
             <div className='information-container-create-customer'>
-                <h2>Reset Your Password</h2>
+                <h2>Hi {loggedInUserName} ! Please reset Your Password</h2>
                 <div className='customer-card-body'>
                     <form className='form-create-customer' onSubmit={handleSubmit(onSubmit)}>
                         <div className='form-element'>
