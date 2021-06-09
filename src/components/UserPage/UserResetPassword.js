@@ -1,13 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import {useForm} from "react-hook-form";
+import {useHistory} from 'react-router-dom'
 import axios from "axios";
 import '../CusotmerPages/CreateCustomers.css'
 
-function UserResetPassword(){
+function UserResetPassword() {
     const [users, setUsers] = useState([])
-    const{register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm()
     const loggedInUserName = localStorage.getItem('userName')
+    let loggedInUserId;
+    let loggedInUser
     console.log(loggedInUserName)
+    const history = useHistory()
 
     async function getUsers() {
         try {
@@ -18,17 +22,39 @@ function UserResetPassword(){
             console.log(error)
         }
     }
-    useEffect(()=>{
-      getUsers()
-    },[])
 
-    function onSubmit(data){
-        console.log("do that later")
-        const id = localStorage.getItem('loggedInUserId')
-        console.log(id)
+    useEffect(() => {
+        getUsers()
+    }, [])
+
+    function getLoggedInUserId(userName) {
+        if (users) {
+            loggedInUser = users.find((user) => user.userName === userName)
+        }
+        loggedInUserId = loggedInUser.user_id
+
+        return loggedInUserId
     }
 
-    return(
+    function onSubmit(data) {
+        getLoggedInUserId(loggedInUserName)
+
+        async function resetPassword() {
+            try {
+                const body = {password: data.password}
+                const url = `http://localhost:8080/resetpassword/${loggedInUserId}`
+                await axios.post(url, body).then((res) => {
+                    history.push('/')
+                })
+            } catch
+                (error) {
+                console.log(error)
+            }
+        }
+        resetPassword()
+    }
+
+    return (
         <div className="main-container-create-customer">
             <div className='information-container-create-customer'>
                 <h2>Hi {loggedInUserName} ! Please reset Your Password</h2>
@@ -61,4 +87,5 @@ function UserResetPassword(){
         </div>
     )
 }
+
 export default UserResetPassword
