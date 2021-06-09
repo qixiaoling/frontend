@@ -17,8 +17,7 @@ function AddRoles() {
 
             console.log(data)
             const body=[
-                {roleName: data.roleName_1},
-                {roleName: data.roleName_2}
+                {roleName: data.roleName_1}
 
             ]
 
@@ -46,15 +45,6 @@ function AddRoles() {
                                 type='text'
                                 id='roleName_1'
                                 {...register('roleName_1')}
-
-                            />
-                        </div>
-                        <div className='form-element'>
-                            <label htmlFor='roleName_2'>Role Name 2：</label>
-                            <input
-                                type='text'
-                                id='roleName_2'
-                                {...register('roleName_2')}
 
                             />
                         </div>
