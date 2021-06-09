@@ -5,6 +5,7 @@ import './Navbar.css';
 
 
 function Navbar(){
+    const loggedInUserName = localStorage.getItem('userName')
     const [navLinkOpen, navLinkToggle] = useState(false)
     const handleNavLinksToggle = () =>{
         navLinkToggle(!navLinkOpen)
@@ -59,11 +60,14 @@ function Navbar(){
                                 Invoice
                             </Link>
                         </li>
+                        {loggedInUserName === 'Olaf'?
                         <li className='nav-item'>
                             <Link to="/admin" className='link'>
                                 Admin
                             </Link>
                         </li>
+                            : null
+                        }
                         <li className='nav-item'>
                             <Link to="/password-reset" className='link'>
                                 Password
