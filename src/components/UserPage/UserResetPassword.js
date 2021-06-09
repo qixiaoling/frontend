@@ -1,11 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import '../CusotmerPages/CreateCustomers.css'
 
 function UserResetPassword(){
-
+    const [users, setUsers] = useState([])
     const{register, handleSubmit} = useForm()
+    const loggedInUserName = localStorage.getItem('userName')
+    console.log(loggedInUserName)
+
+    async function getUsers() {
+        try {
+            const result = await axios.get("http://localhost:8080/securityManagement/appusers");
+            console.log(result.data)
+            setUsers(result.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+      getUsers()
+    },[])
 
     function onSubmit(data){
         console.log("do that later")
