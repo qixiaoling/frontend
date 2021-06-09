@@ -64,6 +64,11 @@ function Navbar(){
                                 Admin
                             </Link>
                         </li>
+                        <li className='nav-item'>
+                            <Link to="/password-reset" className='link'>
+                                Password
+                            </Link>
+                        </li>
                         <li className='sign-up-button'>
                             <Button
                                 className='btns'
