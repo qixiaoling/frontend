@@ -79,3 +79,8 @@ label{
     color: #155724;
     background: #d4edda;
 }
+
+#inspection-status{
+    color: #242424;
+    font-size: large;
+}

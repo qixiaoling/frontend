@@ -19,6 +19,9 @@ class InspectionService{
     deleteInspections(inspectionNumber){
         return axios.delete(INSPECTION_API_BASE_URL+'/'+inspectionNumber)
     }
+    checkInspectionStatus(inspectionNumber){
+        return axios.get(INSPECTION_API_BASE_URL+ '/checkstatus' + '/'+ inspectionNumber)
+    }
 }
 
 export default new InspectionService

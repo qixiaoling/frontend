@@ -8,12 +8,15 @@ class ListInspections extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            inspections : []
+            inspections : [],
+            StatusAvailability : false,
+            statusMsg : '',
         }
         this.editInspection = this.editInspection.bind(this);
         this.deleteInspection = this.deleteInspection.bind(this);
         this.viewInspection = this.viewInspection.bind(this);
         this.createInvoice = this.createInvoice.bind(this);
+        this.checkStatus = this.checkStatus.bind(this);
     }
 
     componentDidMount() {
@@ -45,6 +48,12 @@ class ListInspections extends Component{
             this.props.history.push('/invoices');
         })
 
+    }
+    checkStatus(inspectionNumber){
+        InspectionService.checkInspectionStatus(inspectionNumber).then((res)=>{
+            this.setState({statusMsg : res.data})
+            this.setState({StatusAvailability : true})
+        })
     }
 
     render(){
@@ -80,14 +89,14 @@ class ListInspections extends Component{
                                                     <button className='btn--list-customer' onClick={()=>{this.viewInspection(ins.inspectionNumber)}}>View </button>
                                                     <button className='btn--list-customer' onClick={()=>{this.selectInventory(ins.inspectionNumber)}}>Select Inventory</button>
                                                     <button className='btn--list-customer' onClick={()=>{this.createInvoice(ins.inspectionNumber)}}>Create Invoice</button>
+                                                    <button className='btn--list-customer' onClick={()=>{this.checkStatus(ins.inspectionNumber)}}>Check Status</button>
                                                 </td>
                                             </tr>
                                         )
                                     }
-
                                 )
-
                             }
+                            {this.state.StatusAvailability && <p id='inspection-status'>{this.state.statusMsg}</p>}
                             </tbody>
                         </table>
                     </div>
