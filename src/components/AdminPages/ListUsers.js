@@ -5,6 +5,7 @@ import axios from "axios";
 function ListUsers() {
     const [users, setUsers] = useState([])
     const history = useHistory()
+    const loggedInUserName = localStorage.getItem('userName')
 
 
     async function getUsers() {
@@ -12,6 +13,9 @@ function ListUsers() {
             const result = await axios.get("http://localhost:8080/securityManagement/appusers");
             console.log(result.data)
             setUsers(result.data)
+
+
+
         } catch (error) {
             console.log(error)
         }
@@ -20,6 +24,17 @@ function ListUsers() {
 
     useEffect(() => {
         getUsers();
+
+        if(users){
+            let loggedInUser = users.find((user)=>{
+                if(user.userName === loggedInUserName){
+                    return user
+                }
+            })
+
+            console.log(loggedInUser)
+        }
+
 
     }, [])
 

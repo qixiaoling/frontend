@@ -9,6 +9,8 @@ function UserResetPassword(){
 
     function onSubmit(data){
         console.log("do that later")
+        const id = localStorage.getItem('loggedInUserId')
+        console.log(id)
     }
 
     return(
@@ -33,6 +35,9 @@ function UserResetPassword(){
                                 {...register('password-reEntry')}
                             />
                         </div>
+                        <button type='submit' className='btn--create-customer'>
+                            Reset Password
+                        </button>
                     </form>
 
                 </div>

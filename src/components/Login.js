@@ -28,6 +28,8 @@ class Login extends Component {
                     loggedIn: true
                 })
                 console.log(res.headers.authorization)
+
+                localStorage.setItem('userName', this.username);
             })
 
 
