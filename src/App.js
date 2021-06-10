@@ -73,6 +73,7 @@ function App() {
                 <Route path='/admin-loading' exact component={CreateUsers_Suc}/>
                 <Route path='/password-reset' exact component={UserResetPassword}/>
                 <Route path='/customer-loading' exact component={CreateCustomers_Suc}/>
+
             </Switch>
 
         </Router>
