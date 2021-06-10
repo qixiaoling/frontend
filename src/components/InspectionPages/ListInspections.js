@@ -4,7 +4,6 @@ import '../CusotmerPages/ListCustomers.css'
 import InvoiceService from "../../services/InvoiceService";
 
 
-
 class ListInspections extends Component {
     constructor(props) {
         super(props);
@@ -14,8 +13,7 @@ class ListInspections extends Component {
             statusMsg: '',
             searchInspection: '',
             searchInspectionError: '',
-            foundInspection: false,
-            foundInspectionObject : {},
+
         }
         this.editInspection = this.editInspection.bind(this);
         this.deleteInspection = this.deleteInspection.bind(this);
@@ -34,6 +32,7 @@ class ListInspections extends Component {
         })
 
     }
+
 
     editInspection(inspectionNumber) {
         this.props.history.push(`/update-inspection/${inspectionNumber}`)
@@ -69,14 +68,7 @@ class ListInspections extends Component {
     }
 
     searchInspection() {
-        if (this.state.inspections.length > 0) {
-            this.setState({foundInspectionObject  : this.state.inspections.find((ins)=> ins. inspectionNumber === parseInt(this.state.searchInspection))})
-            this.setState({foundInspection: true})
-            console.log('I just found the inspection :'+ this.state.foundInspectionObject)
-            console.log(JSON.stringify(this.state.foundInspectionObject))
-        } else {
-            this.setState({searchInspectionError: 'There are no inspections.'})
-        }
+        this.props.history.push(`/view-inspection/${this.state.searchInspection}`)
     }
 
     handleSearchInspection(e) {
@@ -98,11 +90,6 @@ class ListInspections extends Component {
                         <button className='btn--list-customer' onClick={this.searchInspection}>Search</button>
 
                     </div>
-
-
-                    <br/>
-                    <br/>
-
                     <div>
                         <table>
                             <thead>
