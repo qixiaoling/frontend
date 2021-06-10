@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import ListUsers from "./ListUsers";
+import ListCustomers from "./ListCustomers";
 
 
 function CreateUsers_Suc(props){
@@ -15,7 +15,7 @@ function CreateUsers_Suc(props){
     return(
         <>
             {isLoading ?
-            <p className='alert alert-success'>The user is added</p> : <ListUsers/>}
+                <p className='alert alert-success'>The customer is added</p> : <ListCustomers/>}
         </>
 
 

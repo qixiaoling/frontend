@@ -58,7 +58,7 @@ class CreateCustomers extends Component {
 
             CustomerService.createCustomers(customer)
                 .then(res => {
-                    this.props.history.push('/customers')
+                    this.props.history.push('/customer-loading')
                 })
             this.setState(initialState)
         }
