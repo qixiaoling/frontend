@@ -160,12 +160,6 @@ class CreateCustomers extends Component {
                             <div className='alert alert-danger'>{this.state.lastNameSpecialCharError}</div>
 
                             <br/>
-                            {/*<div className="form-element">*/}
-                            {/*    <label>gender: </label>*/}
-                            {/*    <input placeholder="gender" name="gender" className="form-control"*/}
-                            {/*           value={this.state.gender} onChange={this.changeGenderHandler}/>*/}
-                            {/*</div>*/}
-                            {/*<div className='alert alert-danger'>{this.state.genderError}</div>*/}
 
                             <div className="form-element">
                                 Gender
