@@ -17,7 +17,7 @@ function AddRoles() {
 
             console.log(data)
             const body=[
-                {roleName: data.roleName_1}
+                {roleName: data.roleName}
 
             ]
             await axios.post(url, body).then((res)=>{
@@ -39,13 +39,19 @@ function AddRoles() {
                 <div className='customer-card-body'>
                     <form className='form-create-customer' onSubmit={handleSubmit(onFormSubmit)}>
                         <div className='form-element'>
-                            <label htmlFor='roleName_1'>Role Name 1：</label>
-                            <input
-                                type='text'
-                                id='roleName_1'
-                                {...register('roleName_1')}
+                            <label htmlFor='department'>Choose the department
+                                <select
+                                    id='department'
+                                    {...register('roleName')}
+                                    >
+                                    <option value='USER_BAC'>Back Office</option>
+                                    <option value='USER_FRO'>Front Office</option>
+                                    <option value='USER_TEC'>Technical Department</option>
+                                    <option value='USER_TRE'>Treasury Department</option>
+                                    <option value='ADMIN'>Administrator</option>
+                                </select>
+                            </label>
 
-                            />
                         </div>
 
                         <button type='submit' className='btn--create-customer'>
