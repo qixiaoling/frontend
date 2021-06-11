@@ -31,7 +31,7 @@ import AddRoles from "./components/AdminPages/AddRoles";
 import CreateUsers from "./components/AdminPages/CreateUsers";
 import CreateUsers_Suc from "./components/AdminPages/CreateUsers_Suc";
 import UserResetPassword from "./components/UserPage/UserResetPassword";
-import CreateCustomers_Suc from "./components/CusotmerPages/CreateCustomers_Suc";
+import CreateCustomers_Suc from "./components/CusotmerPages/CreateCustomersResult";
 
 function App() {
 
