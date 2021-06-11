@@ -27,9 +27,9 @@ import UpdateInvoices from "./components/InvoicePages/UpdateInvoices";
 import ViewInvoice from "./components/InvoicePages/ViewInvoice";
 import SendMessage from "./components/CusotmerPages/SendMessage";
 import ListUsers from "./components/AdminPages/ListUsers";
-import AddRoles from "./components/AdminPages/AddRoles";
+import AddRoles from "./components/AdminPages_function/AddRoles";
 import CreateUsers from "./components/AdminPages/CreateUsers";
-import CreateUsers_Suc from "./components/AdminPages/CreateUsers_Suc";
+import CreateUsers_Suc from "./components/AdminPages_function/CreateUsers_Suc";
 import UserResetPassword from "./components/UserPage/UserResetPassword";
 import CreateCustomers_Suc from "./components/CusotmerPages/CreateCustomersResult";
 
