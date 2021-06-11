@@ -89,7 +89,7 @@ function CreateUsers() {
                                         message: 'This field cannot be empty'
                                     },
                                     pattern: {
-                                        value: /^[a-zA-Z0-9]{4,10}$/,
+                                        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                                         message: 'Email is not valid'
                                     }
                                 })}
