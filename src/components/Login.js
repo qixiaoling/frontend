@@ -9,8 +9,6 @@ class Login extends Component {
         super();
 
         this.state = {
-            username:'',
-            pas
         }
 
 
