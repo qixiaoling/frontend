@@ -16,7 +16,7 @@ class Login extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-
+ //dit is niet de bedoeling, hier wordt this.username als buiten de state gebruikt.
         const data = {
             username: this.username,
             password: this.password
@@ -27,6 +27,8 @@ class Login extends Component {
 
                 localStorage.setItem('token', res.headers.authorization);
                 this.setState({
+                    //dit is ook niet de bedoeling, hier wordt binnen de state opeens een new object
+                    //gedefineerd.
                     loggedIn: true
                 })
                 console.log(res.headers.authorization)
