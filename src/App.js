@@ -31,8 +31,11 @@ import ListUsers from "./components/AdminPages/ListUsers";
 import AddRoles from "./components/AdminPages/AddRoles";
 import CreateUsers from "./components/AdminPages/CreateUsers";
 import CreateUsers_Suc from "./components/AdminPages/CreateUsers_Suc";
+import UserResetPassword from "./components/UserPage/UserResetPassword";
+import CreateCustomers_Suc from "./components/CusotmerPages/CreateCustomers_Suc";
 
 function App() {
+
 
   return (
     <>
@@ -68,6 +71,9 @@ function App() {
                 <Route path='/admin/add-role/:id' exact component={AddRoles} />
                 <Route path='/admin/add-user' exact component={CreateUsers} />
                 <Route path='/admin-loading' exact component={CreateUsers_Suc}/>
+                <Route path='/password-reset' exact component={UserResetPassword}/>
+                <Route path='/customer-loading' exact component={CreateCustomers_Suc}/>
+
             </Switch>
 
         </Router>

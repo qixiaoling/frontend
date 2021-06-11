@@ -15,12 +15,10 @@ function ListUsers() {
         } catch (error) {
             console.log(error)
         }
-
     }
 
     useEffect(() => {
         getUsers();
-
     }, [])
 
     function addRole(id) {

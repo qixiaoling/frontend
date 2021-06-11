@@ -2,11 +2,11 @@ import react, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import CreateUsers_Suc from "./CreateUsers_Suc";
+
 
 function CreateUsers() {
 
-    const {register, handleSubmit, formState : {errors}} = useForm({
+    const {register, handleSubmit, formState: {errors}} = useForm({
         mode: 'onBlur'
     })
     const history = useHistory()
@@ -34,7 +34,6 @@ function CreateUsers() {
     }
 
 
-
     return (
         <div className='main-container-create-customer'>
             <div className='information-container-create-customer'>
@@ -49,11 +48,17 @@ function CreateUsers() {
                                 {...register('userName', {
                                     required: {
                                         value: true,
-                                        message : 'This field cannot be empty',
-                                    }})}
+                                        message: 'This field cannot be empty',
+                                    },
+                                    pattern: {
+                                        value: /^[a-zA-Z0-9]{4,10}$/,
+                                        message: 'No special character can be used.'
+                                    }
+                                })}
                             />
                         </div>
                         {errors.userName && <p className='alert alert-danger'>{errors.userName.message}</p>}
+
                         <div className='form-element'>
                             <label htmlFor='password'>Password：</label>
                             <input
@@ -72,20 +77,26 @@ function CreateUsers() {
                             />
                         </div>
                         {errors.password && <p className='alert alert-danger'>{errors.password.message}</p>}
+
                         <div className='form-element'>
                             <label htmlFor='email'>Email：</label>
                             <input
                                 type='email'
                                 id='email'
-                                {...register('email',{
-                                   required : {
-                                       value : true,
-                                       message : 'This field cannot be empty'
-                                   }
+                                {...register('email', {
+                                    required: {
+                                        value: true,
+                                        message: 'This field cannot be empty'
+                                    },
+                                    pattern: {
+                                        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                        message: 'Email is not valid'
+                                    }
                                 })}
-                                />
+                            />
                         </div>
                         {errors.email && <p className='alert alert-danger'>{errors.email.message}</p>}
+
                         <button type='submit' className='btn--create-customer'>
                             Create
                         </button>

@@ -7,8 +7,10 @@ const initialState = {
     lastName: '',
     gender: '',
     email: '',
-    firstNameError: '',
-    lastNameError: '',
+    firstNameEmptyError: '',
+    firstNameSpecialCharError: '',
+    lastNameEmptyError: '',
+    lastNameSpecialCharError:  '',
     genderError: '',
     emailError: '',
 
@@ -56,7 +58,7 @@ class CreateCustomers extends Component {
 
             CustomerService.createCustomers(customer)
                 .then(res => {
-                    this.props.history.push('/customers')
+                    this.props.history.push('/customer-loading')
                 })
             this.setState(initialState)
         }
@@ -69,29 +71,55 @@ class CreateCustomers extends Component {
     }
 
     validate = () => {
-        let firstNameError = ''
-        let lastNameError = ''
+
+        const regex = /^[A-Za-z0-9 ]+$/
+
+        let firstNameEmptyError = ''
+        let firstNameSpecialCharError = ''
+        let lastNameEmptyError = ''
+        let lastNameSpecialCharError = ''
         let genderError = ''
         let emailError = ''
 
-        if(this.state.firstName.length === 0){
-            firstNameError = 'This field cannot be empty';
+        if (this.state.firstName.length === 0) {
+            firstNameEmptyError = 'This field cannot be empty';
         }
-        if(firstNameError){
-            this.setState({firstNameError})
+        if (!regex.test(this.state.firstName.trim())) {
+            firstNameSpecialCharError = 'You are not allowed to use special character(S)';
+        }
+
+
+        if (firstNameEmptyError) {
+            this.setState({firstNameEmptyError})
             return false;
         }
-        if(this.state.lastName.length === 0){
-            lastNameError = 'This field cannot be empty';
-        }
-        if(lastNameError){
-            this.setState({lastNameError})
+        if (firstNameSpecialCharError) {
+            this.setState({firstNameSpecialCharError})
             return false;
         }
-        if(this.state.gender.length === 0){
+
+
+
+        if (this.state.lastName.length === 0) {
+            lastNameEmptyError = 'This field cannot be empty';
+        }
+        if (!regex.test(this.state.lastName.trim())) {
+            lastNameSpecialCharError = 'You are not allowed to use special character(S)';
+        }
+
+
+        if (lastNameEmptyError) {
+            this.setState({lastNameEmptyError})
+            return false;
+        }
+        if (lastNameSpecialCharError) {
+            this.setState({lastNameSpecialCharError})
+            return false;
+        }
+        if (this.state.gender.length === 0) {
             genderError = 'This field cannot be empty';
         }
-        if(genderError){
+        if (genderError) {
             this.setState({genderError})
             return false;
         }
@@ -120,21 +148,43 @@ class CreateCustomers extends Component {
                                 <input placeholder="First Name" name="firstName" className="form-control"
                                        value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
                             </div>
-                            <div className='alert alert-danger'>{this.state.firstNameError}</div>
+                            <div className='alert alert-danger'>{this.state.firstNameEmptyError}</div>
+                            <div className='alert alert-danger'>{this.state.firstNameSpecialCharError}</div>
                             <br/>
                             <div className="form-element">
                                 <label>Last Name: </label>
                                 <input placeholder="Last Name" name="Last Name" className="form-control"
                                        value={this.state.lastName} onChange={this.changeLastNameHandler}/>
                             </div>
-                            <div className='alert alert-danger'>{this.state.lastNameError}</div>
+                            <div className='alert alert-danger'>{this.state.lastNameEmptyError}</div>
+                            <div className='alert alert-danger'>{this.state.lastNameSpecialCharError}</div>
+
                             <br/>
+
                             <div className="form-element">
-                                <label>gender: </label>
-                                <input placeholder="gender" name="gender" className="form-control"
-                                       value={this.state.gender} onChange={this.changeGenderHandler}/>
+                                Gender
+                                <label htmlFor='gender'>
+                                    Female
+                                    <input
+                                        type='radio'
+                                        id='gender'
+                                        name='gender'
+                                        value='FEMALE'
+                                        onChange={this.changeGenderHandler}
+                                    />
+                                </label>
+                                <label htmlFor='gender'>
+                                    Male
+                                    <input
+                                        type='radio'
+                                        id='gender'
+                                        name='gender'
+                                        value='MALE'
+                                        onChange={this.changeGenderHandler}
+                                    />
+                                </label>
                             </div>
-                            <div className='alert alert-danger'>{this.state.genderError}</div>
+
                             <br/>
                             <div className="form-element">
                                 <label>email: </label>
