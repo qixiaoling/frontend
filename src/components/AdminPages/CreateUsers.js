@@ -2,7 +2,7 @@ import react, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import CreateUsers_Suc from "./CreateUsers_Suc";
+
 
 function CreateUsers() {
 
@@ -50,10 +50,16 @@ function CreateUsers() {
                                     required: {
                                         value: true,
                                         message : 'This field cannot be empty',
-                                    }})}
+                                    },
+                                    pattern: {
+
+                                        message: 'No special character can be used.'
+                                    }
+                                })}
                             />
                         </div>
                         {errors.userName && <p className='alert alert-danger'>{errors.userName.message}</p>}
+
                         <div className='form-element'>
                             <label htmlFor='password'>Password：</label>
                             <input
@@ -72,6 +78,7 @@ function CreateUsers() {
                             />
                         </div>
                         {errors.password && <p className='alert alert-danger'>{errors.password.message}</p>}
+
                         <div className='form-element'>
                             <label htmlFor='email'>Email：</label>
                             <input
@@ -81,11 +88,16 @@ function CreateUsers() {
                                    required : {
                                        value : true,
                                        message : 'This field cannot be empty'
-                                   }
+                                   },
+                                    pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        message: 'Email is not valid'
+                                    }
                                 })}
                                 />
                         </div>
                         {errors.email && <p className='alert alert-danger'>{errors.email.message}</p>}
+
                         <button type='submit' className='btn--create-customer'>
                             Create
                         </button>

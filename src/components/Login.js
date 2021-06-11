@@ -19,7 +19,7 @@ class Login extends Component {
             username: this.username,
             password: this.password
         }
-        console.log(data)
+        console.log(data.username)
         axios.post('http://localhost:8080/login', data)
             .then(res => {
 
