@@ -26,7 +26,6 @@ import ListInvoices from "./components/InvoicePages/ListInvoices";
 import UpdateInvoices from "./components/InvoicePages/UpdateInvoices";
 import ViewInvoice from "./components/InvoicePages/ViewInvoice";
 import SendMessage from "./components/CusotmerPages/SendMessage";
-import SendMessageResult from "./components/CusotmerPages/SendMessageResult";
 import ListUsers from "./components/AdminPages/ListUsers";
 import AddRoles from "./components/AdminPages/AddRoles";
 import CreateUsers from "./components/AdminPages/CreateUsers";
@@ -66,7 +65,6 @@ function App() {
                 <Route path='/update-invoice/:id' exact component={UpdateInvoices} />
                 <Route path='/view-invoice/:id' exact component={ViewInvoice} />
                 <Route path='/send-message/:id' exact component={SendMessage} />
-                <Route path='/send-message-result/:id' exact component={SendMessageResult} />
                 <Route path='/admin' exact component={ListUsers} />
                 <Route path='/admin/add-role/:id' exact component={AddRoles} />
                 <Route path='/admin/add-user' exact component={CreateUsers} />

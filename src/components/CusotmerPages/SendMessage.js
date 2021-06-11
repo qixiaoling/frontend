@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CustomerService from "../../services/CustomerService";
 import './CreateCustomers.css'
+import SendMessageResult from "./SendMessageResult";
 
 const initialState = {
     username: '',
@@ -17,6 +18,7 @@ class SendMessage extends Component {
         this.state = {
             id:this.props.match.params.id,
             initialState,
+            status : '',
         }
         this.changeAppUserEmailHandler = this.changeAppUserEmailHandler.bind(this);
         this.changeAppUserFeedback = this.changeAppUserFeedback.bind(this);
@@ -45,7 +47,8 @@ class SendMessage extends Component {
                 feedback: this.state.feedback
             }
             CustomerService.confirmSendMessage(appUser, this.state.id).then((res) => {
-                this.props.history.push(`/send-message-result/${this.state.id}`);
+                console.log(res.status)
+                this.setState({status: res.status})
             })
             this.setState(initialState)
 
@@ -85,6 +88,8 @@ class SendMessage extends Component {
 
     render() {
         return (
+            <>
+            {this.state.status === 200? <SendMessageResult status = {this.state.status}/> :
             <div className="main-container-create-customer">
                 <div className="information-container-create-customer">
                     <h2>Please fill in your details</h2>
@@ -123,9 +128,11 @@ class SendMessage extends Component {
 
                 </div>
             </div>
+            }
+            </>
         )
     }
 
 }
 
-export default SendMessage;
+export default SendMessage
