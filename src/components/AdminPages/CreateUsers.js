@@ -6,7 +6,7 @@ import axios from "axios";
 
 function CreateUsers() {
 
-    const {register, handleSubmit, formState : {errors}} = useForm({
+    const {register, handleSubmit, formState: {errors}} = useForm({
         mode: 'onBlur'
     })
     const history = useHistory()
@@ -34,7 +34,6 @@ function CreateUsers() {
     }
 
 
-
     return (
         <div className='main-container-create-customer'>
             <div className='information-container-create-customer'>
@@ -49,10 +48,10 @@ function CreateUsers() {
                                 {...register('userName', {
                                     required: {
                                         value: true,
-                                        message : 'This field cannot be empty',
+                                        message: 'This field cannot be empty',
                                     },
                                     pattern: {
-
+                                        value: /[^a-zA-Z0-9 ]/,
                                         message: 'No special character can be used.'
                                     }
                                 })}
@@ -84,17 +83,17 @@ function CreateUsers() {
                             <input
                                 type='email'
                                 id='email'
-                                {...register('email',{
-                                   required : {
-                                       value : true,
-                                       message : 'This field cannot be empty'
-                                   },
+                                {...register('email', {
+                                    required: {
+                                        value: true,
+                                        message: 'This field cannot be empty'
+                                    },
                                     pattern: {
-                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        value: /^[a-zA-Z0-9]{4,10}$/,
                                         message: 'Email is not valid'
                                     }
                                 })}
-                                />
+                            />
                         </div>
                         {errors.email && <p className='alert alert-danger'>{errors.email.message}</p>}
 
