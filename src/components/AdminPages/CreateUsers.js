@@ -51,7 +51,7 @@ function CreateUsers() {
                                         message: 'This field cannot be empty',
                                     },
                                     pattern: {
-                                        value: /[^a-zA-Z0-9 ]/,
+                                        value: /^[a-zA-Z0-9]{4,10}$/,
                                         message: 'No special character can be used.'
                                     }
                                 })}
