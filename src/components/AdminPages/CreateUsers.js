@@ -87,18 +87,18 @@ class CreateUsers extends Component{
         if (this.state.password.length === 0) {
             passwordEmptyError = 'This field cannot be empty';
         }
-       if(this.state.password.length < 8){
-           passwordTooShortError = 'Please use minimal 8 characters'
-       }
+        if(this.state.password.length < 8){
+            passwordTooShortError = 'Please use minimal 8 characters'
+        }
 
-       if(passwordEmptyError){
-           this.setState({passwordEmptyError})
-           return false;
-       }
-       if(passwordTooShortError){
-           this.setState({passwordTooShortError})
-           return false;
-       }
+        if(passwordEmptyError){
+            this.setState({passwordEmptyError})
+            return false;
+        }
+        if(passwordTooShortError){
+            this.setState({passwordTooShortError})
+            return false;
+        }
 
         if (this.state.email.length === 0) {
             emailEmptyError = 'This field cannot be empty';
@@ -172,7 +172,7 @@ class CreateUsers extends Component{
                             <div className='alert alert-danger'>{this.state.emailEmptyError}</div>
                             <div className='alert alert-danger'>{this.state.emailInvalidError}</div>
 
-                            <button type='button' className='btn--create-customer' onChange={(e)=>this.saveUser}>
+                            <button  className='btn--create-customer' onClick={this.saveUser}>
                                 Create
                             </button>
                         </form>
@@ -190,3 +190,4 @@ class CreateUsers extends Component{
 
 }
 export default CreateUsers
+
