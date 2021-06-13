@@ -16,9 +16,9 @@ class SendMessage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id:this.props.match.params.id,
+            id: this.props.match.params.id,
             initialState,
-            status : '',
+            status: '',
         }
         this.changeAppUserEmailHandler = this.changeAppUserEmailHandler.bind(this);
         this.changeAppUserFeedback = this.changeAppUserFeedback.bind(this);
@@ -66,7 +66,6 @@ class SendMessage extends Component {
         let msgEmptyError = ''
 
 
-
         if (!this.state.email.includes("@") || (this.state.email.length === 0)) {
             emailError = 'invalid email';
         }
@@ -75,10 +74,10 @@ class SendMessage extends Component {
             return false;
         }
 
-        if(this.state.feedback.length === 0){
+        if (this.state.feedback.length === 0) {
             msgEmptyError = 'this field cannot be empty';
         }
-        if(msgEmptyError){
+        if (msgEmptyError) {
             this.setState({msgEmptyError})
             return false;
         }
@@ -89,46 +88,49 @@ class SendMessage extends Component {
     render() {
         return (
             <>
-            {this.state.status? <SendMessageResult status = {this.state.status}/> :
-            <div className="main-container-create-customer">
-                <div className="information-container-create-customer">
-                    <h2>Please fill in your details</h2>
-                    <div className="customer-card-body">
-                        <form className="form-create-customer">
-                            <div className="form-element">
-                                <label>Username: </label>
-                                <input placeholder="Username" name="username" className="form-control"
-                                       value={localStorage.getItem('userName')} onChange={this.changeAppUserUsernameHandler}/>
+                {this.state.status ? <SendMessageResult status={this.state.status} history={this.props.history}/> :
+                    <div className="main-container-create-customer">
+                        <div className="information-container-create-customer">
+                            <h2>Please fill in your details</h2>
+                            <div className="customer-card-body">
+                                <form className="form-create-customer">
+                                    <div className="form-element">
+                                        <label>Username: </label>
+                                        <input placeholder="Username" name="username" className="form-control"
+                                               value={localStorage.getItem('userName')}
+                                               onChange={this.changeAppUserUsernameHandler}/>
+                                    </div>
+                                    <br/>
+                                    <div className="form-element">
+                                        <label>Email: </label>
+                                        <input placeholder="Email" name="email" className="form-control"
+                                               value={this.state.email} onChange={this.changeAppUserEmailHandler}/>
+                                    </div>
+                                    <div className='alert alert-danger'>{this.state.emailError}</div>
+                                    <br/>
+                                    <div className="form-element">
+                                        <label>Feedback: </label>
+                                        <input placeholder="Feedback" name="feedback" className="form-control"
+                                               value={this.state.feedback} onChange={this.changeAppUserFeedback}/>
+                                    </div>
+                                    <div className='alert alert-danger'>{this.state.msgEmptyError}</div>
+                                    <br/>
+                                    <br/>
+                                    <div className="form-element-button">
+                                        <button className='btn--create-customer'
+                                                onClick={this.confirmSendMessage}>Send
+                                        </button>
+                                        <button className='btn--create-customer' onClick={this.cancel.bind(this)}
+                                                style={{marginLeft: "10px"}}>
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <br />
-                            <div className="form-element">
-                                <label>Email: </label>
-                                <input placeholder="Email" name="email" className="form-control"
-                                       value={this.state.email} onChange={this.changeAppUserEmailHandler}/>
-                            </div>
-                            <div className='alert alert-danger'>{this.state.emailError}</div>
-                            <br/>
-                            <div className="form-element">
-                                <label>Feedback: </label>
-                                <input placeholder="Feedback" name="feedback" className="form-control"
-                                       value={this.state.feedback} onChange={this.changeAppUserFeedback}/>
-                            </div>
-                            <div className='alert alert-danger'>{this.state.msgEmptyError}</div>
-                            <br/>
-                            <br/>
-                            <div className="form-element-button">
-                                <button className='btn--create-customer' onClick={this.confirmSendMessage}>Send</button>
-                                <button className='btn--create-customer' onClick={this.cancel.bind(this)}
-                                        style={{marginLeft: "10px"}}>
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
 
-                </div>
-            </div>
-            }
+                        </div>
+                    </div>
+                }
             </>
         )
     }

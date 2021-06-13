@@ -24,7 +24,7 @@ class SendMessageResult extends Component{
 
     }
 
-    backToCustomerList (){
+    backToCustomerList = (e)=>{
         this.props.history.push('/customers');
     }
 
@@ -40,7 +40,7 @@ class SendMessageResult extends Component{
                             <div>
                                 <h2>Your message is successfully sent.</h2>
                                 <button className='btn--create-customer'
-                                        onClick={()=>this.backToCustomerList}>Back to Customer List</button>
+                                        onClick={this.backToCustomerList}>Back to Customer List</button>
                             </div>}
                     </>
                 }

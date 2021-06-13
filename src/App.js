@@ -29,7 +29,7 @@ import SendMessage from "./components/CusotmerPages/SendMessage";
 import ListUsers from "./components/AdminPages/ListUsers";
 import CreateUsers from "./components/AdminPages/CreateUsers";
 import UserResetPassword from "./components/UserPage/UserResetPassword";
-import CreateCustomers_Suc from "./components/CusotmerPages/CreateCustomersResult";
+
 
 function App() {
 
@@ -66,7 +66,6 @@ function App() {
                 <Route path='/admin' exact component={ListUsers} />
                 <Route path='/admin/add-user' exact component={CreateUsers} />
                 <Route path='/password-reset' exact component={UserResetPassword}/>
-                <Route path='/customer-loading' exact component={CreateCustomers_Suc}/>
 
             </Switch>
 

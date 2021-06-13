@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import AdminService from "../../services/AdminService";
 import CreateUsersResult from "./CreateUsersResult";
+
 const initialState = {
     userName: '',
     password: '',
@@ -123,7 +124,7 @@ class CreateUsers extends Component{
     render() {
         return (
             <>
-                {this.state.status ? <CreateUsersResult status={this.state.status}/> :
+                {this.state.status ? <CreateUsersResult status={this.state.status} history={this.props.history}/> :
                     <div className='main-container-create-customer'>
                         <div className='information-container-create-customer'>
                             <h2>Add User</h2>
