@@ -27,9 +27,7 @@ import UpdateInvoices from "./components/InvoicePages/UpdateInvoices";
 import ViewInvoice from "./components/InvoicePages/ViewInvoice";
 import SendMessage from "./components/CusotmerPages/SendMessage";
 import ListUsers from "./components/AdminPages/ListUsers";
-import AddRoles from "./components/AdminPages_function/AddRoles";
 import CreateUsers from "./components/AdminPages/CreateUsers";
-import CreateUsers_Suc from "./components/AdminPages_function/CreateUsers_Suc";
 import UserResetPassword from "./components/UserPage/UserResetPassword";
 import CreateCustomers_Suc from "./components/CusotmerPages/CreateCustomersResult";
 
@@ -66,9 +64,7 @@ function App() {
                 <Route path='/view-invoice/:id' exact component={ViewInvoice} />
                 <Route path='/send-message/:id' exact component={SendMessage} />
                 <Route path='/admin' exact component={ListUsers} />
-                <Route path='/admin/add-role/:id' exact component={AddRoles} />
                 <Route path='/admin/add-user' exact component={CreateUsers} />
-                <Route path='/admin-loading' exact component={CreateUsers_Suc}/>
                 <Route path='/password-reset' exact component={UserResetPassword}/>
                 <Route path='/customer-loading' exact component={CreateCustomers_Suc}/>
 

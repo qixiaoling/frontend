@@ -89,7 +89,7 @@ class SendMessage extends Component {
     render() {
         return (
             <>
-            {this.state.status === 200? <SendMessageResult status = {this.state.status}/> :
+            {this.state.status? <SendMessageResult status = {this.state.status}/> :
             <div className="main-container-create-customer">
                 <div className="information-container-create-customer">
                     <h2>Please fill in your details</h2>

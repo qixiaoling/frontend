@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-
 import AdminService from "../../services/AdminService";
-
+import CreateUsersResult from "./CreateUsersResult";
 const initialState = {
     userName: '',
     password: '',
@@ -12,17 +11,19 @@ const initialState = {
     passwordTooShortError: '',
     emailEmptyError: '',
     emailInvalidError: '',
+
 }
 
 class CreateUsers extends Component{
     constructor(props) {
         super(props);
-        this.state = initialState;
+        this.state = {initialState, status: '',}
         this.changeUserNameHandler = this.changeUserNameHandler.bind(this);
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
         this.changeEmailHandler = this.changeEmailHandler.bind(this);
         this.saveUser = this.saveUser.bind(this);
     }
+
     changeUserNameHandler = (e) => { //这里不能写function(), 要用()=>
         this.setState({userName: e.target.value});
     }
@@ -40,16 +41,17 @@ class CreateUsers extends Component{
 
         const isValid = this.validate();
         console.log(isValid)
-        if(isValid){
+        if (isValid) {
             let user = {
-                userName : this.state.userName,
-                password : this.state.password,
-                email : this.state.email
+                userName: this.state.userName,
+                password: this.state.password,
+                email: this.state.email
             }
             console.log('user => ' + JSON.stringify(user));
             AdminService.createUser(user)
-                .then((res)=>{
-                    console.log("hello world")
+                .then((res) => {
+                    console.log(res.status)
+                    this.setState({status: res.status})
                 })
             this.setState(initialState)
         }
@@ -73,29 +75,28 @@ class CreateUsers extends Component{
             userNameSpecialCharError = 'You are not allowed to use special character(S)';
         }
 
-        if(userNameEmptyError){
+        if (userNameEmptyError) {
             this.setState({userNameEmptyError})
             return false;
         }
-        if(userNameSpecialCharError){
+        if (userNameSpecialCharError) {
             this.setState({userNameSpecialCharError})
             return false;
         }
 
 
-
         if (this.state.password.length === 0) {
             passwordEmptyError = 'This field cannot be empty';
         }
-        if(this.state.password.length < 8){
+        if (this.state.password.length < 8) {
             passwordTooShortError = 'Please use minimal 8 characters'
         }
 
-        if(passwordEmptyError){
+        if (passwordEmptyError) {
             this.setState({passwordEmptyError})
             return false;
         }
-        if(passwordTooShortError){
+        if (passwordTooShortError) {
             this.setState({passwordTooShortError})
             return false;
         }
@@ -103,7 +104,7 @@ class CreateUsers extends Component{
         if (this.state.email.length === 0) {
             emailEmptyError = 'This field cannot be empty';
         }
-        if(!this.state.email.includes("@")){
+        if (!this.state.email.includes("@")) {
             emailInvalidError = 'Email is not valid';
         }
         if (emailEmptyError) {
@@ -119,73 +120,74 @@ class CreateUsers extends Component{
     }
 
 
+    render() {
+        return (
+            <>
+                {this.state.status ? <CreateUsersResult status={this.state.status}/> :
+                    <div className='main-container-create-customer'>
+                        <div className='information-container-create-customer'>
+                            <h2>Add User</h2>
+                            <div className='customer-card-body'>
+                                <form className='form-create-customer'>
+                                    <div className='form-element'>
+                                        <label htmlFor='userName'>User Name：</label>
+                                        <input
+                                            type='text'
+                                            id='userName'
+                                            name='userName'
+
+                                            value={this.state.userName}
+                                            onChange={this.changeUserNameHandler}
+                                        />
+                                        <div className='alert alert-danger'>{this.state.userNameEmptyError}</div>
+                                        <div className='alert alert-danger'>{this.state.userNameSpecialCharError}</div>
+                                    </div>
 
 
-    render(){
-        return(
-            <div className='main-container-create-customer'>
-                <div className='information-container-create-customer'>
-                    <h2>Add User</h2>
-                    <div className='customer-card-body'>
-                        <form className='form-create-customer' >
-                            <div className='form-element'>
-                                <label htmlFor='userName'>User Name：</label>
-                                <input
-                                    type='text'
-                                    id='userName'
-                                    name='userName'
+                                    <div className='form-element'>
+                                        <label htmlFor='password'>Password：</label>
+                                        <input
+                                            type='password'
+                                            id='password'
+                                            name='password'
 
-                                    value={this.state.userName}
-                                    onChange={this.changeUserNameHandler}
-                                />
-                                <div className='alert alert-danger'>{this.state.userNameEmptyError}</div>
-                                <div className='alert alert-danger'>{this.state.userNameSpecialCharError}</div>
+                                            value={this.state.password}
+                                            onChange={this.changePasswordHandler}
+
+                                        />
+                                    </div>
+                                    <div className='alert alert-danger'>{this.state.passwordEmptyError}</div>
+                                    <div className='alert alert-danger'>{this.state.passwordTooShortError}</div>
+
+
+                                    <div className='form-element'>
+                                        <label htmlFor='email'>Email：</label>
+                                        <input
+                                            type='email'
+                                            id='email'
+                                            name='email'
+                                            value={this.state.email}
+                                            onChange={this.changeEmailHandler}
+                                        />
+                                    </div>
+                                    <div className='alert alert-danger'>{this.state.emailEmptyError}</div>
+                                    <div className='alert alert-danger'>{this.state.emailInvalidError}</div>
+
+                                    <button className='btn--create-customer' onClick={this.saveUser}>
+                                        Create
+                                    </button>
+                                </form>
+
                             </div>
-
-
-                            <div className='form-element'>
-                                <label htmlFor='password'>Password：</label>
-                                <input
-                                    type='password'
-                                    id='password'
-                                    name='password'
-
-                                    value={this.state.password}
-                                    onChange={this.changePasswordHandler}
-
-                                />
-                            </div>
-                            <div className='alert alert-danger'>{this.state.passwordEmptyError}</div>
-                            <div className='alert alert-danger'>{this.state.passwordTooShortError}</div>
-
-
-                            <div className='form-element'>
-                                <label htmlFor='email'>Email：</label>
-                                <input
-                                    type='email'
-                                    id='email'
-                                    name='email'
-                                    value={this.state.email}
-                                    onChange={this.changeEmailHandler}
-                                />
-                            </div>
-                            <div className='alert alert-danger'>{this.state.emailEmptyError}</div>
-                            <div className='alert alert-danger'>{this.state.emailInvalidError}</div>
-
-                            <button  className='btn--create-customer' onClick={this.saveUser}>
-                                Create
-                            </button>
-                        </form>
+                        </div>
 
                     </div>
-                </div>
-
-            </div>
+                }
+            </>
 
 
         )
     }
-
 
 
 }

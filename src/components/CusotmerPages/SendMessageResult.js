@@ -7,6 +7,7 @@ class SendMessageResult extends Component{
             loading : true,
             emailFailed : false,
         }
+        this.backToCustomerList = this.backToCustomerList.bind(this);
 
     }
 
@@ -23,6 +24,10 @@ class SendMessageResult extends Component{
 
     }
 
+    backToCustomerList (){
+        this.props.history.push('/customers');
+    }
+
 
     render(){
         return(
@@ -34,6 +39,8 @@ class SendMessageResult extends Component{
                             :
                             <div>
                                 <h2>Your message is successfully sent.</h2>
+                                <button className='btn--create-customer'
+                                        onClick={()=>this.backToCustomerList}>Back to Customer List</button>
                             </div>}
                     </>
                 }
