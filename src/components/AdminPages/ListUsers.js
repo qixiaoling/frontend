@@ -21,7 +21,7 @@ class ListUsers extends Component {
 
 
     addRole(id) {
-        this.props.history.push('/admin/add-role/${id}')
+        this.props.history.push(`/admin/add-role/${this.state.user_id}`)
     }
 
     addUser() {

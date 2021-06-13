@@ -29,6 +29,7 @@ import SendMessage from "./components/CusotmerPages/SendMessage";
 import ListUsers from "./components/AdminPages/ListUsers";
 import CreateUsers from "./components/AdminPages/CreateUsers";
 import UserResetPassword from "./components/UserPage/UserResetPassword";
+import AddRoles from "./components/AdminPages/AddRoles";
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
                 <Route path='/send-message/:id' exact component={SendMessage} />
                 <Route path='/admin' exact component={ListUsers} />
                 <Route path='/admin/add-user' exact component={CreateUsers} />
+                <Route path='/admin/add-role/id' exact component={AddRoles}/>
                 <Route path='/password-reset' exact component={UserResetPassword}/>
 
             </Switch>
