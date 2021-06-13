@@ -1,91 +1,119 @@
-import React, {useState, useEffect} from 'react'
-import {useForm} from "react-hook-form";
-import {useHistory} from 'react-router-dom'
+import React, {Component} from 'react'
 import axios from "axios";
-import '../CusotmerPages/CreateCustomers.css'
+import AdminService from "../../services/AdminService";
+import UserService from "../../services/UserService";
 
-function UserResetPassword() {
-    const [users, setUsers] = useState([])
-    const {register, handleSubmit} = useForm()
-    const loggedInUserName = localStorage.getItem('userName')
-    let loggedInUserId;
-    let loggedInUser
-    console.log(loggedInUserName)
-    const history = useHistory()
+const loggedInUsername = localStorage.getItem('userName')
 
-    async function getUsers() {
+class UserResetPassword extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: [],
+            loggedInUserId: '',
+            loggedInUser: {},
+            password: '',
+            password_reEntry: '',
+        }
+        this.getLoggedInUserId = this.getLoggedInUserId.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handlePasswordReEntryChange = this.handlePasswordReEntryChange.bind(this);
+        this.resetPassword = this.resetPassword.bind(this);
+
+    }
+
+
+    componentDidMount() {
         try {
-            const result = await axios.get("http://localhost:8080/securityManagement/appusers");
-            console.log(result.data)
-            setUsers(result.data)
+            AdminService.getAllUsers().then((res) => {
+                console.log(res.data);
+                this.setState({users: res.data})
+            })
+
         } catch (error) {
             console.log(error)
         }
     }
 
-    useEffect(() => {
-        getUsers()
-    }, [])
-
-    function getLoggedInUserId(userName) {
-        if (users) {
-            loggedInUser = users.find((user) => user.userName === userName)
+    getLoggedInUserId(userName) {
+        if (this.state.users) {
+            this.setState({
+                loggedInUser: this.state.users.find((user) =>
+                    user.userName === userName)
+            })
         }
-        loggedInUserId = loggedInUser.user_id
-
-        return loggedInUserId
+        this.setState({loggedInUserId: this.state.loggedInUser.user_id})
+        return this.state.loggedInUserId
     }
 
-    function onSubmit(data) {
-        getLoggedInUserId(loggedInUserName)
-
-        async function resetPassword() {
-            try {
-                const body = {password: data.password}
-                const url = `http://localhost:8080/resetpassword/${loggedInUserId}`
-                await axios.post(url, body).then((res) => {
-                    history.push('/')
-                })
-            } catch
-                (error) {
-                console.log(error)
-            }
-        }
-        resetPassword()
+    handlePasswordChange = (e) => {
+        this.setState({password: e.target.value})
+    }
+    handlePasswordReEntryChange = (e) => {
+        this.setState({password_reEntry: e.target.value})
     }
 
-    return (
-        <div className="main-container-create-customer">
-            <div className='information-container-create-customer'>
-                <h2>Hi {loggedInUserName} ! Please reset Your Password</h2>
-                <div className='customer-card-body'>
-                    <form className='form-create-customer' onSubmit={handleSubmit(onSubmit)}>
-                        <div className='form-element'>
-                            <label htmlFor='password'>Your New Password</label>
-                            <input
-                                type='password'
-                                id='password'
-                                {...register('password')}
-                            />
+    resetPassword(e) {
+        e.preventDefault()
+        const specificId = this.getLoggedInUserId(loggedInUsername)
+        let body = {
+            password: this.state.password
+        }
+        try {
+            UserService.resetPassword(specificId, body).then((res) => {
+                this.props.history.push('/')
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
+
+    }
+
+    render() {
+
+        return (
+            <>
+                <div className="main-container-create-customer">
+                    <div className='information-container-create-customer'>
+                        <h2>Hi {loggedInUsername} ! Please reset Your Password</h2>
+                        <div className='customer-card-body'>
+                            <form className='form-create-customer'>
+                                <div className='form-element'>
+                                    <label htmlFor='password'>Your New Password</label>
+                                    <input
+                                        type='password'
+                                        id='password'
+                                        name='password'
+                                        value={this.state.password}
+                                        onChange={this.handlePasswordChange}
+                                    />
+                                </div>
+                                <div className='form-element'>
+                                    <label htmlFor='password-reEntry'>Comfirm Your Password</label>
+                                    <input
+                                        type='password'
+                                        id='password-reEntry'
+                                        name='password-reEntry'
+                                        value={this.state.password_reEntry}
+                                        onChange={this.handlePasswordReEntryChange}
+                                    />
+                                </div>
+                                <button className='btn--create-customer'
+                                        onClick={this.resetPassword}>
+                                    Reset Password
+                                </button>
+                            </form>
+
                         </div>
-                        <div className='form-element'>
-                            <label htmlFor='password-reEntry'>Comfirm Your Password</label>
-                            <input
-                                type='password'
-                                id='password-reEntry'
-                                {...register('password-reEntry')}
-                            />
-                        </div>
-                        <button type='submit' className='btn--create-customer'>
-                            Reset Password
-                        </button>
-                    </form>
+                    </div>
 
                 </div>
-            </div>
+            </>
+        )
+    }
 
-        </div>
-    )
 }
 
 export default UserResetPassword
