@@ -66,7 +66,7 @@ function App() {
                 <Route path='/send-message/:id' exact component={SendMessage} />
                 <Route path='/admin' exact component={ListUsers} />
                 <Route path='/admin/add-user' exact component={CreateUsers} />
-                <Route path='/admin/add-role/id' exact component={AddRoles}/>
+                <Route path='/admin/add-role/:id' exact component={AddRoles}/>
                 <Route path='/password-reset' exact component={UserResetPassword}/>
 
             </Switch>

@@ -21,7 +21,7 @@ class ListUsers extends Component {
 
 
     addRole(id) {
-        this.props.history.push(`/admin/add-role/${this.state.user_id}`)
+        this.props.history.push(`/admin/add-role/${id}`)
     }
 
     addUser() {
@@ -58,7 +58,7 @@ class ListUsers extends Component {
                                     <td>{roles.length > 0 ? roles.length :
                                         <button
                                             className='btn--list-customer'
-                                            onClick={() => this.state.addRole(user_id)}
+                                            onClick={() => this.addRole(user_id)}
                                         >Add Role</button>}</td>
                                 </tr>
                             )
