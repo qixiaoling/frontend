@@ -5,21 +5,26 @@ import UserService from "../../services/UserService";
 
 const loggedInUsername = localStorage.getItem('userName')
 
+const initialState = {
+    users: [],
+    loggedInUserId: '',
+    password: '',
+    password_reEntry: '',
+    passwordError:'',
+}
+
 class UserResetPassword extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            users: [],
-            loggedInUserId: '',
-            password: '',
-            password_reEntry: '',
+            initialState
         }
         this.getLoggedInUserId = this.getLoggedInUserId.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handlePasswordReEntryChange = this.handlePasswordReEntryChange.bind(this);
         this.resetPassword = this.resetPassword.bind(this);
-
+        this.validate = this.validate.bind(this);
     }
 
 
@@ -57,24 +62,39 @@ class UserResetPassword extends Component {
 
     resetPassword = (e) => {
         e.preventDefault()
-
-        let body = {
-            password: this.state.password
+        const isValid = this.validate();
+        if(isValid){
+            let body = {
+                password: this.state.password
+            }
+            try {
+                UserService.resetPassword(body, this.state.loggedInUserId).then((res) => {
+                    console.log(res.status)
+                    this.props.history.push('/')
+                })
+            } catch (error) {
+                console.log(error)
+            }
+            this.setState(initialState)
         }
 
 
-        try {
-            UserService.resetPassword(body, this.state.loggedInUserId).then((res) => {
-                console.log(res.status)
-                this.props.history.push('/')
-            })
-        } catch (error) {
-            console.log(error)
-        }
+
 
 
     }
 
+    validate = () =>{
+        let passwordError = ''
+        if(this.state.password_reEntry != this.state.password){
+            passwordError = 'Passwords are not identical'
+        }
+        if(passwordError){
+            this.setState({passwordError})
+            return false;
+        }
+        return true
+    }
     render() {
 
         return (
@@ -104,6 +124,7 @@ class UserResetPassword extends Component {
                                         onChange={this.handlePasswordReEntryChange}
                                     />
                                 </div>
+                                <div className='alert alert-danger'>{this.state.passwordError}</div>
                                 <button className='btn--create-customer'
                                         onClick={this.resetPassword}>
                                     Reset Password
