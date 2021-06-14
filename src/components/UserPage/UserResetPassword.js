@@ -12,7 +12,6 @@ class UserResetPassword extends Component {
         this.state = {
             users: [],
             loggedInUserId: '',
-            loggedInUser: {},
             password: '',
             password_reEntry: '',
         }
@@ -29,22 +28,24 @@ class UserResetPassword extends Component {
             AdminService.getAllUsers().then((res) => {
                 console.log(res.data);
                 this.setState({users: res.data})
+                console.log(this.getLoggedInUserId(loggedInUsername))
             })
 
         } catch (error) {
             console.log(error)
         }
+
+
     }
 
-    getLoggedInUserId(userName) {
-        if (this.state.users) {
-            this.setState({
-                loggedInUser: this.state.users.find((user) =>
-                    user.userName === userName)
-            })
-        }
-        this.setState({loggedInUserId: this.state.loggedInUser.user_id})
+    getLoggedInUserId(loginname) {
+
+        const loggedInUser = this.state.users.find((user) =>
+            user.userName === loginname)
+        this.setState({loggedInUserId:loggedInUser.user_id })
         return this.state.loggedInUserId
+
+
     }
 
     handlePasswordChange = (e) => {
@@ -54,14 +55,17 @@ class UserResetPassword extends Component {
         this.setState({password_reEntry: e.target.value})
     }
 
-    resetPassword(e) {
+    resetPassword = (e) => {
         e.preventDefault()
-        const specificId = this.getLoggedInUserId(loggedInUsername)
+
         let body = {
             password: this.state.password
         }
+
+
         try {
-            UserService.resetPassword(specificId, body).then((res) => {
+            UserService.resetPassword(body, this.state.loggedInUserId).then((res) => {
+                console.log(res.status)
                 this.props.history.push('/')
             })
         } catch (error) {
