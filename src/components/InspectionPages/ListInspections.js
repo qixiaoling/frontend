@@ -26,9 +26,8 @@ class ListInspections extends Component {
 
     componentDidMount() {
         InspectionService.getInspections().then(res => {
-            console.log(res.data)
             this.setState({inspections: res.data})
-            console.log("I am a listed inspection object.")
+
         })
 
     }

@@ -19,7 +19,7 @@ class ListAutomobiles extends Component{
         AutomobileService.getAutomobiles().then((res) =>{
             console.log(res.data)
             this.setState({automobiles : res.data});
-            console.log("I list cars.")
+
         })
     }
 

@@ -36,11 +36,9 @@ class ListCustomers extends Component {
     }
 
     componentDidMount() {
-        console.log(", I just mounted")
         CustomerService.getCustomers().then((res) => {
-            console.log(res)
             this.setState({customers: res.data});
-            console.log("I am a new ListCustomers")
+
         })
     }
 
