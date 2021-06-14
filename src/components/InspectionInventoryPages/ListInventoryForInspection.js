@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import InventoryService from "../../services/InventoryService";
 import '../CusotmerPages/ListCustomers.css'
 import InspectionInventoryService from "../../services/InspectionInventoryService";
-import InspectionService from "../../services/InspectionService";
+
 
 class ListInventoryForInspection extends Component {
     constructor(props) {

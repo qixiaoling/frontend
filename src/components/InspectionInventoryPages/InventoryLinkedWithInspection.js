@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import "../CusotmerPages/CreateCustomers"
 import InspectionInventoryService from "../../services/InspectionInventoryService";
 import InventoryLinkedWithInspectionResult from "./InventoryLinkedWithInspectionResult";
 
