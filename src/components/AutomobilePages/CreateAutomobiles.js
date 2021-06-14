@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import AutomobileService from "../../services/AutomobileService";
-import '../PageCSS/CreateCustomers.css'
+import '../PageCSS/Create.css'
 
 
 class CreateAutomobiles extends Component {

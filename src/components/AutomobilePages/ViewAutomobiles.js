@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import '../PageCSS/ViewCustomer.css'
+import '../PageCSS/View.css'
 import AutomobileService from "../../services/AutomobileService";
 
 

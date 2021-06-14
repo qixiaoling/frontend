@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import '../PageCSS/ListCustomers.css'
+import '../PageCSS/List.css'
 import InvoiceService from "../../services/InvoiceService";
 
 

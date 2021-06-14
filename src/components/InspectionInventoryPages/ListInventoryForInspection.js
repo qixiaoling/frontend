@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import InventoryService from "../../services/InventoryService";
-import '../PageCSS/ListCustomers.css'
+import '../PageCSS/List.css'
 import InspectionInventoryService from "../../services/InspectionInventoryService";
 
 

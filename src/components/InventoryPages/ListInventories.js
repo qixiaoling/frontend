@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import InventoryService from "../../services/InventoryService";
 import '../Button.css'
-import '../PageCSS/ListCustomers.css'
+import '../PageCSS/List.css'
 
 
 class ListInventories extends Component{

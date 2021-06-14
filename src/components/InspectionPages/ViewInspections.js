@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
-import'../PageCSS/ListCustomers.css'
+import'../PageCSS/List.css'
 
 
 class ViewInspections extends Component{
