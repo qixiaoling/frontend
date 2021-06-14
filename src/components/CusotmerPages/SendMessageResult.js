@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './CreateCustomers.css'
+import '../PageCSS/CreateCustomers.css'
 class SendMessageResult extends Component{
     constructor(props) {
         super(props);

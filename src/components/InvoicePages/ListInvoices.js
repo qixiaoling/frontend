@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import InvoiceService from "../../services/InvoiceService";
-import '../CusotmerPages/ListCustomers.css'
+import '../PageCSS/ListCustomers.css'
 
 class ListInvoices extends Component {
     constructor(props) {

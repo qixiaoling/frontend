@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import AutomobileService from "../../services/AutomobileService";
-import '../CusotmerPages/CreateCustomers.css'
+import '../PageCSS/CreateCustomers.css'
 import axios from "axios";
 
 

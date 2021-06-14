@@ -8,6 +8,7 @@ class InventoryLinkedWithInspectionResult extends Component{
             loading: true,
             addQuantityFailed: false,
         }
+        this.backToInspectionList = this.backToInspectionList.bind(this);
     }
 
     componentDidMount() {
@@ -20,12 +21,24 @@ class InventoryLinkedWithInspectionResult extends Component{
         }
     }
 
+    backToInspectionList = (e) => {
+        e.preventDefault();
+        this.props.history.push('/inspections');
+    }
+
     render() {
         return (
             <>
                 {this.state.addQuantityFailed ? <h2>Quantity is not added. Please try again.</h2>
                     : <>{this.state.loading ? <h2>Loading...</h2>
-                        : <h2>Quantity is added to the inspection successfully</h2>
+                        :
+                        <>
+                            <h2>Quantity is added to the inspection successfully</h2>
+                            <button className='btn--create-customer'
+                                    onClick={this.backToInspectionList}>Back to Inspection List
+                            </button>
+                        </>
+
                     }
                     </>
                 }

@@ -38,7 +38,6 @@ class CreateUsers extends Component{
 
     saveUser = (e) => {
         e.preventDefault();
-        console.log("I am here")
 
         const isValid = this.validate();
         console.log(isValid)

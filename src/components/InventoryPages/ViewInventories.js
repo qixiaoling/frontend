@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import InventoryService from "../../services/InventoryService";
-import '../CusotmerPages/ViewCustomer.css'
+import '../PageCSS/ViewCustomer.css'
 
 class ViewInventories extends Component{
     constructor(props) {

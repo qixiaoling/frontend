@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CustomerService from "../../services/CustomerService";
-import './CreateCustomers.css'
+import '../PageCSS/CreateCustomers.css'
 import SendMessageResult from "./SendMessageResult";
 
 const initialState = {
