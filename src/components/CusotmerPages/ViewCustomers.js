@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
-import './ViewCustomer.css'
+import '../PageCSS/View.css'
 
 class ViewCustomers extends Component {
     constructor(props) {

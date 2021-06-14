@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
-import '../CusotmerPages/ListCustomers.css'
+import '../PageCSS/List.css'
 import InvoiceService from "../../services/InvoiceService";
 
 
@@ -100,7 +100,7 @@ class ListInspections extends Component {
                                 <th>Repair Date</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.inspections.map(
                                     ins => {

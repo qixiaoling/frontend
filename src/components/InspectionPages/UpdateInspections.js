@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
-import'../CusotmerPages/ListCustomers.css'
+import'../PageCSS/List.css'
 
 
 class UpdateInspections extends Component{

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import AutomobileService from "../../services/AutomobileService";
-import '../CusotmerPages/CreateCustomers.css'
+import '../PageCSS/Create.css'
 import axios from "axios";
 
 
@@ -63,8 +63,8 @@ class UpdateAutomobiles extends Component {
 
     render(){
         return(
-            <div className="main-container">
-                <div className="information-container">
+            <div className="main-container-create-customer">
+                <div className="information-container-create-customer">
                     <h2>Update Automobile</h2>
                     <div className="customer-card-body">
                         <form className="form-create-customer">

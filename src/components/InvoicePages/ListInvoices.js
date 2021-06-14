@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import InvoiceService from "../../services/InvoiceService";
-import '../CusotmerPages/ListCustomers.css'
+import '../PageCSS/List.css'
 
 class ListInvoices extends Component {
     constructor(props) {
@@ -50,7 +50,7 @@ class ListInvoices extends Component {
                                 <th>Total Amount</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.invoices.map(
                                     inv => {

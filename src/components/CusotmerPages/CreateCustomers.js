@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
-import CreateUsersResult from "../AdminPages/CreateUsersResult";
-import './CreateCustomers.css'
+import '../PageCSS/Create.css'
 import CreateCustomersResult from "./CreateCustomersResult";
 
 const initialState = {

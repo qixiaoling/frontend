@@ -1,3 +1,4 @@
+
 .main-container-create-customer {
     background: #E9E7D1;
     height: 90vh;
@@ -11,6 +12,8 @@
     height: 70%;
     padding: 10px;
     border: 1px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
 }
 h2{
     text-align: center;
@@ -73,7 +76,6 @@ label{
 }
 .alert-danger {
     color: #721c24;
-    background: #f8d7da;
 }
 .alert-success {
     color: #155724;

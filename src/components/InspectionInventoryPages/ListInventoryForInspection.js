@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import InventoryService from "../../services/InventoryService";
-import '../CusotmerPages/ListCustomers.css'
+import '../PageCSS/List.css'
 import InspectionInventoryService from "../../services/InspectionInventoryService";
-import InspectionService from "../../services/InspectionService";
+
 
 class ListInventoryForInspection extends Component {
     constructor(props) {
@@ -48,7 +48,7 @@ class ListInventoryForInspection extends Component {
                                 <th>Available Unit</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.inventories.map(
                                     inv => {

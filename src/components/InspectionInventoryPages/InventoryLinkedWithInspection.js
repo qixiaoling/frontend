@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import "../CusotmerPages/CreateCustomers"
 import InspectionInventoryService from "../../services/InspectionInventoryService";
 import InventoryLinkedWithInspectionResult from "./InventoryLinkedWithInspectionResult";
 
@@ -36,7 +35,7 @@ class InventoryLinkedWithInspection extends Component {
     render() {
         return (
             <>
-                {this.state.status === 200 ? <InventoryLinkedWithInspectionResult status={this.state.status}/> :
+                {this.state.status === 200 ? <InventoryLinkedWithInspectionResult status={this.state.status} history={this.props.history}/> :
                     <div className="main-container">
                         <div className="information-container">
                             <h2>Inventory Linked with Inspection</h2>

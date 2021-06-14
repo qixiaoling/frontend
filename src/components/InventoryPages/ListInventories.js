@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import InventoryService from "../../services/InventoryService";
 import '../Button.css'
-import '../CusotmerPages/ListCustomers.css'
+import '../PageCSS/List.css'
 
 
 class ListInventories extends Component{
@@ -59,7 +59,7 @@ class ListInventories extends Component{
                                 <th>Available Unit</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.inventories.map(
                                     inv =>{

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
-import './CreateCustomers.css'
-import axios from "axios";
+import '../PageCSS/Create.css'
+
 
 
 class UpdateCustomers extends Component {
@@ -23,7 +23,6 @@ class UpdateCustomers extends Component {
 
     componentDidMount() {
         CustomerService.getCustomerById(this.state.id).then((res)=>{
-            console.log("I am a update")
             let customer = res.data;
             this.setState({
                 firstName : customer.firstName,

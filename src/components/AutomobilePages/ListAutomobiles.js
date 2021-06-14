@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import AutomobileService from "../../services/AutomobileService";
-import'../CusotmerPages/ListCustomers.css'
+import'../PageCSS/List.css'
 
 
 
@@ -56,7 +56,7 @@ class ListAutomobiles extends Component{
                                 <th> Actions </th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.automobiles.map(
                                     auto =>{
