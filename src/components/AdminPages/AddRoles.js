@@ -49,6 +49,7 @@ class addRoles extends Component {
                                                 value={this.state.department}
                                                 onChange={this.handleChange}
                                             >
+                                                <option value='null'>Please choose</option>
                                                 <option value='USER_BAC'>Back Office</option>
                                                 <option value='USER_FRO'>Front Office</option>
                                                 <option value='USER_TEC'>Technical Department</option>
