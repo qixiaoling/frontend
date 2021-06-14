@@ -37,6 +37,7 @@ class ListCustomers extends Component {
 
     componentDidMount() {
         CustomerService.getCustomers().then((res) => {
+            console.log(res.data)
             this.setState({customers: res.data});
 
         })

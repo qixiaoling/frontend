@@ -14,6 +14,7 @@ class ListUsers extends Component {
 
     componentDidMount() {
             AdminService.getAllUsers().then((res)=>{
+                console.log(res.data)
                 this.setState({users : res.data})
             })
         }

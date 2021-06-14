@@ -17,7 +17,7 @@ class ListInventories extends Component{
     }
     componentDidMount() {
         InventoryService.getInventories().then(res =>{
-            console.log(res);
+            console.log(res.data);
             this.setState({inventories: res.data})
             console.log("I am a new listInventories")
         })
