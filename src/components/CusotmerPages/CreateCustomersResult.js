@@ -1,53 +1,52 @@
 import React, {Component} from 'react'
-import './CreateCustomers.css'
-class SendMessageResult extends Component{
+
+
+class CreateCustomersResult extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            loading : true,
-            emailFailed : false,
+            loading: true,
+            createCustomerFailed: false,
         }
         this.backToCustomerList = this.backToCustomerList.bind(this);
-
     }
 
-
     componentDidMount() {
-        if(this.props.status === 200) {
+        if (this.props.status === 200) {
             setTimeout(() => {
                 this.setState({loading: false})
             }, 1500)
-        }else{
-            this.setState({emailFailed : true})
+        } else {
+            this.setState({createCustomerFailed: true})
         }
-
-
     }
-
     backToCustomerList = (e)=>{
+        e.preventDefault();
         this.props.history.push('/customers');
     }
 
 
-    render(){
-        return(
+    render() {
+        return (
             <>
-                {this.state.emailFailed ?<h2>Your email is failed, please try again</h2>
-                :
+                {this.state.createCustomerFailed ? <h2>Customer is not added, please try again</h2>
+                    :
                     <>
-                        {this.state.loading === true ? <h2>Loading...</h2>
+                        {this.state.loading ? <h2>Loading...</h2>
                             :
                             <div>
-                                <h2>Your message is successfully sent.</h2>
+                                <h2>Customer is created successfully.</h2>
                                 <button className='btn--create-customer'
                                         onClick={this.backToCustomerList}>Back to Customer List</button>
-                            </div>}
+                            </div>
+
+                        }
                     </>
                 }
             </>
-
         )
     }
 
+
 }
-export default SendMessageResult
+export default CreateCustomersResult

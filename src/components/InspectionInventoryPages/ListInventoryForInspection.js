@@ -16,6 +16,7 @@ class ListInventoryForInspection extends Component {
 
     componentDidMount() {
         InventoryService.getInventories().then(res => {
+            console.log(res.data)
             this.setState({inventories: res.data})
         })
     }

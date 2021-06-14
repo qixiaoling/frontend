@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
+import CreateUsersResult from "../AdminPages/CreateUsersResult";
 import './CreateCustomers.css'
+import CreateCustomersResult from "./CreateCustomersResult";
 
 const initialState = {
     firstName: '',
@@ -10,7 +12,7 @@ const initialState = {
     firstNameEmptyError: '',
     firstNameSpecialCharError: '',
     lastNameEmptyError: '',
-    lastNameSpecialCharError:  '',
+    lastNameSpecialCharError: '',
     genderError: '',
     emailError: '',
 
@@ -20,7 +22,10 @@ const initialState = {
 class CreateCustomers extends Component {
     constructor(props) {
         super(props);
-        this.state = initialState;
+        this.state = {
+            initialState,
+            status: '',
+        };
 
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -58,7 +63,7 @@ class CreateCustomers extends Component {
 
             CustomerService.createCustomers(customer)
                 .then(res => {
-                    this.props.history.push('/customer-loading')
+                    this.setState({status: res.status})
                 })
             this.setState(initialState)
         }
@@ -99,7 +104,6 @@ class CreateCustomers extends Component {
         }
 
 
-
         if (this.state.lastName.length === 0) {
             lastNameEmptyError = 'This field cannot be empty';
         }
@@ -138,76 +142,84 @@ class CreateCustomers extends Component {
 
     render() {
         return (
-            <div className="main-container-create-customer">
-                <div className="information-container-create-customer">
-                    <h2>Add Customer</h2>
-                    <div className="customer-card-body">
-                        <form className="form-create-customer">
-                            <div className="form-element">
-                                <label>First Name: </label>
-                                <input placeholder="First Name" name="firstName" className="form-control"
-                                       value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
-                            </div>
-                            <div className='alert alert-danger'>{this.state.firstNameEmptyError}</div>
-                            <div className='alert alert-danger'>{this.state.firstNameSpecialCharError}</div>
-                            <br/>
-                            <div className="form-element">
-                                <label>Last Name: </label>
-                                <input placeholder="Last Name" name="Last Name" className="form-control"
-                                       value={this.state.lastName} onChange={this.changeLastNameHandler}/>
-                            </div>
-                            <div className='alert alert-danger'>{this.state.lastNameEmptyError}</div>
-                            <div className='alert alert-danger'>{this.state.lastNameSpecialCharError}</div>
+            <>
+                {this.state.status ? <CreateCustomersResult status={this.state.status} history={this.props.history}/>
+                    :
+                    <div className="main-container-create-customer">
+                        <div className="information-container-create-customer">
+                            <h2>Add Customer</h2>
+                            <div className="customer-card-body">
+                                <form className="form-create-customer">
+                                    <div className="form-element">
+                                        <label>First Name: </label>
+                                        <input placeholder="First Name" name="firstName" className="form-control"
+                                               value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
+                                    </div>
+                                    <div className='alert alert-danger'>{this.state.firstNameEmptyError}</div>
+                                    <div className='alert alert-danger'>{this.state.firstNameSpecialCharError}</div>
+                                    <br/>
+                                    <div className="form-element">
+                                        <label>Last Name: </label>
+                                        <input placeholder="Last Name" name="Last Name" className="form-control"
+                                               value={this.state.lastName} onChange={this.changeLastNameHandler}/>
+                                    </div>
+                                    <div className='alert alert-danger'>{this.state.lastNameEmptyError}</div>
+                                    <div className='alert alert-danger'>{this.state.lastNameSpecialCharError}</div>
 
-                            <br/>
+                                    <br/>
 
-                            <div className="form-element">
-                                Gender
-                                <label htmlFor='gender'>
-                                    Female
-                                    <input
-                                        type='radio'
-                                        id='gender'
-                                        name='gender'
-                                        value='FEMALE'
-                                        onChange={this.changeGenderHandler}
-                                    />
-                                </label>
-                                <label htmlFor='gender'>
-                                    Male
-                                    <input
-                                        type='radio'
-                                        id='gender'
-                                        name='gender'
-                                        value='MALE'
-                                        onChange={this.changeGenderHandler}
-                                    />
-                                </label>
+                                    <div className="form-element">
+                                        Gender
+                                        <label htmlFor='gender'>
+                                            Female
+                                            <input
+                                                type='radio'
+                                                id='gender'
+                                                name='gender'
+                                                value='FEMALE'
+                                                onChange={this.changeGenderHandler}
+                                            />
+                                        </label>
+                                        <label htmlFor='gender'>
+                                            Male
+                                            <input
+                                                type='radio'
+                                                id='gender'
+                                                name='gender'
+                                                value='MALE'
+                                                onChange={this.changeGenderHandler}
+                                            />
+                                        </label>
+                                    </div>
+
+                                    <br/>
+                                    <div className="form-element">
+                                        <label>email: </label>
+                                        <input placeholder="email" name="email" className="form-control"
+                                               value={this.state.email} onChange={this.changeEmailHandler}/>
+                                    </div>
+                                    <div className='alert alert-danger'>{this.state.emailError}</div>
+                                    <br/>
+                                    <div className="form-element-button">
+                                        <button className='btn--create-customer' onClick={this.saveCustomer}>Save
+                                        </button>
+                                        <button className='btn--create-customer' onClick={this.cancel.bind(this)}
+                                                style={{marginLeft: "10px"}}>
+                                            Cancel
+                                        </button>
+                                    </div>
+
+                                </form>
+
                             </div>
-
-                            <br/>
-                            <div className="form-element">
-                                <label>email: </label>
-                                <input placeholder="email" name="email" className="form-control"
-                                       value={this.state.email} onChange={this.changeEmailHandler}/>
-                            </div>
-                            <div className='alert alert-danger'>{this.state.emailError}</div>
-                            <br/>
-                            <div className="form-element-button">
-                                <button className='btn--create-customer' onClick={this.saveCustomer}>Save</button>
-                                <button className='btn--create-customer' onClick={this.cancel.bind(this)}
-                                        style={{marginLeft: "10px"}}>
-                                    Cancel
-                                </button>
-                            </div>
-
-                        </form>
-
+                        </div>
                     </div>
-                </div>
-            </div>
+                }
+            </>
+
         )
     }
+
 }
 
 export default CreateCustomers
