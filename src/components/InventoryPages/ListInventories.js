@@ -59,7 +59,7 @@ class ListInventories extends Component{
                                 <th>Available Unit</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.inventories.map(
                                     inv =>{

@@ -50,7 +50,7 @@ class ListInvoices extends Component {
                                 <th>Total Amount</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.invoices.map(
                                     inv => {

@@ -107,7 +107,7 @@ class ListCustomers extends Component {
                                 <th> Actions</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.customers.map(
                                     cus => {

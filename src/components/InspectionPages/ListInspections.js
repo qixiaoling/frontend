@@ -100,7 +100,7 @@ class ListInspections extends Component {
                                 <th>Repair Date</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.inspections.map(
                                     ins => {

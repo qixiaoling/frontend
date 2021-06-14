@@ -56,7 +56,7 @@ class ListAutomobiles extends Component{
                                 <th> Actions </th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="list-table">
                             {
                                 this.state.automobiles.map(
                                     auto =>{

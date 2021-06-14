@@ -47,7 +47,7 @@ class ListUsers extends Component {
                             <th>Role(s)</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="list-table">
                         {this.state.users.map((user) => {
                             const {user_id, userName, roles, email} = user;
                             return (
