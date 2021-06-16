@@ -24,7 +24,7 @@ class ListCustomers extends Component {
             customers: [],
             searchCustomer: '',
             searchCustomerError: '',
-            found:[],
+            CustomerWithNoCarFound: [],
         }
         this.addCustomer = this.addCustomer.bind(this);
         this.editCustomer = this.editCustomer.bind(this);
@@ -41,16 +41,11 @@ class ListCustomers extends Component {
         CustomerService.getCustomers().then((res) => {
             console.log(res.data)
             this.setState({customers: res.data});
-            const foundCar = this.state.customers.filter((cus)=> cus.car === null)
-            this.setState({found: foundCar});
-            console.log(this.state.found);
+            const foundCar = this.state.customers.filter((cus) => cus.car === null)
+            this.setState({CustomerWithNoCarFound: foundCar});
+            console.log(this.state.CustomerWithNoCarFound);
         })
     }
-
-
-
-
-
 
     editCustomer(customerId) {
         this.props.history.push(`/update-customer/${customerId}`)
@@ -92,6 +87,7 @@ class ListCustomers extends Component {
 
     render() {
         return (
+            <>
             <div className="main-container">
                 <div className="information-container">
                     <h2>Customers List</h2>
@@ -104,6 +100,10 @@ class ListCustomers extends Component {
                         <button className='btn--list-customer' onClick={this.searchCustomer}>Search</button>
 
                     </div>
+
+                    {this.state.customers.length > this.state.CustomerWithNoCarFound.length &&
+                    <p className='alert alert-danger'>{this.state.CustomerWithNoCarFound.length} customers has not register cars yet!</p>
+                    }
                     <br/>
                     <div>
                         <table>
@@ -114,6 +114,7 @@ class ListCustomers extends Component {
                                 <th> Customer Last Name</th>
                                 <th> Customer Gender</th>
                                 <th> Customer Email</th>
+                                <th> Registered Car</th>
                                 <th> Actions</th>
                             </tr>
                             </thead>
@@ -128,6 +129,7 @@ class ListCustomers extends Component {
                                                 <td>{cus.lastName}</td>
                                                 <td>{cus.gender}</td>
                                                 <td>{cus.email}</td>
+                                                <td> {cus.car? cus.car.numberPlate : 'no car yet'}</td>
                                                 <td>
                                                     <button onClick={() => {
                                                         this.editCustomer(cus.customerId)
@@ -141,7 +143,9 @@ class ListCustomers extends Component {
                                                         this.viewCustomer(cus.customerId)
                                                     }} className='btn--list-customer'>View
                                                     </button>
-                                                    <button onClick={() => {
+                                                    <button
+                                                        disabled={cus.car}
+                                                        onClick={() => {
                                                         this.addAutomobile(cus.customerId)
                                                     }} className='btn--list-customer'>Add Auto
                                                     </button>
@@ -153,25 +157,22 @@ class ListCustomers extends Component {
                                             </tr>
                                         )
                                     }
-
                                 )
 
-                                }
-                                </tbody>
-                                </table>
-                                </div>
-                                </div>
-
-
-                                </div>
-                                )
-
-
                             }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </>
+        )
 
 
-                            }
+    }
 
-    export
-    default
-    ListCustomers
+
+}
+
+export default ListCustomers
