@@ -26,6 +26,8 @@ class ListCustomers extends Component {
             searchCustomerError: '',
             CustomerWithNoCarFound: [],
         }
+
+
         this.addCustomer = this.addCustomer.bind(this);
         this.editCustomer = this.editCustomer.bind(this);
         this.deleteCustomer = this.deleteCustomer.bind(this);
@@ -44,6 +46,7 @@ class ListCustomers extends Component {
             const foundCar = this.state.customers.filter((cus) => cus.car === null)
             this.setState({CustomerWithNoCarFound: foundCar});
             console.log(this.state.CustomerWithNoCarFound);
+            console.log(this.props.Customer)
         })
     }
 

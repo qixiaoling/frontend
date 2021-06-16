@@ -4,7 +4,7 @@ import {Button} from "./Button";
 import './Navbar.css';
 
 
-function Navbar(){
+function Navbar({Customer}){
     const loggedInUserName = localStorage.getItem('userName')
     const [navLinkOpen, navLinkToggle] = useState(false)
     const handleNavLinksToggle = () =>{
@@ -17,6 +17,8 @@ function Navbar(){
         }
         return classes;
     };
+    console.log(Customer)
+
 
 
 
