@@ -24,6 +24,7 @@ class ListCustomers extends Component {
             customers: [],
             searchCustomer: '',
             searchCustomerError: '',
+            found:[],
         }
         this.addCustomer = this.addCustomer.bind(this);
         this.editCustomer = this.editCustomer.bind(this);
@@ -33,15 +34,23 @@ class ListCustomers extends Component {
         this.sendMessage = this.sendMessage.bind(this);
         this.handleSearchCustomer = this.handleSearchCustomer.bind(this);
         this.searchCustomer = this.searchCustomer.bind(this);
+
     }
 
     componentDidMount() {
         CustomerService.getCustomers().then((res) => {
             console.log(res.data)
             this.setState({customers: res.data});
-
+            const foundCar = this.state.customers.filter((cus)=> cus.car === null)
+            this.setState({found: foundCar});
+            console.log(this.state.found);
         })
     }
+
+
+
+
+
 
     editCustomer(customerId) {
         this.props.history.push(`/update-customer/${customerId}`)
@@ -100,6 +109,7 @@ class ListCustomers extends Component {
                         <table>
                             <thead>
                             <tr>
+                                <th> Customer ID</th>
                                 <th> Customer First Name</th>
                                 <th> Customer Last Name</th>
                                 <th> Customer Gender</th>
