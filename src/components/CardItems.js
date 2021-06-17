@@ -4,13 +4,17 @@ import {Button} from "./Button";
 
 
 
-function CardItem(props){
-    return(
-        <>
-            <li className='card__item'>
-                    <Link className='cards_item_link' to={props.path}>
-                        <img src={props.depImage} alt={props.text} className="dep-img"/>
-                        <h3>{props.title}</h3>
+class CardItem extends Component{
+    constructor(props) {
+        super(props);
+    }
+    render(){
+        return(
+            <>
+                <li className='card__item'>
+                    <Link className='cards_item_link' to={this.props.path}>
+                        <img src={this.props.depImage} alt={this.props.text} className="dep-img"/>
+                        <h3>{this.props.title}</h3>
                         <div className="button--wrapper">
                             <Button
                                 className='btn'
@@ -25,8 +29,10 @@ function CardItem(props){
                     </Link>
 
 
-            </li>
-        </>
-    )
+                </li>
+            </>
+        )
+    }
+
 }
 export default CardItem
