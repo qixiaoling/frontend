@@ -4,7 +4,7 @@ import {Button} from "./Button";
 import './Navbar.css';
 
 
-function Navbar({Customer}){
+function Navbar_function({Customer}){
     const loggedInUserName = localStorage.getItem('userName')
     const [navLinkOpen, navLinkToggle] = useState(false)
     const handleNavLinksToggle = () =>{
@@ -17,7 +17,11 @@ function Navbar({Customer}){
         }
         return classes;
     };
-    console.log(Customer.length)
+    console.log(Customer)
+
+
+
+
 
 
     return(
@@ -38,15 +42,11 @@ function Navbar({Customer}){
                                 Customer
                             </Link>
                         </li>
-                        {Customer.length === 0 ?
-                            <li className='nav-item'>
-                                <Link to="/automobiles" className='link'>
-                                    Automobile
-                                </Link>
-                            </li>
-                            :
-                            null
-                        }
+                        <li className='nav-item'>
+                            <Link to="/automobiles" className='link' >
+                                Automobile
+                            </Link>
+                        </li>
                         <li className='nav-item'>
                             <Link to="/inspections" className='link' >
                                 Inspection
@@ -95,4 +95,4 @@ function Navbar({Customer}){
         </>
     )
 }
-export default Navbar
+export default Navbar_function

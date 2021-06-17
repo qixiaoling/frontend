@@ -48,7 +48,6 @@ class ListCustomers extends Component {
             this.state.foundNotRegisteredCars = this.state.customers.filter((cus) => cus.car === null)
 
             this.props.update(this.state.foundNotRegisteredCars)
-            console.log(this.state.customers.length);
 
         })
 
