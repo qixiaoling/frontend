@@ -38,17 +38,24 @@ class App extends Component {
         this.state = {
             CustomerWithNoCarFound: [],
         }
+        this.update = this.update.bind(this)
+
+    }
+
+    update(foundCustomers){
+        this.setState({CustomerWithNoCarFound : foundCustomers});
+        console.log(this.state.CustomerWithNoCarFound)
     }
 
     render() {
         return (
             <>
                 <Router>
-                    <Navbar Customer={this.state.CustomerWithNoCarFound} />
+                    <Navbar Customer={this.state.CustomerWithNoCarFound}  />
                     <Switch>
                         <Route path='/' exact component={Home}/>
                         <Route path='/customers' exact
-                               component={() => <ListCustomers Customer={this.state.CustomerWithNoCarFound} />}
+                               render={(props)=><ListCustomers {...props} Customer={this.state.CustomerWithNoCarFound} update = {this.update}/> }
                         />
                             <Route path='/add-customer' exact component={CreateCustomers}/>
                             <Route path='/sign-in' exact component={Login}/>
