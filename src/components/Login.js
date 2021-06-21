@@ -44,7 +44,7 @@ class Login extends Component {
                 })
                 console.log(res.headers.authorization)
 
-                localStorage.setItem('userName', this.username);
+                localStorage.setItem('userName', this.state.username);
             })
 
 
