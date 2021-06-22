@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import AutomobileService from "../../services/AutomobileService";
 import'../PageCSS/List.css'
-
+import {Button} from "../Button";
 
 
 class ListAutomobiles extends Component{
@@ -67,10 +67,34 @@ class ListAutomobiles extends Component{
                                                 <td>{auto.car. make}</td>
                                                 <td>{auto.customerId}</td>
                                                 <td>
-                                                    <button className='btn--list-customer' onClick={()=>{this.editAutomobile(auto.car.numberPlate)}}>Update </button>
-                                                    <button className='btn--list-customer' onClick={()=>{this.deleteAutomobile(auto.car.numberPlate)}}>Delete </button>
-                                                    <button className='btn--list-customer' onClick={()=>{this.viewAutomobile(auto.car.numberPlate)}}>View </button>
-                                                    <button className='btn--list-customer' onClick={()=>{this.addInspection(auto.car.numberPlate)}}>Add Inspection</button>
+                                                    <Button
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        onClick={()=>{this.editAutomobile(auto.car.numberPlate)}}
+                                                    >Update
+                                                    </Button>
+                                                    <Button
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        onClick={()=>{this.deleteAutomobile(auto.car.numberPlate)}}
+                                                    >Delete
+                                                    </Button>
+                                                    <Button
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        onClick={()=>{this.viewAutomobile(auto.car.numberPlate)}}
+                                                    >View
+                                                    </Button>
+                                                    <Button
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        onClick={()=>{this.addInspection(auto.car.numberPlate)}}
+                                                    >Add Inspection
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         )

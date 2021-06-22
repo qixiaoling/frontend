@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import AdminService from "../../services/AdminService";
 import CreateUsersResult from "./CreateUsersResult";
+import {Button} from "../Button";
 
 const initialState = {
     userName: '',
@@ -173,9 +174,13 @@ class CreateUsers extends Component{
                                     <div className='alert alert-danger'>{this.state.emailEmptyError}</div>
                                     <div className='alert alert-danger'>{this.state.emailInvalidError}</div>
 
-                                    <button className='btn--create-customer' onClick={this.saveUser}>
+                                    <Button
+                                        className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.saveUser}>
                                         Create
-                                    </button>
+                                    </Button>
                                 </form>
 
                             </div>
