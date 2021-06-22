@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
 import '../PageCSS/List.css'
 import InvoiceService from "../../services/InvoiceService";
+import {Button} from "../Button"
 
 
 class ListInspections extends Component {
@@ -86,8 +87,15 @@ class ListInspections extends Component {
                     <div className='alert alert-danger'>{this.state.searchInspectionError}</div>
                     <br/>
                     <div>
-                        <input type='text' placeholder='Search Inspection' onChange={this.handleSearchInspection}/>
-                        <button className='btn--list-customer' onClick={this.searchInspection}>Search</button>
+                        <input type='text' placeholder='Search Inspection'
+                               onChange={this.handleSearchInspection}/>
+                        <Button className='btn'
+                                buttonStyle='btn--page'
+                                buttonSize='btn--medium'
+                                onClick={this.searchInspection}
+                        >
+                            Search
+                        </Button>
 
                     </div>
                     <div>
@@ -112,30 +120,54 @@ class ListInspections extends Component {
                                                 <td>{ins.inspectionFee}</td>
                                                 <td>{ins.repairDate}</td>
                                                 <td>
-                                                    <button className='btn--list-customer' onClick={() => {
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={() => {
                                                         this.editInspection(ins.inspectionNumber)
-                                                    }}>Update
-                                                    </button>
-                                                    <button className='btn--list-customer' onClick={() => {
+                                                    }}>
+                                                        Update
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={() => {
                                                         this.deleteInspection(ins.inspectionNumber)
-                                                    }}>Delete
-                                                    </button>
-                                                    <button className='btn--list-customer' onClick={() => {
+                                                    }}>
+                                                        Delete
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={() => {
                                                         this.viewInspection(ins.inspectionNumber)
-                                                    }}>View
-                                                    </button>
-                                                    <button className='btn--list-customer' onClick={() => {
+                                                    }}>
+                                                        View
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={() => {
                                                         this.selectInventory(ins.inspectionNumber)
-                                                    }}>Select Inventory
-                                                    </button>
-                                                    <button className='btn--list-customer' onClick={() => {
+                                                    }}>
+                                                        Select Inventory
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={() => {
                                                         this.createInvoice(ins.inspectionNumber)
-                                                    }}>Create Invoice
-                                                    </button>
-                                                    <button className='btn--list-customer' onClick={() => {
+                                                    }}>
+                                                        Create Invoice
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={() => {
                                                         this.checkStatus(ins.inspectionNumber)
-                                                    }}>Check Status
-                                                    </button>
+                                                    }}>
+                                                        Check Status
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         )

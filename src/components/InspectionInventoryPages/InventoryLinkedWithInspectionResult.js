@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Button} from "../Button";
 
 
 class InventoryLinkedWithInspectionResult extends Component{
@@ -34,9 +35,12 @@ class InventoryLinkedWithInspectionResult extends Component{
                         :
                         <>
                             <h2>Quantity is added to the inspection successfully</h2>
-                            <button className='btn--create-customer'
-                                    onClick={this.backToInspectionList}>Back to Inspection List
-                            </button>
+                            <Button className='btn'
+                                    buttonStyle='btn--page'
+                                    buttonSize='btn--medium'
+                                    onClick={this.backToInspectionList}
+                            >Back to Inspection List
+                            </Button>
                         </>
 
                     }
