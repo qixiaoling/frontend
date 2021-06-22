@@ -17,7 +17,7 @@ class HeroSection extends Component{
                 <div>
                     <Link to='/sign-in' className='btn-mobile'>
                     <Button
-                        className='btns'
+                        className='btn'
                         buttonStyle='btn--outline'
                         buttonSize='btn--large'
                     >
