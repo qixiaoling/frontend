@@ -113,7 +113,7 @@ class ListCustomers extends Component {
 
                     </div>
 
-                    {this.state.customers.length >= this.props.Customer.length &&
+                    { this.props.Customer.length > 0 &&
                     <p className='alert alert-danger'>{this.props.Customer.length} customers has not register cars yet!</p>
                     }
                     <br/>
