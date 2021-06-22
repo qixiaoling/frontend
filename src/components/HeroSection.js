@@ -4,16 +4,18 @@ import { Button } from './Button';
 import './HeroSection.css';
 // import '../road.jpg';
 import '../video.mp4';
+import {Link} from "react-router-dom";
 
 class HeroSection extends Component{
     render(){
         return (
             <div className='hero-container'>
-                <h1>We are profesional</h1>
+                <h1>We are professional</h1>
                 <br/>
                 <p>We are our customers' go-to!</p>
                 <br/>
                 <div>
+                    <Link to='/sign-in' className='btn-mobile'>
                     <Button
                         className='btns'
                         buttonStyle='btn--outline'
@@ -21,6 +23,7 @@ class HeroSection extends Component{
                     >
                         Grow with us
                     </Button>
+                    </Link>
                 </div>
             </div>
         );

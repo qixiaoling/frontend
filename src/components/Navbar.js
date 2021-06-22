@@ -20,6 +20,7 @@ function Navbar({Customer}){
     console.log(Customer.length)
 
 
+
     return(
         <>
             <nav className="navbar">
@@ -76,6 +77,7 @@ function Navbar({Customer}){
                             </Link>
                         </li>
                         <li className='sign-up-button'>
+                            <Link to='/sign-in' className='btn-mobile'>
                             <Button
                                 className='btns'
                                 buttonStyle='btn--primary'
@@ -83,6 +85,7 @@ function Navbar({Customer}){
                             >
                                 Sign In
                             </Button>
+                            </Link>
                         </li>
                     </ul>
 
