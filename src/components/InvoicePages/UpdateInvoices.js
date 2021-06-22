@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import {Button} from "../Button";
 import '../PageCSS/Create.css'
 import InvoiceService from "../../services/InvoiceService";
 
@@ -105,11 +105,19 @@ class UpdateInvoices extends Component {
                             </div>
                             <br />
                             <div className="form-element-button">
-                                <button className='btn--create-customer' onClick={this.updateInvoice}>Update</button>
-                                <button className='btn--create-customer' onClick={this.cancel.bind(this)}
-                                        style={{marginLeft:"10px"}}>
-                                    Cancel
-                                </button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.updateInvoice}
+                                >Update
+                                </Button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.cancel.bind(this)}
+                                        style={{marginLeft:"10px"}}
+                                >Cancel
+                                </Button>
                             </div>
 
                         </form>
