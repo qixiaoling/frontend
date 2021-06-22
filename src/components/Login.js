@@ -9,17 +9,29 @@ class Login extends Component {
         super();
 
         this.state = {
+            username: '',
+            password: '',
+            loggedIn : false,
         }
+        this.changePasswordHandler = this.changePasswordHandler.bind(this);
+        this.changeUsernameHandler = this.changeUsernameHandler.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
 
+    }
+    changeUsernameHandler=(e)=>{
+        this.setState({username : e.target.value});
+    }
+    changePasswordHandler=(e)=>{
+        this.setState({password: e.target.value})
     }
 
     handleSubmit = e => {
         e.preventDefault();
 
         const data = {
-            username: this.username,
-            password: this.password
+            username: this.state.username,
+            password: this.state.password
         }
         console.log(data.username)
         axios.post('http://localhost:8080/login', data)
@@ -32,7 +44,7 @@ class Login extends Component {
                 })
                 console.log(res.headers.authorization)
 
-                localStorage.setItem('userName', this.username);
+                localStorage.setItem('userName', this.state.username);
             })
 
 
@@ -59,11 +71,11 @@ class Login extends Component {
                         <form>
                             <div className="form-group">
                                 <input type="text" placeholder="username" className="form-control"
-                                       onChange={e => this.username = e.target.value}/>
+                                       onChange={this.changeUsernameHandler}/>
                             </div>
                             <div className="form-group">
                                 <input type="password" placeholder="password" className="form-control"
-                                       onChange={e => this.password = e.target.value}/>
+                                       onChange={this.changePasswordHandler}/>
                             </div>
                             <div className="form-group">
                                 <input type="checkbox"/>

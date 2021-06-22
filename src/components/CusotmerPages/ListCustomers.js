@@ -22,10 +22,13 @@ class ListCustomers extends Component {
         super(props)
         this.state = {
             customers: [],
+            foundNotRegisteredCars: [],
             searchCustomer: '',
             searchCustomerError: '',
-            CustomerWithNoCarFound: [],
+
         }
+
+
         this.addCustomer = this.addCustomer.bind(this);
         this.editCustomer = this.editCustomer.bind(this);
         this.deleteCustomer = this.deleteCustomer.bind(this);
@@ -41,10 +44,13 @@ class ListCustomers extends Component {
         CustomerService.getCustomers().then((res) => {
             console.log(res.data)
             this.setState({customers: res.data});
-            const foundCar = this.state.customers.filter((cus) => cus.car === null)
-            this.setState({CustomerWithNoCarFound: foundCar});
-            console.log(this.state.CustomerWithNoCarFound);
+            console.log(this.state.customers)
+            this.state.foundNotRegisteredCars = this.state.customers.filter((cus) => cus.car === null)
+
+            this.props.update(this.state.foundNotRegisteredCars)
+
         })
+
     }
 
     editCustomer(customerId) {
@@ -86,6 +92,7 @@ class ListCustomers extends Component {
     }
 
     render() {
+
         return (
             <>
             <div className="main-container">
@@ -101,8 +108,8 @@ class ListCustomers extends Component {
 
                     </div>
 
-                    {this.state.customers.length > this.state.CustomerWithNoCarFound.length &&
-                    <p className='alert alert-danger'>{this.state.CustomerWithNoCarFound.length} customers has not register cars yet!</p>
+                    {this.state.customers.length >= this.props.Customer.length &&
+                    <p className='alert alert-danger'>{this.props.Customer.length} customers has not register cars yet!</p>
                     }
                     <br/>
                     <div>
