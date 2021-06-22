@@ -44,7 +44,7 @@ class CreateAutomobiles extends Component {
         })
     }
     cancel(){
-        this.props.history.push('/automobiles')
+        this.props.history.push('/customers')
     }
     render(){
         return(
