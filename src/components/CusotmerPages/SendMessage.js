@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CustomerService from "../../services/CustomerService";
 import '../PageCSS/Create.css'
 import SendMessageResult from "./SendMessageResult";
+import {Button} from "../Button";
 
 const initialState = {
     username: '',
@@ -117,13 +118,20 @@ class SendMessage extends Component {
                                     <br/>
                                     <br/>
                                     <div className="form-element-button">
-                                        <button className='btn--create-customer'
-                                                onClick={this.confirmSendMessage}>Send
-                                        </button>
-                                        <button className='btn--create-customer' onClick={this.cancel.bind(this)}
+                                        <Button
+                                            className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium--create'
+                                            onClick={this.confirmSendMessage}>Send
+                                        </Button>
+                                        <Button
+                                            className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium--create'
+                                            onClick={this.cancel.bind(this)}
                                                 style={{marginLeft: "10px"}}>
                                             Cancel
-                                        </button>
+                                        </Button>
                                     </div>
                                 </form>
                             </div>

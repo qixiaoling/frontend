@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
 import '../PageCSS/Create.css'
-
+import {Button} from "../Button";
 
 
 class UpdateCustomers extends Component {
@@ -91,11 +91,19 @@ class UpdateCustomers extends Component {
                             </div>
                             <br />
                             <div className="form-element-button">
-                                <button className='btn--create-customer' onClick={this.updateCustomer}>Update</button>
-                                <button className='btn--create-customer' onClick={this.cancel.bind(this)}
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium--create'
+                                        onClick={this.updateCustomer}
+                                >Update
+                                </Button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium--create'
+                                        onClick={this.cancel.bind(this)}
                                         style={{marginLeft:"10px"}}>
                                     Cancel
-                                </button>
+                                </Button>
                             </div>
 
                         </form>

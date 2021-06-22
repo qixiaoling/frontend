@@ -149,7 +149,7 @@ class ListCustomers extends Component {
                                                     }}
                                                         className='btn'
                                                         buttonStyle='btn--page'
-                                                        buttonSize='btn--medieum--list'
+                                                        buttonSize='btn--medium--list'
                                                         >Update
                                                     </Button>
                                                     <Button
@@ -158,7 +158,7 @@ class ListCustomers extends Component {
                                                     }}
                                                         className='btn'
                                                         buttonStyle='btn--page'
-                                                        buttonSize='btn--medieum--list'
+                                                        buttonSize='btn--medium--list'
                                                         >Delete
                                                     </Button>
                                                     <Button
@@ -167,7 +167,7 @@ class ListCustomers extends Component {
                                                     }}
                                                         className='btn'
                                                         buttonStyle='btn--page'
-                                                        buttonSize='btn--medieum--list'
+                                                        buttonSize='btn--medium--list'
                                                         >View
                                                     </Button>
                                                     <Button
@@ -177,7 +177,7 @@ class ListCustomers extends Component {
                                                     }}
                                                         className='btn'
                                                         buttonStyle='btn--page'
-                                                        buttonSize='btn--medieum--list'
+                                                        buttonSize='btn--medium--list'
                                                         >Add Auto
                                                     </Button>
                                                     <Button
@@ -186,7 +186,7 @@ class ListCustomers extends Component {
                                                     }}
                                                         className='btn'
                                                         buttonStyle='btn--page'
-                                                        buttonSize='btn--medieum--list'
+                                                        buttonSize='btn--medium--list'
                                                         >Send Message
                                                     </Button>
                                                 </td>

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import CustomerService from "../../services/CustomerService";
 import '../PageCSS/Create.css'
 import CreateCustomersResult from "./CreateCustomersResult";
+import {Button} from '../Button'
 
 const initialState = {
     firstName: '',
@@ -200,12 +201,21 @@ class CreateCustomers extends Component {
                                     <div className='alert alert-danger'>{this.state.emailError}</div>
                                     <br/>
                                     <div className="form-element-button">
-                                        <button className='btn--create-customer' onClick={this.saveCustomer}>Save
-                                        </button>
-                                        <button className='btn--create-customer' onClick={this.cancel.bind(this)}
+                                        <Button
+                                                onClick={this.saveCustomer}
+                                                className='btn'
+                                                buttonStyle='btn--page'
+                                                buttonSize='btn--medium--create'
+                                        >Save
+                                        </Button>
+                                        <Button
+                                                onClick={this.cancel.bind(this)}
+                                                className='btn'
+                                                buttonStyle='btn--page'
+                                                buttonSize='btn--medium--create'
                                                 style={{marginLeft: "10px"}}>
                                             Cancel
-                                        </button>
+                                        </Button>
                                     </div>
 
                                 </form>
