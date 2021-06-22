@@ -205,14 +205,14 @@ class CreateCustomers extends Component {
                                                 onClick={this.saveCustomer}
                                                 className='btn'
                                                 buttonStyle='btn--page'
-                                                buttonSize='btn--medium--create'
+                                                buttonSize='btn--medium'
                                         >Save
                                         </Button>
                                         <Button
                                                 onClick={this.cancel.bind(this)}
                                                 className='btn'
                                                 buttonStyle='btn--page'
-                                                buttonSize='btn--medium--create'
+                                                buttonSize='btn--medium'
                                                 style={{marginLeft: "10px"}}>
                                             Cancel
                                         </Button>

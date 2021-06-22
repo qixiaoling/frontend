@@ -74,13 +74,13 @@ class CreateAutomobiles extends Component {
                             <div className="form-element-button">
                                 <Button className='btn'
                                         buttonStyle='btn--page'
-                                        buttonSize='btn--medium--create'
+                                        buttonSize='btn--medium'
                                         onClick={this.saveAutomobile}
                                 >Save
                                 </Button>
                                 <Button className='btn'
                                     buttonStyle='btn--page'
-                                    buttonSize='btn--medium--list'
+                                    buttonSize='btn--medium'
                                     onClick={this.cancel.bind(this)}
                                         style={{marginLeft:"10px"}}
                                 >

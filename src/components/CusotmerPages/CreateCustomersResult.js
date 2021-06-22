@@ -39,7 +39,7 @@ class CreateCustomersResult extends Component{
                                 <h2>Customer is created successfully.</h2>
                                 <Button className='btn'
                                         buttonStyle='btn--page'
-                                        buttonSize='btn--medium--create'
+                                        buttonSize='btn--medium'
                                         onClick={this.backToCustomerList}
                                 >Back to Customer List
                                 </Button>

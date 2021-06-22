@@ -121,13 +121,13 @@ class SendMessage extends Component {
                                         <Button
                                             className='btn'
                                             buttonStyle='btn--page'
-                                            buttonSize='btn--medium--create'
+                                            buttonSize='btn--medium'
                                             onClick={this.confirmSendMessage}>Send
                                         </Button>
                                         <Button
                                             className='btn'
                                             buttonStyle='btn--page'
-                                            buttonSize='btn--medium--create'
+                                            buttonSize='btn--medium'
                                             onClick={this.cancel.bind(this)}
                                                 style={{marginLeft: "10px"}}>
                                             Cancel

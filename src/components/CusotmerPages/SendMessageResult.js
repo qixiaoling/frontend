@@ -45,7 +45,7 @@ class SendMessageResult extends Component{
                                 <h2>Your message is successfully sent.</h2>
                                 <Button className='btn'
                                         buttonStyle='btn--page'
-                                        buttonSize='btn--medium--create'
+                                        buttonSize='btn--medium'
                                         onClick={this.backToCustomerList}
                                 >Back to Customer List
                                 </Button>
