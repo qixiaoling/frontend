@@ -17,8 +17,11 @@ class Welcome extends Component {
             this.setState({userName: loggedInUserName})
         }
     }
-    signIn=()=>{
+    signIn =()=>{
         this.props.history.push('/sign-in')
+    }
+    goHome =()=>{
+        this.props.history.push('/home')
     }
 
     render() {
@@ -45,7 +48,7 @@ class Welcome extends Component {
                                     <Button className='btn'
                                             buttonStyle='btn--page'
                                             buttonSize='btn--medium'
-                                            onClick={this.signIn}
+                                            onClick={this.goHome}
                                     >
                                         Home
                                     </Button>
