@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import AdminService from "../../services/AdminService";
 import CreateUsersResult from "./CreateUsersResult";
 import {Button} from "../Button";
+import '../PageCSS/Result.css'
 
 const initialState = {
     userName: '',
@@ -55,6 +56,7 @@ class CreateUsers extends Component{
                     this.setState({status: res.status})
                 })
             this.setState(initialState)
+            console.log(this.state.userName)
         }
     }
 
