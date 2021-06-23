@@ -23,9 +23,9 @@ class Cards extends Component{
                             />
                             <CardItem
                                 depImage = {Car_1}
-                                title = 'CAR'
+                                title = 'AUTOMOBILE'
                                 text ='Read More'
-                                path ='/cars'
+                                path ='/automobiles'
                             />
                         </ul>
                     </div>
