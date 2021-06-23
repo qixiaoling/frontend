@@ -47,3 +47,8 @@
 h3 {
     font-size: large;
 }
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-around;
+}

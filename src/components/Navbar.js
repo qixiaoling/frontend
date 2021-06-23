@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {Button} from "./Button";
 import './Navbar.css';
 
 
 function Navbar({Customer}){
     const loggedInUserName = localStorage.getItem('userName')
+    const history = useHistory();
+
     const [navLinkOpen, navLinkToggle] = useState(false)
     const handleNavLinksToggle = () =>{
         navLinkToggle(!navLinkOpen)
@@ -19,6 +21,11 @@ function Navbar({Customer}){
     };
     console.log(Customer.length)
 
+    function signOut (){
+        localStorage.removeItem('token');
+        localStorage.removeItem('userName')
+       history.push('/')
+    }
 
 
     return(
@@ -77,15 +84,27 @@ function Navbar({Customer}){
                             </Link>
                         </li>
                         <li className='sign-up-button'>
-                            <Link to='/sign-in'>
-                            <Button
-                                className='btn'
-                                buttonStyle='btn--primary'
-                                buttonSize='btn--large'
-                            >
-                                Sign In
-                            </Button>
-                            </Link>
+                            {loggedInUserName ?
+                                <Button
+                                    className='btn'
+                                    buttonStyle='btn--primary'
+                                    buttonSize='btn--large'
+                                    onClick={signOut}
+                                >
+                                    Sign Out
+                                </Button>
+                                :
+                                <Link to='/sign-in'>
+                                    <Button
+                                        className='btn'
+                                        buttonStyle='btn--primary'
+                                        buttonSize='btn--large'
+                                    >
+                                        Sign In
+                                    </Button>
+                                </Link>
+
+                            }
                         </li>
                     </ul>
 
