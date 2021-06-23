@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from "axios";
 import AdminService from "../../services/AdminService";
+import {Button} from "../Button";
 
 class ListUsers extends Component {
     constructor(props) {
@@ -34,7 +35,13 @@ class ListUsers extends Component {
                 <div className="information-container">
                     <h2>Application Users List</h2>
                     <div>
-                        <button className='btn--list-customer' onClick={()=>this.addUser()}>Add User</button>
+                        <Button
+                            className='btn'
+                            buttonStyle='btn--page'
+                            buttonSize='btn--medium'
+                            onClick={()=>this.addUser()}
+                        >Add User
+                        </Button>
                     </div>
 
                     <br/>
@@ -56,10 +63,12 @@ class ListUsers extends Component {
                                     <td>{userName}</td>
                                     <td>{email}</td>
                                     <td>{roles.length > 0 ? roles.length :
-                                        <button
-                                            className='btn--list-customer'
+                                        <Button
+                                            className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium'
                                             onClick={() => this.addRole(user_id)}
-                                        >Add Role</button>}</td>
+                                        >Add Role</Button>}</td>
                                 </tr>
                             )
                         })}

@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import AutomobileService from "../../services/AutomobileService";
 import '../PageCSS/Create.css'
-import axios from "axios";
-
+import {Button} from "../Button";
 
 
 class UpdateAutomobiles extends Component {
@@ -87,11 +86,22 @@ class UpdateAutomobiles extends Component {
                             </div>
                             <br />
                             <div className="form-element-button">
-                                <button className='btn--create-customer' onClick={this.updateAutomobiles}>Save</button>
-                                <button className='btn--create-customer' onClick={this.cancel.bind(this)}
-                                        style={{marginLeft:"10px"}}>
+                                <Button
+                                    className='btn'
+                                    buttonStyle='btn--page'
+                                    buttonSize='btn--medium'
+                                    onClick={this.updateAutomobiles}
+                                >Save
+                                </Button>
+                                <Button
+                                    className='btn'
+                                    buttonStyle='btn--page'
+                                    buttonSize='btn--medium'
+                                    onClick={this.cancel.bind(this)}
+                                        style={{marginLeft:"10px"}}
+                                >
                                     Cancel
-                                </button>
+                                </Button>
                             </div>
 
                         </form>

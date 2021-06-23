@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
+import {Button} from "../Button";
 
 class CreateInspections extends Component{
     constructor(props) {
@@ -65,7 +66,7 @@ class CreateInspections extends Component{
         })
     }
     cancel(){
-        this.props.history.push('automobiles')
+        this.props.history.push('/automobiles')
     }
 
 
@@ -119,11 +120,19 @@ class CreateInspections extends Component{
                             </div>
                             <br/>
                             <div className="form-element-button">
-                                <button className='btn--create-customer' onClick={this.saveInspection}>Save</button>
-                                <button className='btn--create-customer' onClick={this.cancel.bind(this)}
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.saveInspection}
+                                >Save
+                                </Button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.cancel.bind(this)}
                                         style={{marginLeft:"10px"}}>
                                     Cancel
-                                </button>
+                                </Button>
                             </div>
                         </form>
 

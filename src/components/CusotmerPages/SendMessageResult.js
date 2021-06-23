@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 import '../PageCSS/Create.css'
+import {Button} from '../Button'
+
+
+
 class SendMessageResult extends Component{
     constructor(props) {
         super(props);
@@ -39,8 +43,12 @@ class SendMessageResult extends Component{
                             :
                             <div>
                                 <h2>Your message is successfully sent.</h2>
-                                <button className='btn--create-customer'
-                                        onClick={this.backToCustomerList}>Back to Customer List</button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.backToCustomerList}
+                                >Back to Customer List
+                                </Button>
                             </div>}
                     </>
                 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import '../CusotmerPages/CreateCustomers'
 import InventoryService from "../../services/InventoryService";
+import {Button} from "../Button";
 
 class UpdateInventories extends Component{
     constructor(props) {
@@ -92,9 +93,18 @@ class UpdateInventories extends Component{
                             </div>
                             <br />
                             <div className="form-element-button">
-                                <button className='btn--list-customer' onClick={this.updateInventory}>Save</button>
-                                <button className='btn--list-customer' onClick={this.cancel} style={{marginLeft:"10px"}}>
-                                    Cancel</button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.updateInventory}
+                                >Save
+                                </Button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.cancel} style={{marginLeft:"10px"}}
+                                >Cancel
+                                </Button>
                             </div>
                         </form>
 

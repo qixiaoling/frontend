@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import axios from "axios";
 import AdminService from "../../services/AdminService";
 import UserService from "../../services/UserService";
 import UserResetPasswordResult from "./UserResetPasswordResult";
+import {Button} from "../Button";
 
 const loggedInUsername = localStorage.getItem('userName')
 
@@ -127,10 +127,12 @@ class UserResetPassword extends Component {
                                         />
                                     </div>
                                     <div className='alert alert-danger'>{this.state.passwordError}</div>
-                                    <button className='btn--create-customer'
+                                    <Button className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium'
                                             onClick={this.resetPassword}>
                                         Reset Password
-                                    </button>
+                                    </Button>
                                 </form>
 
                             </div>

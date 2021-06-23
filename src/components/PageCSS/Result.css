@@ -12,3 +12,22 @@ body{
 h2{
     text-align: center;
 }
+
+.alert {
+    margin-bottom: 1rem;
+    height: 1.25rem;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-size: large;
+    border-radius: 0.25rem;
+    text-transform: capitalize;
+}
+.alert-danger {
+    color: #721c24;
+
+}
+.alert-success {
+    color: #155724;
+    background: #d4edda;
+}

@@ -3,6 +3,8 @@ import CustomerService from "../../services/CustomerService";
 import '../Button.css'
 import axios from "axios";
 import '../PageCSS/List.css'
+import {Button} from '../Button'
+import '../PageCSS/Result.css'
 
 // const accessToken ='eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfRlJPIn0seyJhdXRob3JpdHkiOiJVU0VSX0JBQyJ9LHsiYXV0aG9yaXR5IjoiVVNFUl9URUMifSx7ImF1dGhvcml0eSI6IlVTRVJfVFJFIn0seyJhdXRob3JpdHkiOiJBRE1JTiJ9XSwiaWF0IjoxNjIyODA2OTA1LCJleHAiOjE2MjM5NjcyMDB9.zz8982WRAlWF3xfJe6A5wXRVx7iAjC5WNuJsv7QQXPIVjk3AMF3LpHw4kJxcSJMEcTKEA9En7EvDHj3C6toIOw'
 axios.interceptors.request.use(
@@ -99,16 +101,25 @@ class ListCustomers extends Component {
                 <div className="information-container">
                     <h2>Customers List</h2>
                     <div>
-                        <button className='btn--list-customer' onClick={this.addCustomer}>Add Customer</button>
+                        <Button
+                            className='btn'
+                            buttonStyle='btn--page'
+                            buttonSize='btn--medium'
+                            onClick={this.addCustomer}>Add Customer</Button>
                     </div>
                     <div className='alert alert-danger'>{this.state.searchCustomerError}</div>
                     <div>
                         <input type='text' placeholder='Search Customer' onChange={this.handleSearchCustomer}/>
-                        <button className='btn--list-customer' onClick={this.searchCustomer}>Search</button>
+                        <Button className='btn'
+                                buttonStyle='btn--page'
+                                buttonSize='btn--medium'
+                                onClick={this.searchCustomer}
+                        >Search
+                        </Button>
 
                     </div>
 
-                    {this.state.customers.length >= this.props.Customer.length &&
+                    { this.props.Customer.length > 0 &&
                     <p className='alert alert-danger'>{this.props.Customer.length} customers has not register cars yet!</p>
                     }
                     <br/>
@@ -138,28 +149,52 @@ class ListCustomers extends Component {
                                                 <td>{cus.email}</td>
                                                 <td> {cus.car? cus.car.numberPlate : 'no car yet'}</td>
                                                 <td>
-                                                    <button onClick={() => {
+                                                    <Button
+                                                        onClick={() => {
                                                         this.editCustomer(cus.customerId)
-                                                    }} className='btn--list-customer'>Update
-                                                    </button>
-                                                    <button onClick={() => {
+                                                    }}
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        >Update
+                                                    </Button>
+                                                    <Button
+                                                        onClick={() => {
                                                         this.deleteCustomer(cus.customerId)
-                                                    }} className='btn--list-customer'>Delete
-                                                    </button>
-                                                    <button onClick={() => {
+                                                    }}
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        >Delete
+                                                    </Button>
+                                                    <Button
+                                                        onClick={() => {
                                                         this.viewCustomer(cus.customerId)
-                                                    }} className='btn--list-customer'>View
-                                                    </button>
-                                                    <button
+                                                    }}
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        >View
+                                                    </Button>
+                                                    <Button
                                                         disabled={cus.car}
                                                         onClick={() => {
                                                         this.addAutomobile(cus.customerId)
-                                                    }} className='btn--list-customer'>Add Auto
-                                                    </button>
-                                                    <button onClick={() => {
+                                                    }}
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        >Add Auto
+                                                    </Button>
+                                                    <Button
+                                                        onClick={() => {
                                                         this.sendMessage(cus.customerId)
-                                                    }} className='btn--list-customer'>Send Message
-                                                    </button>
+                                                    }}
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        >Send Message
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         )

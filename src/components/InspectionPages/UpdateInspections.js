@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
 import'../PageCSS/List.css'
+import {Button} from "../Button";
 
 
 class UpdateInspections extends Component{
@@ -137,11 +138,19 @@ class UpdateInspections extends Component{
                             </div>
                             <br/>
                             <div className="form-element-button">
-                                <button className='btn--create-customer' onClick={this.updateInspection}>Save</button>
-                                <button className='btn--create-customer' onClick={this.cancel.bind(this)}
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.updateInspection}
+                                >Save
+                                </Button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.cancel.bind(this)}
                                         style={{marginLeft:"10px"}}>
                                     Cancel
-                                </button>
+                                </Button>
                             </div>
                         </form>
 

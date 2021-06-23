@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import axios from "axios";
 import '../../App.css'
 import HeroSection from "../HeroSection";
 import Cards from "../Cards";
@@ -12,39 +11,9 @@ class Home extends Component {
         }
     }
 
-    componentDidMount() {
-
-        const config = {
-            headers: {
-                Authorization: localStorage.getItem('token')
-
-            }
-
-        };
-        console.log(config)
-
-
-        axios.get('/customers', config).then(
-            res => {
-                this.setState({
-                    user: res.data
-                });
-            },
-            err =>{
-                console.log(err)
-            }
-        )
-    };
      render(){
-         // if(this.state.user){
-         //     return (
-         //         <h2>Hi {this.state.user.username}</h2>
-         //     )
-         // };
-
          return(
              <>
-
                  <HeroSection />
                  <Cards />
              </>

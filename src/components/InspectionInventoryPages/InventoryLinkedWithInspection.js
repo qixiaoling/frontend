@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import InspectionInventoryService from "../../services/InspectionInventoryService";
 import InventoryLinkedWithInspectionResult from "./InventoryLinkedWithInspectionResult";
+import {Button} from "../Button";
 
 class InventoryLinkedWithInspection extends Component {
     constructor(props) {
@@ -56,9 +57,14 @@ class InventoryLinkedWithInspection extends Component {
                                         <td><input placeholder="0" name="inventoryQuantity"
                                                    value={this.state.inventoryQuantities}
                                                    onChange={this.changeInventoryQuantityHandler}/>
-                                            <button className='btn--create-customer' onClick={this.addQuantity}>Add
+                                            <Button
+                                                className='btn'
+                                                buttonStyle='btn--page'
+                                                buttonSize='btn--medium'
+                                                onClick={this.addQuantity}
+                                            >Add
                                                 Quantity
-                                            </button>
+                                            </Button>
                                         </td>
                                     </tr>
                                     </tbody>

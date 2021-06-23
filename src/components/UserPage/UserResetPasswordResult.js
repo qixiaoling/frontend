@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Button} from "../Button";
 
 class UserResetPasswordResult extends Component{
 
@@ -22,7 +23,7 @@ class UserResetPasswordResult extends Component{
     }
     backToHome = (e)=>{
         e.preventDefault();
-        this.props.history.push('/');
+        this.props.history.push('/home');
     }
 
 
@@ -36,8 +37,12 @@ class UserResetPasswordResult extends Component{
                             :
                             <div>
                                 <h2>Password is reset successfully.</h2>
-                                <button className='btn--create-customer'
-                                        onClick={this.backToHome}>Back to Home</button>
+                                <Button className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.backToHome}
+                                >Back to Home
+                                </Button>
                             </div>
 
                         }

@@ -16,7 +16,7 @@ class Login extends Component {
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
         this.changeUsernameHandler = this.changeUsernameHandler.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
+        this.close = this.close.bind(this);
 
     }
     changeUsernameHandler=(e)=>{
@@ -24,6 +24,9 @@ class Login extends Component {
     }
     changePasswordHandler=(e)=>{
         this.setState({password: e.target.value})
+    }
+    close(){
+        this.props.history.push('/')
     }
 
     handleSubmit = e => {
@@ -54,7 +57,7 @@ class Login extends Component {
 
     render() {
         if (this.state.loggedIn) {
-            return <Redirect to={'/'}/>
+            return <Redirect to={'/home'}/>
         }
         return (
 
@@ -66,7 +69,7 @@ class Login extends Component {
                         <h1 className="img-title">eGineRight</h1>
                     </div>
                     <div className="form">
-                        <div className="close">&times;</div>
+                        <div className="close" onClick={this.close}>&times;</div>
                         <h1 className="login-popup-title">Sign In</h1>
                         <form>
                             <div className="form-group">

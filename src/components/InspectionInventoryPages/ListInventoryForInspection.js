@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import InventoryService from "../../services/InventoryService";
 import '../PageCSS/List.css'
 import InspectionInventoryService from "../../services/InspectionInventoryService";
+import {Button} from "../Button";
 
 
 class ListInventoryForInspection extends Component {
@@ -58,10 +59,14 @@ class ListInventoryForInspection extends Component {
                                                 <td>{inv.itemDescription}</td>
                                                 <td>{inv.availableUnit}</td>
                                                 <td>
-                                                    <button className='btn--list-customer' onClick={() => {
+                                                    <Button
+                                                        className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        onClick={() => {
                                                         this.selectInventory(inv.itemId)
                                                     }}>Select
-                                                    </button>
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         )

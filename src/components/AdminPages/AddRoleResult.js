@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Button} from "../Button";
 
 
 class AddRoleResult extends Component{
@@ -37,8 +38,13 @@ class AddRoleResult extends Component{
                             :
                             <div>
                                 <h2>Role is created successfully.</h2>
-                                <button className='btn--create-customer'
-                                        onClick={this.backToUserList}>Back to User List</button>
+                                <Button
+                                    className='btn'
+                                    buttonStyle='btn--page'
+                                    buttonSize='btn--medium'
+                                    onClick={this.backToUserList}
+                                >Back to User List
+                                </Button>
                             </div>
 
                         }

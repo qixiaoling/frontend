@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import InvoiceService from "../../services/InvoiceService";
 import '../PageCSS/List.css'
+import {Button} from "../Button";
 
 class ListInvoices extends Component {
     constructor(props) {
@@ -61,18 +62,30 @@ class ListInvoices extends Component {
                                                 <td>{inv.totalPreTax}</td>
                                                 <td>{inv.totalFee}</td>
                                                 <td>
-                                                    <button className='btn--list-customer' onClick={(e) => {
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={(e) => {
                                                         this.updateInvoice(inv.invoiceId)
-                                                    }}>Update
-                                                    </button>
-                                                    <button className='btn--list-customer' onClick={(e)=>{
+                                                    }}
+                                                    >Update
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={(e)=>{
                                                         this.deleteInvoice(inv.invoiceId)
-                                                    }}>Delete
-                                                    </button>
-                                                    <button className='btn--list-customer' onClick={(e) => {
+                                                    }}
+                                                    >Delete
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={(e) => {
                                                         this.viewInvoice(inv.invoiceId)
-                                                    }}>View
-                                                    </button>
+                                                    }}
+                                                    >View
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         )

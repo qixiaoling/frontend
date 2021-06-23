@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import InventoryService from "../../services/InventoryService";
 import '../Button.css'
 import '../PageCSS/List.css'
+import {Button} from "../Button";
 
 
 class ListInventories extends Component{
@@ -47,7 +48,12 @@ class ListInventories extends Component{
                 <div className="information-container">
                     <h2>List Inventories</h2>
                     <div>
-                        <button className='btn--list-customer' onClick={this.addInventory}>Add Inventory</button>
+                        <Button className='btn'
+                                buttonStyle='btn--page'
+                                buttonSize='btn--medium'
+                                onClick={this.addInventory}
+                        >Add Inventory
+                        </Button>
                     </div>
                     <br />
                     <div>
@@ -69,9 +75,24 @@ class ListInventories extends Component{
                                                 <td>{inv.itemDescription}</td>
                                                 <td>{inv.availableUnit}</td>
                                                 <td>
-                                                    <button className='btn--list-customer' onClick={()=>{this.editInventory(inv.itemId)}}>Update</button>
-                                                    <button className='btn--list-customer' onClick={()=>{this.deleteInventory(inv.itemId)}}>Delete</button>
-                                                    <button className='btn--list-customer' onClick={()=>{this.viewInventory(inv.itemId)}}>View</button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={()=>{this.editInventory(inv.itemId)}}
+                                                    >Update
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={()=>{this.deleteInventory(inv.itemId)}}
+                                                    >Delete
+                                                    </Button>
+                                                    <Button className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                            onClick={()=>{this.viewInventory(inv.itemId)}}
+                                                    >View
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         )

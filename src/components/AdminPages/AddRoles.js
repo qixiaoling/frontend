@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import AdminService from "../../services/AdminService";
 import AddRoleResult from "./AddRoleResult";
+import {Button} from "../Button";
 
 class addRoles extends Component {
 
@@ -60,10 +61,14 @@ class addRoles extends Component {
 
                                     </div>
 
-                                    <button type='submit' className='btn--create-customer'
-                                            onClick={this.addRoles}>
+                                    <Button
+                                        className='btn'
+                                        buttonStyle='btn--page'
+                                        buttonSize='btn--medium'
+                                        onClick={this.addRoles}
+                                    >
                                         Add Role(s)
-                                    </button>
+                                    </Button>
 
                                 </form>
 
