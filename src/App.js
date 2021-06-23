@@ -30,7 +30,7 @@ import ListUsers from "./components/AdminPages/ListUsers";
 import CreateUsers from "./components/AdminPages/CreateUsers";
 import UserResetPassword from "./components/UserPage/UserResetPassword";
 import AddRoles from "./components/AdminPages/AddRoles";
-
+import Welcome from "./components/Welcome";
 
 class App extends Component {
     constructor() {
@@ -53,11 +53,12 @@ class App extends Component {
                 <Router>
                     <Navbar Customer={this.state.CustomerWithNoCarFound}  />
                     <Switch>
-                        <Route path='/' exact component={Home}/>
+                        <Route path='/home' exact component={Home}/>
                         <Route path='/customers' exact
                                render={(props)=><ListCustomers {...props} Customer={this.state.CustomerWithNoCarFound} update = {this.update}/> }
                         />
                             <Route path='/add-customer' exact component={CreateCustomers}/>
+                            <Route path='/' exact component={Welcome}/>
                             <Route path='/sign-in' exact component={Login}/>
                             <Route path='/update-customer/:id' exact component={UpdateCustomers}/>
                             <Route path='/view-customer/:id' exact component={ViewCustomers}/>

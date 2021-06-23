@@ -30,7 +30,7 @@ function Navbar({Customer}){
 
                     <ul className={renderClasses()}>
                         <li className='nav-item'>
-                            <Link to="/" className='link' >
+                            <Link to="/home" className='link' >
                                 Home
                             </Link>
                         </li>
