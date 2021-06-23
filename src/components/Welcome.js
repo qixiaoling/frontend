@@ -26,11 +26,11 @@ class Welcome extends Component {
                     <div className='welcome-popup'>
                         <div className='box'>
                             <div className='text'>
-                                <h1>Welcome back {this.state.userName} !</h1>
+                                <h1>Welcome back {loggedInUserName} !</h1>
                             </div>
                             <div className='option'>
                                 <div className='wrapper'>
-                                    <h3>Not {this.state.userName}?</h3>
+                                    <h3>Not {loggedInUserName}?</h3>
                                     <Button className='btn'
                                             buttonStyle='btn--page'
                                             buttonSize='btn--medium'

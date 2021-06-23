@@ -23,7 +23,7 @@ class UserResetPasswordResult extends Component{
     }
     backToHome = (e)=>{
         e.preventDefault();
-        this.props.history.push('/');
+        this.props.history.push('/home');
     }
 
 
