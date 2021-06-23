@@ -77,7 +77,7 @@ function Navbar({Customer}){
                             </Link>
                         </li>
                         <li className='sign-up-button'>
-                            <Link to='/sign-in' className='btn-mobile'>
+                            <Link to='/sign-in'>
                             <Button
                                 className='btn'
                                 buttonStyle='btn--primary'

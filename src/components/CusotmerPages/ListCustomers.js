@@ -110,7 +110,12 @@ class ListCustomers extends Component {
                     <div className='alert alert-danger'>{this.state.searchCustomerError}</div>
                     <div>
                         <input type='text' placeholder='Search Customer' onChange={this.handleSearchCustomer}/>
-                        <button className='btn--list-customer' onClick={this.searchCustomer}>Search</button>
+                        <Button className='btn'
+                                buttonStyle='btn--page'
+                                buttonSize='btn--medium'
+                                onClick={this.searchCustomer}
+                        >Search
+                        </Button>
 
                     </div>
 
