@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Navbar from "./components/Navbar_Class";
+import Navbar from "./components/Navbar";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Home from "./components/CusotmerPages/Home";
 import Login from "./components/Login";
@@ -55,7 +55,7 @@ class App extends Component {
 
 
                     <ConsumerProvider value={{
-                        consumerWithoutCar: [],
+                        consumerWithoutCar: this.state.consumerWithoutCar,
                         update: this.update,
                     }}>
 

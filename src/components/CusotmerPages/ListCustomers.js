@@ -55,7 +55,8 @@ class ListCustomers extends Component {
             console.log("I AM CONTEXTTEST", contextTest)
 
             contextTest.update(this.state.foundNotRegisteredCars);
-            console.log('I AM THE CONTEXT ARRAY', contextTest.consumerWithoutCar.length)
+
+            console.log('I AM ONTEXT ARRAY again', contextTest)
 
 
 
