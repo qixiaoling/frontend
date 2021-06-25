@@ -5,6 +5,7 @@ import axios from "axios";
 import '../PageCSS/List.css'
 import {Button} from '../Button'
 import '../PageCSS/Result.css'
+import ConsumerContext, {ConsumerConsumer} from "../../customerContext";
 
 // const accessToken ='eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPbGFmIiwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IlVTRVJfRlJPIn0seyJhdXRob3JpdHkiOiJVU0VSX0JBQyJ9LHsiYXV0aG9yaXR5IjoiVVNFUl9URUMifSx7ImF1dGhvcml0eSI6IlVTRVJfVFJFIn0seyJhdXRob3JpdHkiOiJBRE1JTiJ9XSwiaWF0IjoxNjIyODA2OTA1LCJleHAiOjE2MjM5NjcyMDB9.zz8982WRAlWF3xfJe6A5wXRVx7iAjC5WNuJsv7QQXPIVjk3AMF3LpHw4kJxcSJMEcTKEA9En7EvDHj3C6toIOw'
 axios.interceptors.request.use(
@@ -18,6 +19,7 @@ axios.interceptors.request.use(
         return Promise.reject(error);
     }
 )
+
 
 class ListCustomers extends Component {
     constructor(props) {
@@ -48,8 +50,14 @@ class ListCustomers extends Component {
             this.setState({customers: res.data});
             console.log(this.state.customers)
             this.state.foundNotRegisteredCars = this.state.customers.filter((cus) => cus.car === null)
+            const contextTest = this.context;
 
-            this.props.update(this.state.foundNotRegisteredCars)
+            console.log("I AM CONTEXTTEST", contextTest)
+
+            contextTest.update(this.state.foundNotRegisteredCars);
+            console.log('I AM THE CONTEXT ARRAY', contextTest.consumerWithoutCar.length)
+
+
 
         })
 
@@ -96,119 +104,128 @@ class ListCustomers extends Component {
     render() {
 
         return (
-            <>
-            <div className="main-container">
-                <div className="information-container">
-                    <h2>Customers List</h2>
-                    <div>
-                        <Button
-                            className='btn'
-                            buttonStyle='btn--page'
-                            buttonSize='btn--medium'
-                            onClick={this.addCustomer}>Add Customer</Button>
-                    </div>
-                    <div className='alert alert-danger'>{this.state.searchCustomerError}</div>
-                    <div>
-                        <input type='text' placeholder='Search Customer' onChange={this.handleSearchCustomer}/>
-                        <Button className='btn'
-                                buttonStyle='btn--page'
-                                buttonSize='btn--medium'
-                                onClick={this.searchCustomer}
-                        >Search
-                        </Button>
+            <ConsumerConsumer>
+                {data=>{
+                    console.log('ik ben ListConstomer in consumerconsumer', data.consumerWithoutCar.length)
+                    return(
+                        <>
+                            <div className="main-container">
+                                <div className="information-container">
+                                    <h2>Customers List</h2>
+                                    <div>
+                                        <Button
+                                            className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium'
+                                            onClick={this.addCustomer}>Add Customer</Button>
+                                    </div>
+                                    <div className='alert alert-danger'>{this.state.searchCustomerError}</div>
+                                    <div>
+                                        <input type='text' placeholder='Search Customer' onChange={this.handleSearchCustomer}/>
+                                        <Button className='btn'
+                                                buttonStyle='btn--page'
+                                                buttonSize='btn--medium'
+                                                onClick={this.searchCustomer}
+                                        >Search
+                                        </Button>
 
-                    </div>
+                                    </div>
 
-                    { this.props.Customer.length > 0 &&
-                    <p className='alert alert-danger'>{this.props.Customer.length} customers has not register cars yet!</p>
-                    }
-                    <br/>
-                    <div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th> Customer ID</th>
-                                <th> Customer First Name</th>
-                                <th> Customer Last Name</th>
-                                <th> Customer Gender</th>
-                                <th> Customer Email</th>
-                                <th> Registered Car</th>
-                                <th> Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody className="list-table">
-                            {
-                                this.state.customers.map(
-                                    cus => {
-                                        return (
-                                            <tr key={cus.customerId}>
-                                                <td>{cus.customerId}</td>
-                                                <td>{cus.firstName}</td>
-                                                <td>{cus.lastName}</td>
-                                                <td>{cus.gender}</td>
-                                                <td>{cus.email}</td>
-                                                <td> {cus.car? cus.car.numberPlate : 'no car yet'}</td>
-                                                <td>
-                                                    <Button
-                                                        onClick={() => {
-                                                        this.editCustomer(cus.customerId)
-                                                    }}
-                                                        className='btn'
-                                                        buttonStyle='btn--page'
-                                                        buttonSize='btn--medium'
-                                                        >Update
-                                                    </Button>
-                                                    <Button
-                                                        onClick={() => {
-                                                        this.deleteCustomer(cus.customerId)
-                                                    }}
-                                                        className='btn'
-                                                        buttonStyle='btn--page'
-                                                        buttonSize='btn--medium'
-                                                        >Delete
-                                                    </Button>
-                                                    <Button
-                                                        onClick={() => {
-                                                        this.viewCustomer(cus.customerId)
-                                                    }}
-                                                        className='btn'
-                                                        buttonStyle='btn--page'
-                                                        buttonSize='btn--medium'
-                                                        >View
-                                                    </Button>
-                                                    <Button
-                                                        disabled={cus.car}
-                                                        onClick={() => {
-                                                        this.addAutomobile(cus.customerId)
-                                                    }}
-                                                        className='btn'
-                                                        buttonStyle='btn--page'
-                                                        buttonSize='btn--medium'
-                                                        >Add Auto
-                                                    </Button>
-                                                    <Button
-                                                        onClick={() => {
-                                                        this.sendMessage(cus.customerId)
-                                                    }}
-                                                        className='btn'
-                                                        buttonStyle='btn--page'
-                                                        buttonSize='btn--medium'
-                                                        >Send Message
-                                                    </Button>
-                                                </td>
-                                            </tr>
-                                        )
+                                    {data.consumerWithoutCar.length > 0 &&
+                                    <p className='alert alert-danger'>{data.consumerWithoutCar.length} customers has not register cars yet!</p>
                                     }
-                                )
+                                    <br/>
+                                    <div>
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th> Customer ID</th>
+                                                <th> Customer First Name</th>
+                                                <th> Customer Last Name</th>
+                                                <th> Customer Gender</th>
+                                                <th> Customer Email</th>
+                                                <th> Registered Car</th>
+                                                <th> Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody className="list-table">
+                                            {
+                                                this.state.customers.map(
+                                                    cus => {
+                                                        return (
+                                                            <tr key={cus.customerId}>
+                                                                <td>{cus.customerId}</td>
+                                                                <td>{cus.firstName}</td>
+                                                                <td>{cus.lastName}</td>
+                                                                <td>{cus.gender}</td>
+                                                                <td>{cus.email}</td>
+                                                                <td> {cus.car? cus.car.numberPlate : 'no car yet'}</td>
+                                                                <td>
+                                                                    <Button
+                                                                        onClick={() => {
+                                                                            this.editCustomer(cus.customerId)
+                                                                        }}
+                                                                        className='btn'
+                                                                        buttonStyle='btn--page'
+                                                                        buttonSize='btn--medium'
+                                                                    >Update
+                                                                    </Button>
+                                                                    <Button
+                                                                        onClick={() => {
+                                                                            this.deleteCustomer(cus.customerId)
+                                                                        }}
+                                                                        className='btn'
+                                                                        buttonStyle='btn--page'
+                                                                        buttonSize='btn--medium'
+                                                                    >Delete
+                                                                    </Button>
+                                                                    <Button
+                                                                        onClick={() => {
+                                                                            this.viewCustomer(cus.customerId)
+                                                                        }}
+                                                                        className='btn'
+                                                                        buttonStyle='btn--page'
+                                                                        buttonSize='btn--medium'
+                                                                    >View
+                                                                    </Button>
+                                                                    <Button
+                                                                        disabled={cus.car}
+                                                                        onClick={() => {
+                                                                            this.addAutomobile(cus.customerId)
+                                                                        }}
+                                                                        className='btn'
+                                                                        buttonStyle='btn--page'
+                                                                        buttonSize='btn--medium'
+                                                                    >Add Auto
+                                                                    </Button>
+                                                                    <Button
+                                                                        onClick={() => {
+                                                                            this.sendMessage(cus.customerId)
+                                                                        }}
+                                                                        className='btn'
+                                                                        buttonStyle='btn--page'
+                                                                        buttonSize='btn--medium'
+                                                                    >Send Message
+                                                                    </Button>
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    }
+                                                )
 
-                            }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
 
-        </>
+                        </>
+                    )
+                }}
+
+            </ConsumerConsumer>
+
         )
 
 
@@ -216,5 +233,5 @@ class ListCustomers extends Component {
 
 
 }
-
+ListCustomers.contextType = ConsumerContext;
 export default ListCustomers

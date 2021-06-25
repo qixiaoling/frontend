@@ -2,9 +2,11 @@ import React, {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import {Button} from "./Button";
 import './Navbar.css';
+import ConsumerContext, {ConsumerConsumer} from '../customerContext'
+import ListCustomers from "./CusotmerPages/ListCustomers";
 
 
-function Navbar({Customer}){
+function Navbar(props){
     const loggedInUserName = localStorage.getItem('userName')
     const history = useHistory();
 
@@ -19,7 +21,7 @@ function Navbar({Customer}){
         }
         return classes;
     };
-    console.log(Customer.length)
+    console.log(props.consumerWithoutCar.length)
 
     function signOut (){
         localStorage.removeItem('token');
@@ -46,7 +48,7 @@ function Navbar({Customer}){
                                 Customer
                             </Link>
                         </li>
-                        {Customer.length === 0 ?
+                        {props.consumerWithoutCar.length === 0 ?
                             <li className='nav-item'>
                                 <Link to="/automobiles" className='link'>
                                     Automobile
@@ -117,4 +119,5 @@ function Navbar({Customer}){
         </>
     )
 }
+// Navbar.contextType = ConsumerContext;
 export default Navbar
