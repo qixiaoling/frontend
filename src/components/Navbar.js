@@ -55,7 +55,7 @@ class Navbar extends Component {
                                     eGineRight <i className="fas fa-leaf"></i>
                                 </Link>
 
-                                <ul className={this.renderClasses}>
+                                <ul className={this.renderClasses()}>
                                     <li className='nav-item'>
                                         <Link to="/home" className='link'>
                                             Home
