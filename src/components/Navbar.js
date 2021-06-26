@@ -19,11 +19,17 @@ class Navbar extends Component {
     }
 
     handleNavLinksToggle() {
-        this.setState({navLinkOpen: !this.state.navLinkOpen})
+        this.setState((prevState => {
+            return{
+                navLinkOpen : !prevState.navLinkOpen
+            }
+            })
+
+        )
     }
 
     renderClasses() {
-        let classes = 'navlinks';
+        let classes = 'navlinks ';
         if (this.state.navLinkOpen) {
             classes += ' active'
         }
