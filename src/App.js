@@ -48,7 +48,7 @@ class App extends Component {
     }
 
     render() {
-        const {consumerWithoutCar} = this.state;
+        // const {consumerWithoutCar} = this.state;
         return (
             <>
                 <Router>
