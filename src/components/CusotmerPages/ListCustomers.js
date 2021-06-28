@@ -159,7 +159,7 @@ class ListCustomers extends Component {
                                                                 <td>{cus.lastName}</td>
                                                                 <td>{cus.gender}</td>
                                                                 <td>{cus.email}</td>
-                                                                <td> {cus.car? cus.car.numberPlate : 'no car yet'}</td>
+                                                                <td> {cus.car? cus.car.numberPlate : 'No Vehicle'}</td>
                                                                 <td>
                                                                     <Button
                                                                         onClick={() => {
