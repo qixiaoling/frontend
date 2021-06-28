@@ -6,6 +6,7 @@ import Car_1 from "../images/Car_1.jpg"
 import Inspection from "../images/Inspection.jpg"
 import Inventory_1 from "../images/Inventory_1.jpg"
 import Invoices_1 from "../images/Invoices_1.jpg"
+import passwordReset from "../images/passwordReset.jpg"
 import customerContext, {ConsumerConsumer} from "../customerContext";
 import ConsumerContext from "../customerContext";
 import Navbar from "./Navbar";
@@ -58,7 +59,7 @@ class Cards extends Component{
                                             path ='/invoices'
                                         />
                                         <CardItem
-                                            depImage = {Inspection}
+                                            depImage = {passwordReset}
                                             title = 'PASSWORD'
                                             text ='Read More'
                                             path ='/password-reset'
