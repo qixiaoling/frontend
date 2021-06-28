@@ -30,7 +30,7 @@ class CreateCustomersResult extends Component{
     render() {
         return (
             <>
-                {this.state.createCustomerFailed ? <h2>Customer is not added, please try again</h2>
+                {this.state.createCustomerFailed ? <h2>You do not have the authority, please contact Admin</h2>
                     :
                     <>
                         {this.state.loading ? <h2>Loading...</h2>

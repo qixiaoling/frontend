@@ -32,6 +32,7 @@ class CreateCustomers extends Component {
         this.changeGenderHandler = this.changeGenderHandler.bind(this);
         this.changeEmailHandler = this.changeEmailHandler.bind(this);
         this.saveCustomer = this.saveCustomer.bind(this);
+        this.postCustomer = this.postCustomer.bind(this);
     }
 
 
@@ -55,20 +56,31 @@ class CreateCustomers extends Component {
 
         const isValid = this.validate();
         if (isValid) {
-            let customer = {
-                firstName: this.state.firstName, lastName: this.state.lastName,
-                gender: this.state.gender, email: this.state.email
-            };
-            console.log('customer =>' + JSON.stringify(customer));
+            this.postCustomer();
 
-            CustomerService.createCustomers(customer)
-                .then(res => {
-                    this.setState({status: res.status})
-                })
-            this.setState(initialState)
         }
 
 
+    }
+
+    async postCustomer(){
+        let customer = {
+            firstName: this.state.firstName, lastName: this.state.lastName,
+            gender: this.state.gender, email: this.state.email
+        };
+        console.log('customer =>' + JSON.stringify(customer));
+
+        try{
+            const response = await CustomerService.createCustomers(customer)
+            this.setState({status : response.status})
+            console.log("THE STATE IS NOW:", this.state.status)
+            console.log(response);
+        }catch (err){
+            this.setState({status : 403})
+            console.log(err);
+        }
+
+        this.setState(initialState)
     }
 
     cancel() {

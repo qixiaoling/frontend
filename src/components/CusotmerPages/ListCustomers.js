@@ -19,6 +19,12 @@ axios.interceptors.request.use(
         return Promise.reject(error);
     }
 )
+axios.interceptors.response.use(null, error => {
+    console.log(error)
+    console.log('INTERCEPTOR CALLED');
+    localStorage.setItem('error', true)
+    return Promise.reject(error);
+})
 
 
 class ListCustomers extends Component {
