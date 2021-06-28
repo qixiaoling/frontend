@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import '../../App.css'
 import HeroSection from "../HeroSection";
 import Cards from "../Cards";
+import Footer from "../Footer"
 
 class Home extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class Home extends Component {
              <>
                  <HeroSection />
                  <Cards />
+                 <Footer/>
              </>
          )
      }
