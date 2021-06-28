@@ -63,7 +63,7 @@ class UpdateCustomers extends Component {
         return(
             <div className="main-container-create-customer">
                 <div className="information-container-create-customer">
-                    <h2>Update Customer</h2>
+                    <h2 data-testid='title'>Update Customer</h2>
                     <div className="customer-card-body">
                         <form className="form-create-customer">
                             <div className="form-element">

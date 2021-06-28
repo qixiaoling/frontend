@@ -107,7 +107,7 @@ class ListCustomers extends Component {
         return (
             <ConsumerConsumer>
                 {data=>{
-                    console.log('ik ben ListConstomer in consumerconsumer', data.consumerWithoutCar.length)
+                    // console.log('ik ben ListConstomer in consumerconsumer', data.consumerWithoutCar.length)
                     return(
                         <>
                             <div className="main-container">
@@ -118,7 +118,10 @@ class ListCustomers extends Component {
                                             className='btn'
                                             buttonStyle='btn--page'
                                             buttonSize='btn--medium'
-                                            onClick={this.addCustomer}>Add Customer</Button>
+                                            onClick={this.addCustomer}
+                                        >
+                                            Add Customer
+                                        </Button>
                                     </div>
                                     <div className='alert alert-danger'>{this.state.searchCustomerError}</div>
                                     <div>

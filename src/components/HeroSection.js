@@ -10,7 +10,7 @@ class HeroSection extends Component{
     render(){
         return (
             <div className='hero-container'>
-                <h1>We are professional</h1>
+                <h1 >We are professional</h1>
                 <br/>
                 <p>We are our customers' go-to!</p>
                 <br/>
@@ -20,6 +20,7 @@ class HeroSection extends Component{
                         className='btn'
                         buttonStyle='btn--outline'
                         buttonSize='btn--large'
+                        data-testid='test'
                     >
                         Grow with us
                     </Button>
