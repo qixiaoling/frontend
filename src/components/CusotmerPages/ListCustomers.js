@@ -52,11 +52,8 @@ class ListCustomers extends Component {
             this.state.foundNotRegisteredCars = this.state.customers.filter((cus) => cus.car === null)
             const contextTest = this.context;
 
-            console.log("I AM CONTEXTTEST", contextTest)
-
             contextTest.update(this.state.foundNotRegisteredCars);
 
-            console.log('I AM ONTEXT ARRAY again', contextTest)
 
 
 
@@ -107,7 +104,6 @@ class ListCustomers extends Component {
         return (
             <ConsumerConsumer>
                 {data=>{
-                    // console.log('ik ben ListConstomer in consumerconsumer', data.consumerWithoutCar.length)
                     return(
                         <>
                             <div className="main-container">
