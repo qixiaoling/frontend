@@ -146,10 +146,10 @@ class ListCustomers extends Component {
                                             <thead>
                                             <tr>
                                                 <th> Customer ID</th>
-                                                <th> Customer First Name</th>
-                                                <th> Customer Last Name</th>
-                                                <th> Customer Gender</th>
-                                                <th> Customer Email</th>
+                                                <th> First Name</th>
+                                                <th> Last Name</th>
+                                                <th> Gender</th>
+                                                <th> Email</th>
                                                 <th> Registered Car</th>
                                                 <th> Actions</th>
                                             </tr>
