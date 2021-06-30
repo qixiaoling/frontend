@@ -174,7 +174,13 @@ class ListInspections extends Component {
                                     }
                                 )
                             }
-                            {this.state.StatusAvailability && <p id='inspection-status'>{this.state.statusMsg}</p>}
+                            {this.state.StatusAvailability &&
+                            <tr id='inspection-status' >
+                                <td colSpan="5">
+                                    {this.state.statusMsg}
+                                </td>
+                            </tr>
+                            }
                             </tbody>
                         </table>
                     </div>
