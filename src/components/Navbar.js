@@ -98,11 +98,15 @@ class Navbar extends Component {
                                         </li>
                                         : null
                                     }
-                                    <li className='nav-item'>
-                                        <Link to="/password-reset" className='link'>
-                                            Password
-                                        </Link>
-                                    </li>
+                                    {loggedInUserName ?
+                                        <li className='nav-item'>
+                                            <Link to="/password-reset" className='link'>
+                                                Password
+                                            </Link>
+                                        </li>
+                                        :
+                                        null
+                                    }
                                     <li className='sign-up-button'>
                                         {loggedInUserName ?
                                             <Button
