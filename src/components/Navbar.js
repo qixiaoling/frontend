@@ -20,11 +20,10 @@ class Navbar extends Component {
 
     handleNavLinksToggle() {
         this.setState((prevState => {
-            return{
-                navLinkOpen : !prevState.navLinkOpen
-            }
+                return {
+                    navLinkOpen: !prevState.navLinkOpen
+                }
             })
-
         )
     }
 
@@ -46,9 +45,9 @@ class Navbar extends Component {
     render() {
         return (
             <ConsumerConsumer>
-                {data=>{
+                {data => {
                     console.log('ik zit in consumerconsumer', data.consumerWithoutCar.length);
-                    return(
+                    return (
                         <>
                             <nav className="navbar">
                                 <Link to="/home" className="navbar-logo">
@@ -142,9 +141,9 @@ class Navbar extends Component {
                     )
                 }}
 
-            </ConsumerConsumer>
-        )
-    }
+                    </ConsumerConsumer>
+                    )
+                }
 }
 
 Navbar.contextType = ConsumerContext;
