@@ -51,7 +51,7 @@ class Navbar extends Component {
                     return(
                         <>
                             <nav className="navbar">
-                                <Link to="/" className="navbar-logo">
+                                <Link to="/home" className="navbar-logo">
                                     eGineRight <i className="fas fa-leaf"></i>
                                 </Link>
 
