@@ -61,6 +61,7 @@ class App extends Component {
 
                         <Navbar/>
                         <Switch>
+
                             <Route path='/home' exact component={Home}/>
                             <Route path='/customers' exact component={ListCustomers}/>
                             <Route path='/add-customer' exact component={CreateCustomers}/>

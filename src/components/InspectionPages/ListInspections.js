@@ -41,7 +41,7 @@ class ListInspections extends Component {
 
     deleteInspection(inspectionNumber) {
         InspectionService.deleteInspections(inspectionNumber).then(res => {
-            this.setState({inspections: this.state.ins.filter(ins => ins.inspectionNumber != inspectionNumber)})
+            this.setState({inspections: this.state.inspections.filter(ins => ins.inspectionNumber != inspectionNumber)})
         })
     }
 
