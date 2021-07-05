@@ -33,6 +33,7 @@ class ListCustomers extends Component {
             foundNotRegisteredCars: [],
             searchCustomer: '',
             searchCustomerError: '',
+            status: '',
 
         }
 
@@ -59,8 +60,6 @@ class ListCustomers extends Component {
             contextTest.update(this.state.foundNotRegisteredCars);
 
 
-
-
         })
 
     }
@@ -74,10 +73,17 @@ class ListCustomers extends Component {
         this.props.history.push('/add-customer');
     }
 
-    deleteCustomer(customerId) {
-        CustomerService.deleteCustomer(customerId).then(res => {
-            this.setState({customers: this.state.customers.filter(customer => customer.customerId !== customerId)})
-        })
+    async deleteCustomer(customerId) {
+        try {
+            const response = await CustomerService.deleteCustomer(customerId)
+            this.setState({customers: this.state.customers.filter(customer => customer.customerId !== customerId)});
+            this.setState({status: response.status})
+
+        } catch (err) {
+            this.setState({status: 403})
+            console.log(err)
+        }
+
     }
 
     viewCustomer(customerId) {
@@ -106,132 +112,142 @@ class ListCustomers extends Component {
     render() {
 
         return (
-            <ConsumerConsumer>
-                {data=>{
-                    return(
-                        <>
-                            <div className="main-container">
-                                <div className="information-container">
-                                    <h2>Customers List</h2>
-                                    <div>
-                                        <Button
-                                            className='btn'
-                                            buttonStyle='btn--page'
-                                            buttonSize='btn--medium'
-                                            onClick={this.addCustomer}
-                                        >
-                                            Add Customer
-                                        </Button>
-                                    </div>
-                                    <div className='alert alert-danger'>{this.state.searchCustomerError}</div>
-                                    <div>
-                                        <input type='text' placeholder='Search Customer' onChange={this.handleSearchCustomer}/>
-                                        <Button className='btn'
-                                                buttonStyle='btn--page'
-                                                buttonSize='btn--medium'
-                                                onClick={this.searchCustomer}
-                                        >Search
-                                        </Button>
+            <>
+                {(this.state.status === 200 || this.state.status === '') ?
 
-                                    </div>
+                    <ConsumerConsumer>
+                        {data => {
+                            return (
+                                <>
+                                    <div className="main-container">
+                                        <div className="information-container">
+                                            <h2>Customers List</h2>
+                                            <div>
+                                                <Button
+                                                    className='btn'
+                                                    buttonStyle='btn--page'
+                                                    buttonSize='btn--medium'
+                                                    onClick={this.addCustomer}
+                                                >
+                                                    Add Customer
+                                                </Button>
+                                            </div>
+                                            <div className='alert alert-danger'>{this.state.searchCustomerError}</div>
+                                            <div>
+                                                <input type='text' placeholder='Search Customer'
+                                                       onChange={this.handleSearchCustomer}/>
+                                                <Button className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        onClick={this.searchCustomer}
+                                                >Search
+                                                </Button>
 
-                                    {data.consumerWithoutCar.length > 0 &&
-                                    <p className='alert alert-danger'>{data.consumerWithoutCar.length} customers has not register cars yet!</p>
-                                    }
-                                    <br/>
-                                    <div>
-                                        <table>
-                                            <thead>
-                                            <tr>
-                                                <th> Customer ID</th>
-                                                <th> First Name</th>
-                                                <th> Last Name</th>
-                                                <th> Gender</th>
-                                                <th> Email</th>
-                                                <th> Registered Car</th>
-                                                <th> Actions</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody className="list-table">
-                                            {
-                                                this.state.customers.map(
-                                                    cus => {
-                                                        return (
-                                                            <tr key={cus.customerId}>
-                                                                <td>{cus.customerId}</td>
-                                                                <td>{cus.firstName}</td>
-                                                                <td>{cus.lastName}</td>
-                                                                <td>{cus.gender}</td>
-                                                                <td>{cus.email}</td>
-                                                                <td> {cus.car? cus.car.numberPlate : 'No Vehicle'}</td>
-                                                                <td>
-                                                                    <Button
-                                                                        onClick={() => {
-                                                                            this.editCustomer(cus.customerId)
-                                                                        }}
-                                                                        className='btn'
-                                                                        buttonStyle='btn--page'
-                                                                        buttonSize='btn--medium'
-                                                                    >Update
-                                                                    </Button>
-                                                                    <Button
-                                                                        onClick={() => {
-                                                                            this.deleteCustomer(cus.customerId)
-                                                                        }}
-                                                                        className='btn'
-                                                                        buttonStyle='btn--page'
-                                                                        buttonSize='btn--medium'
-                                                                    >Delete
-                                                                    </Button>
-                                                                    <Button
-                                                                        onClick={() => {
-                                                                            this.viewCustomer(cus.customerId)
-                                                                        }}
-                                                                        className='btn'
-                                                                        buttonStyle='btn--page'
-                                                                        buttonSize='btn--medium'
-                                                                    >View
-                                                                    </Button>
-                                                                    <Button
-                                                                        disabled={cus.car}
-                                                                        onClick={() => {
-                                                                            this.addAutomobile(cus.customerId)
-                                                                        }}
-                                                                        className='btn'
-                                                                        buttonStyle='btn--page'
-                                                                        buttonSize='btn--medium'
-                                                                    >Add Auto
-                                                                    </Button>
-                                                                    <Button
-                                                                        onClick={() => {
-                                                                            this.sendMessage(cus.customerId)
-                                                                        }}
-                                                                        className='btn'
-                                                                        buttonStyle='btn--page'
-                                                                        buttonSize='btn--medium'
-                                                                    >Send Message
-                                                                    </Button>
-                                                                </td>
-                                                            </tr>
-                                                        )
-                                                    }
-                                                )
+                                            </div>
 
+                                            {data.consumerWithoutCar.length > 0 &&
+                                            <p className='alert alert-danger'>{data.consumerWithoutCar.length} customers
+                                                has not register cars yet!</p>
                                             }
-                                            </tbody>
-                                        </table>
+                                            <br/>
+                                            <div>
+                                                <table>
+                                                    <thead>
+                                                    <tr>
+                                                        <th> Customer ID</th>
+                                                        <th> First Name</th>
+                                                        <th> Last Name</th>
+                                                        <th> Gender</th>
+                                                        <th> Email</th>
+                                                        <th> Registered Car</th>
+                                                        <th> Actions</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody className="list-table">
+                                                    {
+                                                        this.state.customers.map(
+                                                            cus => {
+                                                                return (
+                                                                    <tr key={cus.customerId}>
+                                                                        <td>{cus.customerId}</td>
+                                                                        <td>{cus.firstName}</td>
+                                                                        <td>{cus.lastName}</td>
+                                                                        <td>{cus.gender}</td>
+                                                                        <td>{cus.email}</td>
+                                                                        <td> {cus.car ? cus.car.numberPlate : 'No Vehicle'}</td>
+                                                                        <td>
+                                                                            <Button
+                                                                                onClick={() => {
+                                                                                    this.editCustomer(cus.customerId)
+                                                                                }}
+                                                                                className='btn'
+                                                                                buttonStyle='btn--page'
+                                                                                buttonSize='btn--medium'
+                                                                            >Update
+                                                                            </Button>
+                                                                            <Button
+                                                                                onClick={() => {
+                                                                                    this.deleteCustomer(cus.customerId)
+                                                                                }}
+                                                                                className='btn'
+                                                                                buttonStyle='btn--page'
+                                                                                buttonSize='btn--medium'
+                                                                            >Delete
+                                                                            </Button>
+                                                                            <Button
+                                                                                onClick={() => {
+                                                                                    this.viewCustomer(cus.customerId)
+                                                                                }}
+                                                                                className='btn'
+                                                                                buttonStyle='btn--page'
+                                                                                buttonSize='btn--medium'
+                                                                            >View
+                                                                            </Button>
+                                                                            <Button
+                                                                                disabled={cus.car}
+                                                                                onClick={() => {
+                                                                                    this.addAutomobile(cus.customerId)
+                                                                                }}
+                                                                                className='btn'
+                                                                                buttonStyle='btn--page'
+                                                                                buttonSize='btn--medium'
+                                                                            >Add Auto
+                                                                            </Button>
+                                                                            <Button
+                                                                                onClick={() => {
+                                                                                    this.sendMessage(cus.customerId)
+                                                                                }}
+                                                                                className='btn'
+                                                                                buttonStyle='btn--page'
+                                                                                buttonSize='btn--medium'
+                                                                            >Send Message
+                                                                            </Button>
+                                                                        </td>
+                                                                    </tr>
+                                                                )
+                                                            }
+                                                        )
+
+                                                    }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                        </>
-                    )
-                }}
+                                </>
+                            )
+                        }}
 
-            </ConsumerConsumer>
+                    </ConsumerConsumer>
+                    :
+                    <h2>You have no authority</h2>
+                }
+
+            </>
+
 
         )
-
 
 
     }
