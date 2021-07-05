@@ -3,8 +3,8 @@ import AdminService from "../../services/AdminService";
 import UserService from "../../services/UserService";
 import UserResetPasswordResult from "./UserResetPasswordResult";
 import {Button} from "../Button";
+import UserContext, {UserConsumer} from "../../userContext";
 
-const loggedInUsername = localStorage.getItem('userName')
 
 const initialState = {
     users: [],
@@ -35,7 +35,10 @@ class UserResetPassword extends Component {
             AdminService.getAllUsers().then((res) => {
                 console.log(res.data);
                 this.setState({users: res.data})
-                console.log(this.getLoggedInUserId(loggedInUsername))
+                console.log(this.state.users)
+                const contextUserPw = this.context;
+
+                console.log(this.getLoggedInUserId(contextUserPw.currentUser))
             })
 
         } catch (error) {
@@ -45,10 +48,11 @@ class UserResetPassword extends Component {
 
     }
 
-    getLoggedInUserId(loginname) {
+    getLoggedInUserId(loginName) {
 
         const loggedInUser = this.state.users.find((user) =>
-            user.userName === loginname)
+            user.userName === loginName)
+        console.log("Let's see this loggedInUser:", loggedInUser)
         this.setState({loggedInUserId: loggedInUser.user_id})
         return this.state.loggedInUserId
 
@@ -60,6 +64,7 @@ class UserResetPassword extends Component {
     }
     handlePasswordReEntryChange = (e) => {
         this.setState({password_reEntry: e.target.value})
+
     }
 
     resetPassword = (e) => {
@@ -96,54 +101,63 @@ class UserResetPassword extends Component {
     }
 
     render() {
-
         return (
-            <>
-                {this.state.status ? <UserResetPasswordResult status={this.state.status} history={this.props.history}/>
-                    :
-                    <div className="main-container-create-customer">
-                        <div className='information-container-create-customer'>
-                            <h2>Hi {loggedInUsername} ! Please reset Your Password</h2>
-                            <div className='customer-card-body'>
-                                <form className='form-create-customer'>
-                                    <div className='form-element'>
-                                        <label htmlFor='password'>Your New Password</label>
-                                        <input
-                                            type='password'
-                                            id='password'
-                                            name='password'
-                                            value={this.state.password}
-                                            onChange={this.handlePasswordChange}
-                                        />
-                                    </div>
-                                    <div className='form-element'>
-                                        <label htmlFor='password-reEntry'>Comfirm Your Password</label>
-                                        <input
-                                            type='password'
-                                            id='password-reEntry'
-                                            name='password-reEntry'
-                                            value={this.state.password_reEntry}
-                                            onChange={this.handlePasswordReEntryChange}
-                                        />
-                                    </div>
-                                    <div className='alert alert-danger'>{this.state.passwordError}</div>
-                                    <Button className='btn'
-                                            buttonStyle='btn--page'
-                                            buttonSize='btn--medium'
-                                            onClick={this.resetPassword}>
-                                        Reset Password
-                                    </Button>
-                                </form>
+            <UserConsumer>
+                {data => {
+                    return (
+                        <>
+                            {this.state.status ?
+                                <UserResetPasswordResult status={this.state.status} history={this.props.history}/>
+                                :
+                                <div className="main-container-create-customer">
+                                    <div className='information-container-create-customer'>
+                                        <h2>Hi {data.currentUser} ! Please reset Your Password</h2>
+                                        <div className='customer-card-body'>
+                                            <form className='form-create-customer'>
+                                                <div className='form-element'>
+                                                    <label htmlFor='password'>Your New Password</label>
+                                                    <input
+                                                        type='password'
+                                                        id='password'
+                                                        name='password'
+                                                        value={this.state.password}
+                                                        onChange={this.handlePasswordChange}
+                                                    />
+                                                </div>
+                                                <div className='form-element'>
+                                                    <label htmlFor='password-reEntry'>Comfirm Your Password</label>
+                                                    <input
+                                                        type='password'
+                                                        id='password-reEntry'
+                                                        name='password-reEntry'
+                                                        value={this.state.password_reEntry}
+                                                        onChange={this.handlePasswordReEntryChange}
+                                                    />
+                                                </div>
+                                                <div className='alert alert-danger'>{this.state.passwordError}</div>
+                                                <Button className='btn'
+                                                        buttonStyle='btn--page'
+                                                        buttonSize='btn--medium'
+                                                        onClick={this.resetPassword}>
+                                                    Reset Password
+                                                </Button>
+                                            </form>
 
-                            </div>
-                        </div>
+                                        </div>
+                                    </div>
 
-                    </div>
-                }
-            </>
+                                </div>
+                            }
+                        </>
+                    )
+                }}
+            </UserConsumer>
         )
+
+
     }
 
 }
 
+UserResetPassword.contextType = UserContext;
 export default UserResetPassword
