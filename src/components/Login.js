@@ -60,7 +60,7 @@ class Login extends Component {
 
     render() {
         if (this.state.loggedIn) {
-            return <Redirect to={'/home'}/>
+            return <Redirect to={'/customers'}/>
         }
 
         return (

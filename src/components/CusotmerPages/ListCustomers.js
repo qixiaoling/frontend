@@ -56,8 +56,8 @@ class ListCustomers extends Component {
             this.setState({customers: res.data});
             console.log(this.state.customers)
             this.state.foundNotRegisteredCars = this.state.customers.filter((cus) => cus.car === null)
-            const contextTest = this.context;
 
+            const contextTest = this.context;
             contextTest.update(this.state.foundNotRegisteredCars);
 
 
@@ -233,6 +233,7 @@ class ListCustomers extends Component {
             </ConsumerConsumer>
 
         )
+
 
 
     }
