@@ -23,14 +23,25 @@ class UpdateInvoicesResult extends Component{
     }
     backToInvoiceList = (e)=>{
         e.preventDefault();
-        this.props.history.push('/invoices');
+        // this.props.history.push('/invoices');
+        window.location = '/invoices';
     }
 
 
     render() {
         return (
             <>
-                {this.state.updateInvoiceFailed ? <h2>You do not have the authority, please contact Admin</h2>
+                {this.state.updateInvoiceFailed ?
+                    <>
+                        <h2>You do not have the authority, please contact Admin</h2>
+                        <Button className='btn'
+                                buttonStyle='btn--page'
+                                buttonSize='btn--medium'
+                                onClick={this.backToInvoiceList}
+                        >Back to Invoice List
+                        </Button>
+                    </>
+
                     :
                     <>
                         {this.state.loading ? <h2>Loading...</h2>

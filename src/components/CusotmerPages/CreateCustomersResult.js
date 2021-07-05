@@ -30,7 +30,17 @@ class CreateCustomersResult extends Component{
     render() {
         return (
             <>
-                {this.state.createCustomerFailed ? <h2>You do not have the authority, please contact Admin</h2>
+                {this.state.createCustomerFailed ?
+                    <>
+                        <h2>You do not have the authority, please contact Admin</h2>
+                        <Button className='btn'
+                                buttonStyle='btn--page'
+                                buttonSize='btn--medium'
+                                onClick={this.backToCustomerList}
+                        >Back to Customer List
+                        </Button>
+                    </>
+
                     :
                     <>
                         {this.state.loading ? <h2>Loading...</h2>
