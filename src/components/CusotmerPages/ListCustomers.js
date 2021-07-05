@@ -46,7 +46,7 @@ class ListCustomers extends Component {
         this.sendMessage = this.sendMessage.bind(this);
         this.handleSearchCustomer = this.handleSearchCustomer.bind(this);
         this.searchCustomer = this.searchCustomer.bind(this);
-
+        this.backToCustomerList = this.backToCustomerList.bind(this);
     }
 
     componentDidMount() {
@@ -71,6 +71,11 @@ class ListCustomers extends Component {
 
     addCustomer() {
         this.props.history.push('/add-customer');
+    }
+    backToCustomerList = (e)=>{
+        e.preventDefault();
+        this.setState({status:''});
+        this.props.history.push('/customers');
     }
 
     async deleteCustomer(customerId) {
@@ -108,6 +113,7 @@ class ListCustomers extends Component {
 
 
     }
+
 
     render() {
 
@@ -241,7 +247,15 @@ class ListCustomers extends Component {
 
                     </ConsumerConsumer>
                     :
-                    <h2>You have no authority</h2>
+                    <>
+                        <h2>You have no authority</h2>
+                        <Button className='btn'
+                                buttonStyle='btn--page'
+                                buttonSize='btn--medium'
+                                onClick={this.backToCustomerList}
+                        >Back to Customer List
+                        </Button>
+                    </>
                 }
 
             </>

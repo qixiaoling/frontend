@@ -20,6 +20,7 @@ class UpdateCustomers extends Component {
         this.changeGenderHandler = this.changeGenderHandler.bind(this);
         this.changeEmailHandler = this.changeEmailHandler.bind(this);
         this.updateCustomer = this.updateCustomer.bind(this);
+        this.backToCustomerList = this.backToCustomerList.bind(this);
     }
 
     componentDidMount() {
@@ -45,6 +46,10 @@ class UpdateCustomers extends Component {
     }
     changeEmailHandler = (e) => {
         this.setState({email: e.target.value});
+    }
+    backToCustomerList = (e)=>{
+        e.preventDefault();
+        this.props.history.push('/customers');
     }
 
     async updateCustomer(e) {
@@ -80,7 +85,16 @@ class UpdateCustomers extends Component {
                 <h2>The customer is successfully updated</h2>
             }
                 {this.state.status === 403 &&
-                <h2>You have no authority</h2>
+                    <>
+                        <h2>You have no authority</h2>
+                        <Button className='btn'
+                                buttonStyle='btn--page'
+                                buttonSize='btn--medium'
+                                onClick={this.backToCustomerList}
+                        >Back to Customer List
+                        </Button>
+                    </>
+
             }
                 {this.state.status === '' &&
                 <div className="main-container-create-customer">
