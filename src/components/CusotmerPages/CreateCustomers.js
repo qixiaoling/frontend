@@ -72,6 +72,7 @@ class CreateCustomers extends Component {
 
         try{
             const response = await CustomerService.createCustomers(customer)
+            console.log(response)
             this.setState({status : response.status})
             console.log("THE STATE IS NOW:", this.state.status)
             console.log(response);

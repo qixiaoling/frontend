@@ -20,9 +20,7 @@ axios.interceptors.request.use(
     }
 )
 axios.interceptors.response.use(null, error => {
-    console.log(error)
-    console.log('INTERCEPTOR CALLED');
-    localStorage.setItem('error', true)
+    console.log(error);
     return Promise.reject(error);
 })
 
