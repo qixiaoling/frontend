@@ -238,7 +238,6 @@ class CreateCustomers extends Component {
                     </div>
                 }
             </>
-
         )
     }
 
