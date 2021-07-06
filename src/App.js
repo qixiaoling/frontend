@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Navbar from "./components/Navbar";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Home from "./components/CusotmerPages/Home";
+import Home from "./components/Home";
 import Login from "./components/Login";
 import ListCustomers from "./components/CusotmerPages/ListCustomers";
 import './App.css'
@@ -31,72 +31,98 @@ import CreateUsers from "./components/AdminPages/CreateUsers";
 import UserResetPassword from "./components/UserPage/UserResetPassword";
 import AddRoles from "./components/AdminPages/AddRoles";
 import Welcome from "./components/Welcome";
+import {ConsumerProvider} from "./customerContext";
+import {UserProvider} from "./userContext";
 
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            CustomerWithNoCarFound: [],
+            consumerWithoutCar: [],
+            currentUser: localStorage.getItem('userName'),
         }
-        this.update = this.update.bind(this)
-
+        this.update = this.update.bind(this);
+        this.updateUser = this.updateUser.bind(this);
     }
 
-    update(foundCustomers){
-        this.setState({CustomerWithNoCarFound : foundCustomers});
-        console.log(this.state.CustomerWithNoCarFound)
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.state.currentUser !== prevState.currentUser){
+            localStorage.setItem('userName', this.state.currentUser);
+        }
+    }
+
+    update(foundCustomers) {
+        this.setState({consumerWithoutCar: foundCustomers})
+    }
+
+    updateUser(foundUser) {
+        this.setState({currentUser: foundUser})
     }
 
     render() {
         return (
             <>
                 <Router>
-                    <Navbar Customer={this.state.CustomerWithNoCarFound}  />
-                    <Switch>
-                        <Route path='/home' exact component={Home}/>
-                        <Route path='/customers' exact
-                               render={(props)=><ListCustomers {...props} Customer={this.state.CustomerWithNoCarFound} update = {this.update}/> }
-                        />
-                            <Route path='/add-customer' exact component={CreateCustomers}/>
-                            <Route path='/' exact component={Welcome}/>
-                            <Route path='/sign-in' exact component={Login}/>
-                            <Route path='/update-customer/:id' exact component={UpdateCustomers}/>
-                            <Route path='/view-customer/:id' exact component={ViewCustomers}/>
-                            <Route path='/automobiles' exact component={ListAutomobiles}/>
-                            <Route path='/add-automobile/:id' exact component={CreateAutomobiles}/>
-                            <Route path='/update-automobile/:id' exact component={UpdateAutomobiles}/>
-                            <Route path='/view-automobile/:id' exact component={ViewAutomobiles}/>
-                            <Route path='/inspections' exact component={ListInspections}/>
-                            <Route path='/add-inspection/:id' exact component={CreateInspections}/>
-                            <Route path='/update-inspection/:id' exact component={UpdateInspections}/>
-                            <Route path='/view-inspection/:id' exact component={ViewInspections}/>
-                            <Route path='/inventories' exact component={ListInventories}/>
-                            <Route path='/add-inventory' exact component={CreateInventories}/>
-                            <Route path='/update-inventory/:id' exact component={UpdateInventories}/>
-                            <Route path='/view-inventory/:id' exact component={ViewInventories}/>
-                            <Route path='/list-inventory-for-inspection/:id' exact
-                                   component={ListInventoryForInspection}/>
-                            <Route path='/list-inventory-for-inspection/:idOne/:idTwo' exact
-                                   component={InventoryLinkedWithInspection}/>
-                            <Route path='/invoices' exact component={ListInvoices}/>
-                            <Route path='/update-invoice/:id' exact component={UpdateInvoices}/>
-                            <Route path='/view-invoice/:id' exact component={ViewInvoice}/>
-                            <Route path='/send-message/:id' exact component={SendMessage}/>
-                            <Route path='/admin' exact component={ListUsers}/>
-                            <Route path='/admin/add-user' exact component={CreateUsers}/>
-                            <Route path='/admin/add-role/:id' exact component={AddRoles}/>
-                            <Route path='/password-reset' exact component={UserResetPassword}/>
+                    <ConsumerProvider value={{
+                        consumerWithoutCar: this.state.consumerWithoutCar,
+                        update: this.update,
+                    }}>
+                        <UserProvider value={{
+                            currentUser: this.state.currentUser,
+                            updateUser: this.updateUser,
+                        }}>
 
-                    </Switch>
+
+                            <Navbar/>
+                            <Switch>
+
+                                <Route path='/home' exact component={Home}/>
+                                <Route path='/customers' exact component={ListCustomers}/>
+                                <Route path='/add-customer' exact component={CreateCustomers}/>
+                                <Route path='/' exact component={Welcome}/>
+                                <Route path='/sign-in' exact component={Login}/>
+                                <Route path='/update-customer/:id' exact component={UpdateCustomers}/>
+                                <Route path='/view-customer/:id' exact component={ViewCustomers}/>
+                                <Route path='/automobiles' exact component={ListAutomobiles}/>
+                                <Route path='/add-automobile/:id' exact component={CreateAutomobiles}/>
+                                <Route path='/update-automobile/:id' exact component={UpdateAutomobiles}/>
+                                <Route path='/view-automobile/:id' exact component={ViewAutomobiles}/>
+                                <Route path='/inspections' exact component={ListInspections}/>
+                                <Route path='/add-inspection/:id' exact component={CreateInspections}/>
+                                <Route path='/update-inspection/:id' exact component={UpdateInspections}/>
+                                <Route path='/view-inspection/:id' exact component={ViewInspections}/>
+                                <Route path='/inventories' exact component={ListInventories}/>
+                                <Route path='/add-inventory' exact component={CreateInventories}/>
+                                <Route path='/update-inventory/:id' exact component={UpdateInventories}/>
+                                <Route path='/view-inventory/:id' exact component={ViewInventories}/>
+                                <Route path='/list-inventory-for-inspection/:id' exact
+                                       component={ListInventoryForInspection}/>
+                                <Route path='/list-inventory-for-inspection/:idOne/:idTwo' exact
+                                       component={InventoryLinkedWithInspection}/>
+                                <Route path='/invoices' exact component={ListInvoices}/>
+                                <Route path='/update-invoice/:id' exact component={UpdateInvoices}/>
+                                <Route path='/view-invoice/:id' exact component={ViewInvoice}/>
+                                <Route path='/send-message/:id' exact component={SendMessage}/>
+                                <Route path='/admin' exact component={ListUsers}/>
+                                <Route path='/admin/add-user' exact component={CreateUsers}/>
+                                <Route path='/admin/add-role/:id' exact component={AddRoles}/>
+                                <Route path='/password-reset' exact component={UserResetPassword}/>
+
+                            </Switch>
+
+
+                        </UserProvider>
+                    </ConsumerProvider>
 
                 </Router>
+
 
             </>
 
 
-    );
+        );
     }
 
-    }
+}
 
-    export default App;
+export default App;

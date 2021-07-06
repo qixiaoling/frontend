@@ -77,7 +77,7 @@ class UpdateAutomobiles extends Component {
                                 <label>Brand: </label>
                                 <input placeholder="Brand" name="Brand" className="form-control"
                                        value={this.state.make} onChange={this.changeBrandHandler}/>
-                            </div>this
+                            </div>
                             <br />
                             <div className="form-element">
                                 <label>Model: </label>

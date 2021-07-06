@@ -38,6 +38,7 @@ class CreateUsers extends Component{
 
     }
 
+
     saveUser = (e) => {
         e.preventDefault();
 
@@ -92,7 +93,7 @@ class CreateUsers extends Component{
             passwordEmptyError = 'This field cannot be empty';
         }
         if (this.state.password.length < 8) {
-            passwordTooShortError = 'Please use minimal 8 characters'
+            passwordTooShortError = 'Please use minimum 8 characters'
         }
 
         if (passwordEmptyError) {

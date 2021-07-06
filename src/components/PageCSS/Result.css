@@ -24,7 +24,7 @@ h2{
     text-transform: capitalize;
 }
 .alert-danger {
-    color: #721c24;
+    color: darkgoldenrod;
 
 }
 .alert-success {

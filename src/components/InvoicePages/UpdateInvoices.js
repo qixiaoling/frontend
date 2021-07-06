@@ -2,19 +2,19 @@ import React, {Component} from 'react'
 import {Button} from "../Button";
 import '../PageCSS/Create.css'
 import InvoiceService from "../../services/InvoiceService";
-
-
+import UpdateInvoicesResult from "./UpdateInvoicesResult";
 
 class UpdateInvoices extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id:this.props.match.params.id,
+            id: this.props.match.params.id,
             totalPreTax: '',
             taxRate: '',
             totalFee: '',
             invoiceSent: false,
             invoicePaid: false,
+            status: '',
         }
         this.changeTotalPreTaxHandler = this.changeTotalPreTaxHandler.bind(this);
         this.changeTaxRateHandler = this.changeTaxRateHandler.bind(this);
@@ -27,105 +27,125 @@ class UpdateInvoices extends Component {
     }
 
     componentDidMount() {
-        InvoiceService.getInvoiceById(this.state.id).then((res)=>{
+        InvoiceService.getInvoiceById(this.state.id).then((res) => {
             let invoice = res.data;
             this.setState({
-                totalPreTax : invoice.totalPreTax,
-                taxRate : invoice.taxRate,
+                totalPreTax: invoice.totalPreTax,
+                taxRate: invoice.taxRate,
                 totalFee: invoice.totalFee,
                 invoiceSent: invoice.invoiceSent,
                 invoicePaid: invoice.invoicePaid,
+            })
         })
-    })}
+    }
 
-    changeTotalPreTaxHandler =(e) =>{
+    changeTotalPreTaxHandler = (e) => {
         this.setState({totalPreTax: e.target.value});
     }
-    changeTaxRateHandler =(e) =>{
+    changeTaxRateHandler = (e) => {
         this.setState({taxRate: e.target.value});
     }
-    changeTotalFeeHandler =(e) =>{
+    changeTotalFeeHandler = (e) => {
         this.setState({totalFee: e.target.value});
     }
-    changeInvoiceSentHandler =(e) =>{
+    changeInvoiceSentHandler = (e) => {
         this.setState({invoiceSent: e.target.value});
     }
-    changeInvoicePaidHandler =(e) =>{
+    changeInvoicePaidHandler = (e) => {
         this.setState({invoicePaid: e.target.value});
     }
-    updateInvoice = (e) =>{
+
+    async updateInvoice(e) {
         e.preventDefault();
-        let invoice = {totalPreTax: this.state.totalPreTax, taxRate: this.state.taxRate,
-            totalFee:this.state.totalFee, invoiceSent:this.state.invoiceSent, invoicePaid: this.state.invoicePaid};
-        console.log('invoice =>' +JSON.stringify(invoice));
-        InvoiceService.updateInvoiceById(invoice, this.state.id).then(res =>{
+        let invoice = {
+            totalPreTax: this.state.totalPreTax, taxRate: this.state.taxRate,
+            totalFee: this.state.totalFee, invoiceSent: this.state.invoiceSent, invoicePaid: this.state.invoicePaid
+        };
+        console.log('invoice =>' + JSON.stringify(invoice));
+        try {
+            const response = await InvoiceService.updateInvoiceById(invoice, this.state.id)
+            console.log(response);
+            this.setState({status: response.status})
             this.props.history.push('/invoices');
-        })
+        } catch (err) {
+            this.setState({status:403})
+            console.log(err);
+        }
+
 
     }
-    cancel(){
+
+    cancel() {
         this.props.history.push('/invoices');
     }
 
-    render(){
-        return(
-            <div className="main-container-create-customer">
-                <div className="information-container-create-customer">
-                    <h2>Update Invoice</h2>
-                    <div className="customer-card-body">
-                        <form className="form-create-customer">
-                            <div className="form-element">
-                                <label>Total PreTax Amount: </label>
-                                <input name="totalPreTax" className="form-control"
-                                       value={this.state.totalPreTax} onChange={this.changeTotalPreTaxHandler}/>
-                            </div>
-                            <br />
-                            <div className="form-element">
-                                <label>Tax Rate: </label>
-                                <input name="taxRate" className="form-control"
-                                       value={this.state.taxRate} onChange={this.changeTaxRateHandler}/>
-                            </div>
-                            <br />
-                            <div className="form-element">
-                                <label>Total Amount: </label>
-                                <input name="totalFee" className="form-control"
-                                       value={this.state.totalFee} onChange={this.changeTotalFeeHandler}/>
-                            </div>
-                            <br />
-                            <div className="form-element">
-                                <label>Send Status: </label>
-                                <input name="invoiceSent" className="form-control"
-                                       value={this.state.invoiceSent} onChange={this.changeInvoiceSentHandler}/>
-                            </div>
-                            <br />
-                            <div className="form-element">
-                                <label>Pay Status: </label>
-                                <input name="invoicePaid" className="form-control"
-                                       value={this.state.invoicePaid} onChange={this.changeInvoicePaidHandler}/>
-                            </div>
-                            <br />
-                            <div className="form-element-button">
-                                <Button className='btn'
-                                        buttonStyle='btn--page'
-                                        buttonSize='btn--medium'
-                                        onClick={this.updateInvoice}
-                                >Update
-                                </Button>
-                                <Button className='btn'
-                                        buttonStyle='btn--page'
-                                        buttonSize='btn--medium'
-                                        onClick={this.cancel.bind(this)}
-                                        style={{marginLeft:"10px"}}
-                                >Cancel
-                                </Button>
-                            </div>
+    render() {
+        return (
+            <>
+                {this.state.status ?
+                    <UpdateInvoicesResult status={this.state.status}/>
+                    :
+                    <div className="main-container-create-customer">
+                        <div className="information-container-create-customer">
+                            <h2>Update Invoice</h2>
+                            <div className="customer-card-body">
+                                <form className="form-create-customer">
+                                    <div className="form-element">
+                                        <label>Total PreTax Amount: </label>
+                                        <input name="totalPreTax" className="form-control"
+                                               value={this.state.totalPreTax} onChange={this.changeTotalPreTaxHandler}/>
+                                    </div>
+                                    <br/>
+                                    <div className="form-element">
+                                        <label>Tax Rate: </label>
+                                        <input name="taxRate" className="form-control"
+                                               value={this.state.taxRate} onChange={this.changeTaxRateHandler}/>
+                                    </div>
+                                    <br/>
+                                    <div className="form-element">
+                                        <label>Total Amount: </label>
+                                        <input name="totalFee" className="form-control"
+                                               value={this.state.totalFee} onChange={this.changeTotalFeeHandler}/>
+                                    </div>
+                                    <br/>
+                                    <div className="form-element">
+                                        <label>Send Status: </label>
+                                        <input name="invoiceSent" className="form-control"
+                                               value={this.state.invoiceSent} onChange={this.changeInvoiceSentHandler}/>
+                                    </div>
+                                    <br/>
+                                    <div className="form-element">
+                                        <label>Pay Status: </label>
+                                        <input name="invoicePaid" className="form-control"
+                                               value={this.state.invoicePaid} onChange={this.changeInvoicePaidHandler}/>
+                                    </div>
+                                    <br/>
+                                    <div className="form-element-button">
+                                        <Button className='btn'
+                                                buttonStyle='btn--page'
+                                                buttonSize='btn--medium'
+                                                onClick={this.updateInvoice}
+                                        >Update
+                                        </Button>
+                                        <Button className='btn'
+                                                buttonStyle='btn--page'
+                                                buttonSize='btn--medium'
+                                                onClick={this.cancel.bind(this)}
+                                                style={{marginLeft: "10px"}}
+                                        >Cancel
+                                        </Button>
+                                    </div>
 
-                        </form>
+                                </form>
 
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                }
+            </>
+
         )
     }
 }
+
 export default UpdateInvoices

@@ -46,7 +46,7 @@ class ListInventories extends Component{
         return(
             <div className="main-container">
                 <div className="information-container">
-                    <h2>List Inventories</h2>
+                    <h2>Inventories List</h2>
                     <div>
                         <Button className='btn'
                                 buttonStyle='btn--page'
