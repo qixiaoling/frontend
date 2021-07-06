@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import InvoiceService from "../../services/InvoiceService";
 import '../PageCSS/List.css'
 import {Button} from "../Button";
+import invoiceRoundDownEuroSign from "../../helpers/roundDownEuroSign";
 
 class ListInvoices extends Component {
     constructor(props) {
@@ -59,8 +60,8 @@ class ListInvoices extends Component {
                                         return (
                                             <tr key={inv.invoiceId}>
                                                 <td>{inv.invoiceId}</td>
-                                                <td>{inv.totalPreTax}</td>
-                                                <td>{inv.totalFee}</td>
+                                                <td>{invoiceRoundDownEuroSign(inv.totalPreTax)}</td>
+                                                <td>{invoiceRoundDownEuroSign(inv.totalFee)}</td>
                                                 <td>
                                                     <Button className='btn'
                                                             buttonStyle='btn--page'
