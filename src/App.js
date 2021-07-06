@@ -39,12 +39,17 @@ class App extends Component {
         super(props);
         this.state = {
             consumerWithoutCar: [],
-            currentUser: ''
+            currentUser: localStorage.getItem('userName'),
         }
         this.update = this.update.bind(this);
         this.updateUser = this.updateUser.bind(this);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.state.currentUser !== prevState.currentUser){
+            localStorage.setItem('userName', this.state.currentUser);
+        }
+    }
 
     update(foundCustomers) {
         this.setState({consumerWithoutCar: foundCustomers})
