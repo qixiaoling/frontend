@@ -39,3 +39,6 @@ tbody > tr:nth-child(even){
 tbody > tr:nth-child(odd){
     background-color: lightgoldenrodyellow;
 }
+.status-container {
+    background-color: #BEAF6F;
+}

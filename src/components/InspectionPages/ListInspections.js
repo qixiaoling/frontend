@@ -10,7 +10,7 @@ class ListInspections extends Component {
         super(props);
         this.state = {
             inspections: [],
-            StatusAvailability: false,
+            statusAvailability: false,
             statusMsg: '',
             searchInspection: '',
             searchInspectionError: '',
@@ -22,7 +22,8 @@ class ListInspections extends Component {
         this.createInvoice = this.createInvoice.bind(this);
         this.checkStatus = this.checkStatus.bind(this);
         this.handleSearchInspection = this.handleSearchInspection.bind(this);
-        this.searchInspection = this.searchInspection.bind(this)
+        this.searchInspection = this.searchInspection.bind(this);
+        this.closeStatus = this.closeStatus.bind(this);
     }
 
     componentDidMount() {
@@ -64,7 +65,7 @@ class ListInspections extends Component {
     checkStatus(inspectionNumber) {
         InspectionService.checkInspectionStatus(inspectionNumber).then((res) => {
             this.setState({statusMsg: res.data})
-            this.setState({StatusAvailability: true})
+            this.setState({statusAvailability: true})
         })
     }
 
@@ -75,125 +76,129 @@ class ListInspections extends Component {
     handleSearchInspection(e) {
         e.preventDefault();
         this.setState({searchInspection: e.target.value})
-
-
+    }
+    closeStatus(){
+        this.setState({statusAvailability : false});
     }
 
     render() {
         return (
-            <div className="main-container">
-                <div className="information-container">
-                    <h2>Inspection List</h2>
-                    <div className='alert alert-danger'>{this.state.searchInspectionError}</div>
-                    <br/>
-                    <div>
-                        <input type='text' placeholder='Search Inspection'
-                               onChange={this.handleSearchInspection}/>
-                        <Button className='btn'
-                                buttonStyle='btn--page'
-                                buttonSize='btn--medium'
-                                onClick={this.searchInspection}
-                        >
-                            Search
-                        </Button>
+            <>
+                <div className="main-container">
+                    <div className="information-container">
+                        <h2>Inspection List</h2>
+                        <div className='alert alert-danger'>{this.state.searchInspectionError}</div>
+                        <br/>
+                        <div>
+                            <input type='text' placeholder='Search Inspection'
+                                   onChange={this.handleSearchInspection}/>
+                            <Button className='btn'
+                                    buttonStyle='btn--page'
+                                    buttonSize='btn--medium'
+                                    onClick={this.searchInspection}
+                            >
+                                Search
+                            </Button>
 
+                        </div>
+                        <div>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Inspection Number</th>
+                                    <th>inspection Date</th>
+                                    <th>Fee</th>
+                                    <th>Repair Date</th>
+                                </tr>
+                                </thead>
+                                <tbody className="list-table">
+                                {
+                                    this.state.inspections.map(
+                                        ins => {
+                                            console.log(ins)
+                                            return (
+                                                <tr key={ins.inspectionNumber}>
+                                                    <td>{ins.inspectionNumber}</td>
+                                                    <td>{ins.inspectionDate}</td>
+                                                    <td>{ins.inspectionFee}</td>
+                                                    <td>{ins.repairDate}</td>
+                                                    <td>
+                                                        <Button className='btn'
+                                                                buttonStyle='btn--page'
+                                                                buttonSize='btn--medium'
+                                                                onClick={() => {
+                                                                    this.editInspection(ins.inspectionNumber)
+                                                                }}>
+                                                            Update
+                                                        </Button>
+                                                        <Button className='btn'
+                                                                buttonStyle='btn--page'
+                                                                buttonSize='btn--medium'
+                                                                onClick={() => {
+                                                                    this.deleteInspection(ins.inspectionNumber)
+                                                                }}>
+                                                            Delete
+                                                        </Button>
+                                                        <Button className='btn'
+                                                                buttonStyle='btn--page'
+                                                                buttonSize='btn--medium'
+                                                                onClick={() => {
+                                                                    this.viewInspection(ins.inspectionNumber)
+                                                                }}>
+                                                            View
+                                                        </Button>
+                                                        <Button className='btn'
+                                                                buttonStyle='btn--page'
+                                                                buttonSize='btn--medium'
+                                                                onClick={() => {
+                                                                    this.selectInventory(ins.inspectionNumber)
+                                                                }}>
+                                                            Select Inventory
+                                                        </Button>
+                                                        <Button className='btn'
+                                                                buttonStyle='btn--page'
+                                                                buttonSize='btn--medium'
+                                                                onClick={() => {
+                                                                    this.createInvoice(ins.inspectionNumber)
+                                                                }}>
+                                                            Create Invoice
+                                                        </Button>
+                                                        <Button className='btn'
+                                                                buttonStyle='btn--page'
+                                                                buttonSize='btn--medium'
+                                                                onClick={() => {
+                                                                    this.checkStatus(ins.inspectionNumber)
+                                                                }}>
+                                                            Check Status
+                                                        </Button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        }
+                                    )
+                                }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Inspection Number</th>
-                                <th>inspection Date</th>
-                                <th>Fee</th>
-                                <th>Repair Date</th>
-                            </tr>
-                            </thead>
-                            <tbody className="list-table">
-                            {
-                                this.state.inspections.map(
-                                    ins => {
-                                        console.log(ins)
-                                        return (
-                                            <tr key={ins.inspectionNumber}>
-                                                <td>{ins.inspectionNumber}</td>
-                                                <td>{ins.inspectionDate}</td>
-                                                <td>{ins.inspectionFee}</td>
-                                                <td>{ins.repairDate}</td>
-                                                <td>
-                                                    <Button className='btn'
-                                                            buttonStyle='btn--page'
-                                                            buttonSize='btn--medium'
-                                                            onClick={() => {
-                                                        this.editInspection(ins.inspectionNumber)
-                                                    }}>
-                                                        Update
-                                                    </Button>
-                                                    <Button className='btn'
-                                                            buttonStyle='btn--page'
-                                                            buttonSize='btn--medium'
-                                                            onClick={() => {
-                                                        this.deleteInspection(ins.inspectionNumber)
-                                                    }}>
-                                                        Delete
-                                                    </Button>
-                                                    <Button className='btn'
-                                                            buttonStyle='btn--page'
-                                                            buttonSize='btn--medium'
-                                                            onClick={() => {
-                                                        this.viewInspection(ins.inspectionNumber)
-                                                    }}>
-                                                        View
-                                                    </Button>
-                                                    <Button className='btn'
-                                                            buttonStyle='btn--page'
-                                                            buttonSize='btn--medium'
-                                                            onClick={() => {
-                                                        this.selectInventory(ins.inspectionNumber)
-                                                    }}>
-                                                        Select Inventory
-                                                    </Button>
-                                                    <Button className='btn'
-                                                            buttonStyle='btn--page'
-                                                            buttonSize='btn--medium'
-                                                            onClick={() => {
-                                                        this.createInvoice(ins.inspectionNumber)
-                                                    }}>
-                                                        Create Invoice
-                                                    </Button>
-                                                    <Button className='btn'
-                                                            buttonStyle='btn--page'
-                                                            buttonSize='btn--medium'
-                                                            onClick={() => {
-                                                        this.checkStatus(ins.inspectionNumber)
-                                                    }}>
-                                                        Check Status
-                                                    </Button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    }
-                                )
-                            }
-                            {this.state.StatusAvailability &&
-                            <tr id='inspection-status' >
-                                <td colSpan="5">
-                                    {this.state.statusMsg}
-                                </td>
-                            </tr>
-                            }
-                            </tbody>
-                        </table>
-                    </div>
-
-
                 </div>
-
-
-            </div>
+                <br/>
+                <div className='status-container'>
+                    <p>
+                        {this.state.statusAvailability ? this.state.statusMsg : null}
+                    </p>
+                    <Button className='btn'
+                            buttonStyle='btn--page'
+                            buttonSize='btn--medium'
+                            onClick={() => {
+                                this.closeStatus()
+                            }}>
+                        close
+                    </Button>
+                </div>
+            </>
         )
     }
-
-
 }
 
 export default ListInspections
