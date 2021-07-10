@@ -72,10 +72,9 @@ class CreateUsers extends Component{
         let emailEmptyError = ''
         let emailInvalidError = ''
 
-        if (this.state.userName.length === 0) {
+        if (!this.state.userName) {
             userNameEmptyError = 'This field cannot be empty';
-        }
-        if (!regex.test(this.state.userName)) {
+        }else if (!regex.test(this.state.userName)) {
             userNameSpecialCharError = 'You are not allowed to use special character(S)';
         }
 
@@ -89,10 +88,9 @@ class CreateUsers extends Component{
         }
 
 
-        if (this.state.password.length === 0) {
+        if (!this.state.password) {
             passwordEmptyError = 'This field cannot be empty';
-        }
-        if (this.state.password.length < 8) {
+        } else if (this.state.password.length < 8) {
             passwordTooShortError = 'Please use minimum 8 characters'
         }
 
@@ -105,10 +103,9 @@ class CreateUsers extends Component{
             return false;
         }
 
-        if (this.state.email.length === 0) {
+        if (!this.state.email) {
             emailEmptyError = 'This field cannot be empty';
-        }
-        if (!this.state.email.includes("@")) {
+        }else if (!this.state.email.includes("@")) {
             emailInvalidError = 'Email is not valid';
         }
         if (emailEmptyError) {

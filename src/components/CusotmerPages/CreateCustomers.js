@@ -76,6 +76,7 @@ class CreateCustomers extends Component {
             console.log("THE STATE IS NOW:", this.state.status)
             console.log(response);
         }catch (err){
+
             this.setState({status : 403})
             console.log(err);
         }
@@ -97,10 +98,9 @@ class CreateCustomers extends Component {
         let lastNameSpecialCharError = ''
         let emailError = ''
 
-        if (this.state.firstName.length === 0) {
+        if (!this.state.firstName) {
             firstNameEmptyError = 'This field cannot be empty';
-        }
-        if (!regex.test(this.state.firstName.trim())) {
+        }else if (!regex.test(this.state.firstName.trim())) {
             firstNameSpecialCharError = 'You are not allowed to use special character(S)';
         }
 
@@ -115,14 +115,9 @@ class CreateCustomers extends Component {
         }
 
 
-        if (this.state.lastName.length === 0) {
+        if (!this.state.lastName) {
             lastNameEmptyError = 'This field cannot be empty';
-        }
-
-
-
-
-        if (!regex.test(this.state.lastName.trim())) {
+        }else if (!regex.test(this.state.lastName.trim())) {
             lastNameSpecialCharError = 'You are not allowed to use special character(S)';
         }
 
