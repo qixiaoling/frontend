@@ -45,6 +45,7 @@ class App extends Component {
         this.updateUser = this.updateUser.bind(this);
     }
 
+    //Persisting data on page reload.
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.state.currentUser !== prevState.currentUser){
             localStorage.setItem('userName', this.state.currentUser);
