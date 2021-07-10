@@ -13,7 +13,6 @@ const initialState = {
     firstNameSpecialCharError: '',
     lastNameEmptyError: '',
     lastNameSpecialCharError: '',
-    genderError: '',
     emailError: '',
 
 }
@@ -96,7 +95,6 @@ class CreateCustomers extends Component {
         let firstNameSpecialCharError = ''
         let lastNameEmptyError = ''
         let lastNameSpecialCharError = ''
-        let genderError = ''
         let emailError = ''
 
         if (this.state.firstName.length === 0) {
@@ -120,6 +118,10 @@ class CreateCustomers extends Component {
         if (this.state.lastName.length === 0) {
             lastNameEmptyError = 'This field cannot be empty';
         }
+
+
+
+
         if (!regex.test(this.state.lastName.trim())) {
             lastNameSpecialCharError = 'You are not allowed to use special character(S)';
         }
@@ -133,13 +135,8 @@ class CreateCustomers extends Component {
             this.setState({lastNameSpecialCharError})
             return false;
         }
-        if (this.state.gender.length === 0) {
-            genderError = 'This field cannot be empty';
-        }
-        if (genderError) {
-            this.setState({genderError})
-            return false;
-        }
+
+
 
         if (!this.state.email.includes("@") || (this.state.email.length === 0)) {
             emailError = 'invalid email';
