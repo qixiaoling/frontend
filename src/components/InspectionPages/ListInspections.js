@@ -3,6 +3,7 @@ import InspectionService from "../../services/InspectionService";
 import '../PageCSS/List.css'
 import InvoiceService from "../../services/InvoiceService";
 import {Button} from "../Button"
+import convertDate from "../../helpers/convertDate";
 
 
 class ListInspections extends Component {
@@ -120,9 +121,9 @@ class ListInspections extends Component {
                                             return (
                                                 <tr key={ins.inspectionNumber}>
                                                     <td>{ins.inspectionNumber}</td>
-                                                    <td>{ins.inspectionDate}</td>
+                                                    <td>{convertDate(ins.inspectionDate)}</td>
                                                     <td>{ins.inspectionFee}</td>
-                                                    <td>{ins.repairDate}</td>
+                                                    <td>{convertDate(ins.repairDate)}</td>
                                                     <td>
                                                         <Button className='btn'
                                                                 buttonStyle='btn--page'
