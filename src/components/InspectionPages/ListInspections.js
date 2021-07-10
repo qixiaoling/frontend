@@ -77,8 +77,9 @@ class ListInspections extends Component {
         e.preventDefault();
         this.setState({searchInspection: e.target.value})
     }
-    closeStatus(){
-        this.setState({statusAvailability : false});
+
+    closeStatus() {
+        this.setState({statusAvailability: false});
     }
 
     render() {
@@ -179,23 +180,25 @@ class ListInspections extends Component {
                                 }
                                 </tbody>
                             </table>
+                            {this.state.statusAvailability ?
+                                <div className='status-container'>
+                                    <p id='status-font'>
+                                        { this.state.statusMsg }                                    </p>
+                                    <Button className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium'
+                                            onClick={() => {
+                                                this.closeStatus()
+                                            }}>
+                                        close
+                                    </Button>
+                                </div>
+                                :
+                                null}
                         </div>
                     </div>
                 </div>
-                <br/>
-                <div className='status-container'>
-                    <p>
-                        {this.state.statusAvailability ? this.state.statusMsg : null}
-                    </p>
-                    <Button className='btn'
-                            buttonStyle='btn--page'
-                            buttonSize='btn--medium'
-                            onClick={() => {
-                                this.closeStatus()
-                            }}>
-                        close
-                    </Button>
-                </div>
+
             </>
         )
     }

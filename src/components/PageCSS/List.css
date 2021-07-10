@@ -40,5 +40,13 @@ tbody > tr:nth-child(odd){
     background-color: lightgoldenrodyellow;
 }
 .status-container {
+    display: flex;
+    justify-content: space-between;
     background-color: #BEAF6F;
+    align-items: center;
+
+}
+#status-font {
+    color: #242424;
+    font-size: large;
 }
