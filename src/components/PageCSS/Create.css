@@ -15,6 +15,14 @@
     border-radius: 10px;
     box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
 }
+.information-container-create-customer-inspection {
+    width: 50%;
+    height: 90%;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
+}
 h2{
     text-align: center;
     height: 15%;
@@ -23,9 +31,27 @@ h2{
     justify-content: center;
     align-items: center;
 }
-.customer-card-body{
+
+.h2-inspection{
+    text-align: center;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.customer-card-body {
     width:100%;
     height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer-card-body-inspection {
+    width:100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;

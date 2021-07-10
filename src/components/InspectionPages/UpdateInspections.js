@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
 import'../PageCSS/List.css'
 import {Button} from "../Button";
+import convertDate from "../../helpers/convertDate";
 
 
 class UpdateInspections extends Component{
@@ -85,7 +86,7 @@ class UpdateInspections extends Component{
         })
     }
     cancel(){
-        this.props.history.push('inspections')
+        this.props.history.push('/inspections')
     }
 
     render(){
@@ -98,7 +99,7 @@ class UpdateInspections extends Component{
                             <div className="form-element">
                                 <label>Inspection Date</label>
                                 <input placeholder="Inspection Date" name="inspectionDate" className="form-control"
-                                       value={this.state.inspectionDate} onChange={this.changeInspectionDateHandler} />
+                                       value={convertDate(this.state.inspectionDate)} onChange={this.changeInspectionDateHandler} />
                             </div>
                             <br/>
                             <div className="form-element">
@@ -128,7 +129,7 @@ class UpdateInspections extends Component{
                             <div className="form-element">
                                 <label>Repair Date</label>
                                 <input placeholder="Repair Date" name="repairDate" className="form-control"
-                                       value={this.state.repairDate} onChange={this.changeRepairDateHandler} />
+                                       value={convertDate(this.state.repairDate)} onChange={this.changeRepairDateHandler} />
                             </div>
                             <br/>
                             <div className="form-element">

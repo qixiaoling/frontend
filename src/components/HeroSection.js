@@ -15,7 +15,7 @@ class HeroSection extends Component{
                 <p>We are our customers' go-to!</p>
                 <br/>
                 <div>
-                    <Link to='/sign-in' className='btn-mobile'>
+                    <Link to='/customers' className='btn-mobile'>
                     <Button
                         className='btn'
                         buttonStyle='btn--outline'

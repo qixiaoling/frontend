@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import '../PageCSS/List.css'
 import InvoiceService from "../../services/InvoiceService";
+import invoiceRoundDownEuroSign from "../../helpers/roundDownEuroSign";
 
 
 
@@ -39,7 +40,7 @@ class ViewInvoice extends Component {
                     <div className="view-customer-card-body">
                         <div className="view-customer-element">
                             <label>Total PreTax Amount: </label>
-                            <div>{this.state.totalPreTax}</div>
+                            <div>{invoiceRoundDownEuroSign(this.state.totalPreTax)}</div>
                         </div>
                         <div className="view-customer-element">
                             <label>Tax Rate: </label>
@@ -47,7 +48,7 @@ class ViewInvoice extends Component {
                         </div>
                         <div className="view-customer-element">
                             <label>Total Fee: </label>
-                            <div>{this.state.totalFee}</div>
+                            <div>{invoiceRoundDownEuroSign(this.state.totalFee)}</div>
                         </div>
                         <div className="view-customer-element">
                             <label>Send Status: </label>

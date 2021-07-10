@@ -73,9 +73,9 @@ class CreateInspections extends Component{
     render(){
         return(
             <div className="main-container-create-customer">
-                <div className="information-container-create-customer">
-                    <h2>Add Inspection</h2>
-                    <div className="customer-card-body">
+                <div className="information-container-create-customer-inspection">
+                    <h2 className='h2-inspection'>Add Inspection</h2>
+                    <div className="customer-card-body-inspection">
                         <form className="form-create-customer">
                             <div className="form-element">
                                 <label>Inspection Date</label>

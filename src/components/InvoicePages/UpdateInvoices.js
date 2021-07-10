@@ -3,6 +3,7 @@ import {Button} from "../Button";
 import '../PageCSS/Create.css'
 import InvoiceService from "../../services/InvoiceService";
 import UpdateInvoicesResult from "./UpdateInvoicesResult";
+import invoiceRoundDown from "../../helpers/roundDown";
 
 class UpdateInvoices extends Component {
     constructor(props) {
@@ -93,7 +94,7 @@ class UpdateInvoices extends Component {
                                     <div className="form-element">
                                         <label>Total PreTax Amount: </label>
                                         <input name="totalPreTax" className="form-control"
-                                               value={this.state.totalPreTax} onChange={this.changeTotalPreTaxHandler}/>
+                                               value={invoiceRoundDown(this.state.totalPreTax)} onChange={this.changeTotalPreTaxHandler}/>
                                     </div>
                                     <br/>
                                     <div className="form-element">
@@ -105,7 +106,7 @@ class UpdateInvoices extends Component {
                                     <div className="form-element">
                                         <label>Total Amount: </label>
                                         <input name="totalFee" className="form-control"
-                                               value={this.state.totalFee} onChange={this.changeTotalFeeHandler}/>
+                                               value={invoiceRoundDown(this.state.totalFee)} onChange={this.changeTotalFeeHandler}/>
                                     </div>
                                     <br/>
                                     <div className="form-element">

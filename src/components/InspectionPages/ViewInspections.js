@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import InspectionService from "../../services/InspectionService";
 import'../PageCSS/List.css'
+import convertDate from "../../helpers/convertDate";
 
 
 class ViewInspections extends Component{
@@ -45,7 +46,7 @@ class ViewInspections extends Component{
                     <div className="view-customer-card-body">
                         <div className="view-customer-element">
                             <label>Inspection Date: </label>
-                            <div>{this.state.inspectionDate}</div>
+                            <div>{convertDate(this.state.inspectionDate)}</div>
                         </div>
                         <div className="view-customer-element">
                             <label>Inspection Result: </label>
@@ -65,7 +66,7 @@ class ViewInspections extends Component{
                         </div>
                         <div className="view-customer-element">
                             <label>Repair Date: </label>
-                            <div>{this.state.repairDate}</div>
+                            <div>{convertDate(this.state.repairDate)}</div>
                         </div>
                         <div className="view-customer-element">
                             <label>Repair Complete: </label>

@@ -40,7 +40,7 @@ class CreateAutomobiles extends Component {
         }
         console.log('automobile =>' + JSON.stringify(automobile))
         AutomobileService.createAutomobiles(automobile,this.state.id).then(res =>{
-            this.props.history.push ('/automobiles')
+            this.props.history.push ('/customers')
         })
     }
     cancel(){
