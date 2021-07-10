@@ -86,7 +86,7 @@ class UpdateInspections extends Component{
         })
     }
     cancel(){
-        this.props.history.push('inspections')
+        this.props.history.push('/inspections')
     }
 
     render(){
