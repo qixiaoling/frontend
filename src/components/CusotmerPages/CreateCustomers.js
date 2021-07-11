@@ -13,7 +13,8 @@ const initialState = {
     firstNameSpecialCharError: '',
     lastNameEmptyError: '',
     lastNameSpecialCharError: '',
-    emailError: '',
+    emailEmptyError: '',
+    emailInvalidError: '',
 
 }
 
@@ -96,7 +97,8 @@ class CreateCustomers extends Component {
         let firstNameSpecialCharError = ''
         let lastNameEmptyError = ''
         let lastNameSpecialCharError = ''
-        let emailError = ''
+        let emailEmptyError = ''
+        let emailInvalidError = ''
 
         if (!this.state.firstName) {
             firstNameEmptyError = 'This field cannot be empty';
@@ -133,11 +135,17 @@ class CreateCustomers extends Component {
 
 
 
-        if (!this.state.email.includes("@") || (this.state.email.length === 0)) {
-            emailError = 'invalid email';
+        if (!this.state.email) {
+            emailEmptyError = 'This field cannot be empty';
+        }else if (!this.state.email.includes("@")) {
+            emailInvalidError = 'Email is not valid';
         }
-        if (emailError) {
-            this.setState({emailError})
+        if (emailEmptyError) {
+            this.setState({emailEmptyError})
+            return false;
+        }
+        if (emailInvalidError) {
+            this.setState({emailInvalidError})
             return false;
         }
 
@@ -203,7 +211,9 @@ class CreateCustomers extends Component {
                                         <input placeholder="email" name="email" className="form-control"
                                                value={this.state.email} onChange={this.changeEmailHandler}/>
                                     </div>
-                                    <div className='alert alert-danger'>{this.state.emailError}</div>
+                                    <div className='alert alert-danger'>{this.state.emailEmptyError}</div>
+                                    <div className='alert alert-danger'>{this.state.emailInvalidError}</div>
+
                                     <br/>
                                     <div className="form-element-button">
                                         <Button

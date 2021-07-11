@@ -8,7 +8,8 @@ const initialState = {
     username: '',
     email: '',
     feedback: '',
-    emailError: '',
+    emailEmptyError: '',
+    emailInvalidError: '',
     msgEmptyError: '',
 
 }
@@ -44,7 +45,8 @@ class SendMessage extends Component {
         const isValid = this.validate();
         if (isValid) {
             let appUser = {
-                username: this.state.username, email: this.state.email,
+                username: this.state.username,
+                email: this.state.email,
                 feedback: this.state.feedback
             }
             CustomerService.confirmSendMessage(appUser, this.state.id).then((res) => {
@@ -63,19 +65,26 @@ class SendMessage extends Component {
     validate = () => {
 
 
-        let emailError = ''
+        let emailEmptyError = ''
+        let emailInvalidError = ''
         let msgEmptyError = ''
 
 
-        if (!this.state.email.includes("@") || (this.state.email.length === 0)) {
-            emailError = 'invalid email';
+        if (!this.state.email) {
+            emailEmptyError = 'This field cannot be empty';
+        }else if (!this.state.email.includes("@")) {
+            emailInvalidError = 'Email is not valid';
         }
-        if (emailError) {
-            this.setState({emailError})
+        if (emailEmptyError) {
+            this.setState({emailEmptyError})
+            return false;
+        }
+        if (emailInvalidError) {
+            this.setState({emailInvalidError})
             return false;
         }
 
-        if (this.state.feedback.length === 0) {
+        if (!this.state.feedback) {
             msgEmptyError = 'this field cannot be empty';
         }
         if (msgEmptyError) {
@@ -107,7 +116,9 @@ class SendMessage extends Component {
                                         <input placeholder="Email" name="email" className="form-control"
                                                value={this.state.email} onChange={this.changeAppUserEmailHandler}/>
                                     </div>
-                                    <div className='alert alert-danger'>{this.state.emailError}</div>
+                                    <div className='alert alert-danger'>{this.state.emailEmptyError}</div>
+                                    <div className='alert alert-danger'>{this.state.emailInvalidError}</div>
+
                                     <br/>
                                     <div className="form-element">
                                         <label>Feedback: </label>
@@ -129,7 +140,7 @@ class SendMessage extends Component {
                                             buttonStyle='btn--page'
                                             buttonSize='btn--medium'
                                             onClick={this.cancel.bind(this)}
-                                                style={{marginLeft: "10px"}}>
+                                            style={{marginLeft: "10px"}}>
                                             Cancel
                                         </Button>
                                     </div>
