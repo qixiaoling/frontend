@@ -24,15 +24,11 @@ class SendMessage extends Component {
         }
         this.changeAppUserEmailHandler = this.changeAppUserEmailHandler.bind(this);
         this.changeAppUserFeedback = this.changeAppUserFeedback.bind(this);
-        this.changeAppUserUsernameHandler = this.changeAppUserUsernameHandler.bind(this);
         this.confirmSendMessage = this.confirmSendMessage.bind(this);
         this.cancel = this.cancel.bind(this);
         this.validate = this.validate.bind(this);
     }
 
-    changeAppUserUsernameHandler = (e) => {
-        this.setState({userName: e.target.value});
-    }
     changeAppUserEmailHandler = (e) => {
         this.setState({email: e.target.value});
     }
@@ -107,8 +103,8 @@ class SendMessage extends Component {
                                     <div className="form-element">
                                         <label>Username: </label>
                                         <input placeholder="Username" name="username" className="form-control"
-                                               value={localStorage.getItem('userName')}
-                                               onChange={this.changeAppUserUsernameHandler}/>
+                                               value={localStorage.getItem('userName')}/>
+
                                     </div>
                                     <br/>
                                     <div className="form-element">
