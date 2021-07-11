@@ -28,7 +28,7 @@ class CreateInventories extends Component{
         this.setState({pricePerUnit : e.target.value})
     }
     changeManufacturerHandler = (e) => {
-        this.setState({manufactor : e.target.value})
+        this.setState({manufacturer : e.target.value})
     }
     changeAvailableUnitHandler = (e) => {
         this.setState({availableUnit : e.target.value})
