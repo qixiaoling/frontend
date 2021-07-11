@@ -30,8 +30,8 @@ class ViewInventories extends Component{
                             <div>{this.state.inventory.pricePerUnit}</div>
                         </div>
                         <div className="view-customer-element">
-                            <label>Manufactor: </label>
-                            <div>{this.state.inventory.manufactor}</div>
+                            <label>manufacturer: </label>
+                            <div>{this.state.inventory.manufacturer}</div>
                         </div>
                         <div className="view-customer-element">
                             <label>Available Unit:  </label>

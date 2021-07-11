@@ -10,12 +10,12 @@ class UpdateInventories extends Component{
             id: this.props.match.params.id,
             itemDescription: '',
             pricePerUnit: '',
-            manufactor: '',
+            manufacturer: '',
             availableUnit:　''
         }
         this.changeAvailableUnitHandler = this.changeAvailableUnitHandler.bind(this);
         this.changeDescriptionHandler = this.changeDescriptionHandler.bind(this);
-        this.changeManufactorHandler = this.changeManufactorHandler.bind(this);
+        this.changeManufacturerHandler = this.changeManufacturerHandler.bind(this);
         this.changePriceHandler = this.changePriceHandler.bind(this);
         this.cancel = this.cancel.bind(this);
         this.updateInventory = this.updateInventory.bind(this);
@@ -26,7 +26,7 @@ class UpdateInventories extends Component{
             this.setState({
                 itemDescription : res.data.itemDescription,
                 pricePerUnit : res.data.pricePerUnit,
-                manufactor : res.data.manufactor,
+                manufacturer : res.data.manufacturer,
                 availableUnit : res.data.availableUnit,
 
             })
@@ -39,8 +39,8 @@ class UpdateInventories extends Component{
     changePriceHandler =(e) =>{
         this.setState({pricePerUnit : e.target.value})
     }
-    changeManufactorHandler = (e) => {
-        this.setState({manufactor : e.target.value})
+    changeManufacturerHandler = (e) => {
+        this.setState({manufacturer : e.target.value})
     }
     changeAvailableUnitHandler = (e) => {
         this.setState({availableUnit : e.target.value})
@@ -50,7 +50,7 @@ class UpdateInventories extends Component{
         let inventory = {
             itemDescription : this.state.itemDescription,
             pricePerUnit : this.state.pricePerUnit,
-            manufactor : this.state.manufactor,
+            manufacturer : this.state.manufacturer,
             availableUnit : this.state.availableUnit,
         }
         console.log('inventory=> '+ JSON.stringify(inventory))
@@ -81,9 +81,9 @@ class UpdateInventories extends Component{
                             </div>
                             <br />
                             <div className="form-element">
-                                <label>Manufactor</label>
-                                <input placeholder="Manufactor" name="manufactor" className="form-control"
-                                       value={this.state.manufactor} onChange={this.changeManufactorHandler}/>
+                                <label>Manufacturer</label>
+                                <input placeholder="manufacturer" name="manufacturer" className="form-control"
+                                       value={this.state.manufacturer} onChange={this.changeManufacturerHandler}/>
                             </div>
                             <br />
                             <div className="form-element">
