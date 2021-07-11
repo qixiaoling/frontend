@@ -13,22 +13,23 @@ class ViewInvoice extends Component {
             totalPreTax: '',
             taxRate: '',
             totalFee: '',
-            invoiceSent: false,
-            invoicePaid: false,
+            invoiceSent: '',
+            invoicePaid: '',
         }
     }
 
     componentDidMount() {
-        InvoiceService.getInvoiceById(this.state.id).then((res)=>{
+        InvoiceService.getInvoiceById(this.state.id).then((res) => {
             let invoice = res.data;
             this.setState({
-                totalPreTax : invoice.totalPreTax,
-                taxRate : invoice.taxRate,
+                totalPreTax: invoice.totalPreTax,
+                taxRate: invoice.taxRate,
                 totalFee: invoice.totalFee,
                 invoiceSent: invoice.invoiceSent,
                 invoicePaid: invoice.invoicePaid,
             })
-        })}
+        })
+    }
 
 
 
