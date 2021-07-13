@@ -11,6 +11,7 @@ class ListUsers extends Component {
         }
         this.addRole = this.addRole.bind(this);
         this.addUser = this.addUser.bind(this);
+        this.updateAppUser = this.updateAppUser.bind(this);
     }
 
     componentDidMount() {
@@ -27,6 +28,10 @@ class ListUsers extends Component {
 
     addUser() {
         this.props.history.push('/admin/add-user')
+    }
+
+    updateAppUser(id){
+        this.props.history.push(`/admin/update-user/${id}`)
     }
 
     render() {
@@ -52,6 +57,7 @@ class ListUsers extends Component {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role(s)</th>
+                            <th>Action(s)</th>
                         </tr>
                         </thead>
                         <tbody className="list-table">
@@ -68,7 +74,17 @@ class ListUsers extends Component {
                                             buttonStyle='btn--page'
                                             buttonSize='btn--medium'
                                             onClick={() => this.addRole(user_id)}
-                                        >Add Role</Button>}</td>
+                                        >Add Role</Button>}
+                                    </td>
+                                    <td>
+                                        <Button
+                                            className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium'
+                                            onClick={() => this.updateAppUser(user_id)}>
+                                            Update
+                                        </Button>
+                                    </td>
                                 </tr>
                             )
                         })}
