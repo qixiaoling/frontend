@@ -15,6 +15,14 @@
     border-radius: 10px;
     box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
 }
+.information-container-create-customer-smaller {
+    width: 50%;
+    height: 70%;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
+}
 .information-container-create-customer-addRole {
     width: 50%;
     height: 70%;
