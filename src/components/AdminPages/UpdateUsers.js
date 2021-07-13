@@ -9,6 +9,7 @@ class UpdateUsers extends Component{
         this.state = {
             id: this.props.match.params.id,
             userName: '',
+            password:'',
             email: '',
         }
         this.update = this.update.bind(this)
@@ -20,6 +21,10 @@ class UpdateUsers extends Component{
         e.preventDefault();
         this.setState({userName : e.target.value})
     }
+    changePasswordHandler=(e)=>{
+        e.preventDefault();
+        this.setState({password: e.target.value})
+    }
     changeEmailHandler=(e)=>{
         e.preventDefault();
         this.setState({email : e.target.value})
@@ -28,6 +33,7 @@ class UpdateUsers extends Component{
         e.preventDefault();
         let newAppUser = {
             userName: this.state.userName,
+            password: this.state.password,
             email: this.state.email
         }
         console.log('newUser=>'+ JSON.stringify(newAppUser))
@@ -50,6 +56,12 @@ class UpdateUsers extends Component{
                                     <label>User Name: </label>
                                     <input placeholder="user name" name="userName" className="form-control"
                                            value={this.state.userName} onChange={this.changeUserNameHandler}/>
+                                </div>
+                                <br/>
+                                <div className="form-element">
+                                    <label>Password: </label>
+                                    <input placeholder="password" name="password" className="form-control"
+                                           value={this.state.password} onChange={this.changePasswordHandler}/>
                                 </div>
                                 <div className="form-element">
                                     <label>Email: </label>
