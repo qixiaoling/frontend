@@ -9,6 +9,7 @@ class ViewRoles extends Component {
         this.state = {
             roles: []
         }
+        this.backToUserList = this.backToUserList.bind(this);
     }
 
     componentDidMount() {
@@ -18,6 +19,11 @@ class ViewRoles extends Component {
         })
 
     }
+    backToUserList = (e)=>{
+        e.preventDefault();
+        this.props.history.push('/admin');
+    }
+
 
     render() {
         return (
@@ -27,6 +33,12 @@ class ViewRoles extends Component {
                         <h2>Role List</h2>
                         <br/>
                         <div>
+                            <Button className='btn'
+                                    buttonStyle='btn--page'
+                                    buttonSize='btn--medium'
+                                    onClick={this.backToUserList}
+                            >Back to User List
+                            </Button>
                             <table>
                                 <thead>
                                 <tr>
