@@ -21,7 +21,7 @@ class addRoles extends Component {
         this.setState({department: e.target.value})
     }
 
-    addRoles(e) {
+    addRoles=(e)=> {
         e.preventDefault();
         let roles = [
             {roleName: this.state.department}
@@ -30,6 +30,10 @@ class addRoles extends Component {
         AdminService.addRoleToUser(roles, this.state.id).then((res) => {
             this.setState({status: res.status})
         })
+    }
+    viewRoles =(e)=>{
+        e.preventDefault();
+        this.props.history.push('/admin-view-roles')
     }
 
 
