@@ -13,8 +13,8 @@ const initialState = {
     firstNameSpecialCharError: '',
     lastNameEmptyError: '',
     lastNameSpecialCharError: '',
-    genderError: '',
-    emailError: '',
+    emailEmptyError: '',
+    emailInvalidError: '',
 
 }
 
@@ -77,6 +77,7 @@ class CreateCustomers extends Component {
             console.log("THE STATE IS NOW:", this.state.status)
             console.log(response);
         }catch (err){
+
             this.setState({status : 403})
             console.log(err);
         }
@@ -96,13 +97,12 @@ class CreateCustomers extends Component {
         let firstNameSpecialCharError = ''
         let lastNameEmptyError = ''
         let lastNameSpecialCharError = ''
-        let genderError = ''
-        let emailError = ''
+        let emailEmptyError = ''
+        let emailInvalidError = ''
 
-        if (this.state.firstName.length === 0) {
+        if (!this.state.firstName) {
             firstNameEmptyError = 'This field cannot be empty';
-        }
-        if (!regex.test(this.state.firstName.trim())) {
+        }else if (!regex.test(this.state.firstName.trim())) {
             firstNameSpecialCharError = 'You are not allowed to use special character(S)';
         }
 
@@ -117,10 +117,9 @@ class CreateCustomers extends Component {
         }
 
 
-        if (this.state.lastName.length === 0) {
+        if (!this.state.lastName) {
             lastNameEmptyError = 'This field cannot be empty';
-        }
-        if (!regex.test(this.state.lastName.trim())) {
+        }else if (!regex.test(this.state.lastName.trim())) {
             lastNameSpecialCharError = 'You are not allowed to use special character(S)';
         }
 
@@ -133,19 +132,20 @@ class CreateCustomers extends Component {
             this.setState({lastNameSpecialCharError})
             return false;
         }
-        if (this.state.gender.length === 0) {
-            genderError = 'This field cannot be empty';
+
+
+
+        if (!this.state.email) {
+            emailEmptyError = 'This field cannot be empty';
+        }else if (!this.state.email.includes("@")) {
+            emailInvalidError = 'Email is not valid';
         }
-        if (genderError) {
-            this.setState({genderError})
+        if (emailEmptyError) {
+            this.setState({emailEmptyError})
             return false;
         }
-
-        if (!this.state.email.includes("@") || (this.state.email.length === 0)) {
-            emailError = 'invalid email';
-        }
-        if (emailError) {
-            this.setState({emailError})
+        if (emailInvalidError) {
+            this.setState({emailInvalidError})
             return false;
         }
 
@@ -211,7 +211,9 @@ class CreateCustomers extends Component {
                                         <input placeholder="email" name="email" className="form-control"
                                                value={this.state.email} onChange={this.changeEmailHandler}/>
                                     </div>
-                                    <div className='alert alert-danger'>{this.state.emailError}</div>
+                                    <div className='alert alert-danger'>{this.state.emailEmptyError}</div>
+                                    <div className='alert alert-danger'>{this.state.emailInvalidError}</div>
+
                                     <br/>
                                     <div className="form-element-button">
                                         <Button

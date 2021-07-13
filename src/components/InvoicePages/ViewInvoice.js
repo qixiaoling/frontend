@@ -19,16 +19,19 @@ class ViewInvoice extends Component {
     }
 
     componentDidMount() {
-        InvoiceService.getInvoiceById(this.state.id).then((res)=>{
+        InvoiceService.getInvoiceById(this.state.id).then((res) => {
             let invoice = res.data;
             this.setState({
-                totalPreTax : invoice.totalPreTax,
-                taxRate : invoice.taxRate,
+                totalPreTax: invoice.totalPreTax,
+                taxRate: invoice.taxRate,
                 totalFee: invoice.totalFee,
                 invoiceSent: invoice.invoiceSent,
                 invoicePaid: invoice.invoicePaid,
             })
-        })}
+            console.log(invoice)
+            console.log(this.state.invoiceSent)
+        })
+    }
 
 
 
@@ -36,7 +39,7 @@ class ViewInvoice extends Component {
         return(
             <div className="main-container-view-customer">
                 <div className="information-container-view-customer">
-                    <h2>View Invoice Details</h2>
+                    <h2> View Invoice Details</h2>
                     <div className="view-customer-card-body">
                         <div className="view-customer-element">
                             <label>Total PreTax Amount: </label>
@@ -52,11 +55,11 @@ class ViewInvoice extends Component {
                         </div>
                         <div className="view-customer-element">
                             <label>Send Status: </label>
-                            <div>{this.state.invoiceSent}</div>
+                            <div>{this.state.invoiceSent.toString()}</div>
                         </div>
                         <div className="view-customer-element">
                             <label>Pay Status: </label>
-                            <div>{this.state.invoicePaid}</div>
+                            <div>{this.state.invoicePaid.toString()}</div>
                         </div>
                     </div>
                 </div>

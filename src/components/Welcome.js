@@ -17,7 +17,7 @@ class Welcome extends Component {
         this.props.history.push('/sign-in')
     }
     goHome =()=>{
-        this.props.history.push('/home')
+        this.props.history.push('/customers')
     }
 
     render() {
@@ -50,7 +50,7 @@ class Welcome extends Component {
                                                             buttonSize='btn--medium'
                                                             onClick={this.goHome}
                                                     >
-                                                        Home
+                                                        Start
                                                     </Button>
                                                 </div>
                                             </div>

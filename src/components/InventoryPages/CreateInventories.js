@@ -9,12 +9,12 @@ class CreateInventories extends Component{
         this.state = {
             itemDescription : '',
             pricePerUnit : '',
-            manufactor : '',
+            manufacturer : '',
             availableUnit : '',
         }
         this.changeAvailableUnitHandler = this.changeAvailableUnitHandler.bind(this);
         this.changeDescriptionHandler = this.changeDescriptionHandler.bind(this);
-        this.changeManufactorHandler = this.changeManufactorHandler.bind(this);
+        this.changeManufacturerHandler = this.changeManufacturerHandler.bind(this);
         this.changePriceHandler = this.changePriceHandler.bind(this);
         this.cancel = this.cancel.bind(this);
         this.saveInventory = this.saveInventory.bind(this);
@@ -27,8 +27,8 @@ class CreateInventories extends Component{
     changePriceHandler =(e) =>{
         this.setState({pricePerUnit : e.target.value})
     }
-    changeManufactorHandler = (e) => {
-        this.setState({manufactor : e.target.value})
+    changeManufacturerHandler = (e) => {
+        this.setState({manufacturer : e.target.value})
     }
     changeAvailableUnitHandler = (e) => {
         this.setState({availableUnit : e.target.value})
@@ -38,7 +38,7 @@ class CreateInventories extends Component{
         let inventory = {
             itemDescription: this.state.itemDescription,
             pricePerUnit: this.state.pricePerUnit,
-            manufactor: this.state.pricePerUnit,
+            manufacturer: this.state.manufacturer,
             availableUnit: this.state.availableUnit,
         }
         InventoryService.createInventory(inventory).then(res=>{
@@ -70,9 +70,9 @@ class CreateInventories extends Component{
                             </div>
                             <br />
                             <div className="form-element">
-                                <label>Manufactor</label>
+                                <label>Manufacturer</label>
                                 <input placeholder="Manufactor" name="manufactor" className="form-control"
-                                       value={this.state.manufactor} onChange={this.changeManufactorHandler}/>
+                                       value={this.state.manufacturer} onChange={this.changeManufacturerHandler}/>
                             </div>
                             <br />
                             <div className="form-element">

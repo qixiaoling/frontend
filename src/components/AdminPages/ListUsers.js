@@ -45,7 +45,7 @@ class ListUsers extends Component {
                     </div>
 
                     <br/>
-                    <tabel>
+                    <table>
                         <thead>
                         <tr>
                             <th>User ID</th>
@@ -73,8 +73,7 @@ class ListUsers extends Component {
                             )
                         })}
                         </tbody>
-                    </tabel>
-
+                    </table>
                 </div>
             </div>
 
