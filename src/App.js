@@ -31,6 +31,8 @@ import CreateUsers from "./components/AdminPages/CreateUsers";
 import UserResetPassword from "./components/UserPage/UserResetPassword";
 import AddRoles from "./components/AdminPages/AddRoles";
 import Welcome from "./components/Welcome";
+import UpdateUsers from "./components/AdminPages/UpdateUsers";
+import ViewRoles from "./components/AdminPages/ViewRoles";
 import {ConsumerProvider} from "./customerContext";
 import {UserProvider} from "./userContext";
 
@@ -107,6 +109,8 @@ class App extends Component {
                                 <Route path='/admin' exact component={ListUsers}/>
                                 <Route path='/admin/add-user' exact component={CreateUsers}/>
                                 <Route path='/admin/add-role/:id' exact component={AddRoles}/>
+                                <Route path='/admin/update-user/:id' exact component={UpdateUsers}/>
+                                <Route path='/admin-view-roles' exact component={ViewRoles}/>
                                 <Route path='/password-reset' exact component={UserResetPassword}/>
 
                             </Switch>

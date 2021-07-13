@@ -110,7 +110,7 @@ class UserResetPassword extends Component {
                                 <UserResetPasswordResult status={this.state.status} history={this.props.history}/>
                                 :
                                 <div className="main-container-create-customer">
-                                    <div className='information-container-create-customer'>
+                                    <div className='information-container-create-customer-smaller'>
                                         <h2>Hi {data.currentUser} ! Please reset Your Password</h2>
                                         <div className='customer-card-body'>
                                             <form className='form-create-customer'>
