@@ -9,6 +9,14 @@
 }
 .information-container-create-customer {
     width: 50%;
+    height: 90%;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
+}
+.information-container-create-customer-addRole {
+    width: 50%;
     height: 70%;
     padding: 10px;
     border: 1px solid lightgrey;
@@ -23,6 +31,7 @@
     border-radius: 10px;
     box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
 }
+
 h2{
     text-align: center;
     height: 15%;
@@ -89,4 +98,7 @@ label{
 }
 #found-inspection{
     color: #242424;
+}
+.form-element-addRole {
+    height: 30%;
 }

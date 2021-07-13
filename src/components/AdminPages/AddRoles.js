@@ -39,11 +39,11 @@ class addRoles extends Component {
                 {this.state.status ? <AddRoleResult status={this.state.status} history={this.props.history}/>
                     :
                     <div className='main-container-create-customer'>
-                        <div className='information-container-create-customer'>
+                        <div className='information-container-create-customer-addRole'>
                             <h2>Add Role(s)</h2>
                             <div className='customer-card-body'>
                                 <form className='form-create-customer'>
-                                    <div className='form-element'>
+                                    <div className='form-element-addRole'>
                                         <label htmlFor='department'>Choose the department
                                             <select
                                                 id='department'
@@ -60,15 +60,25 @@ class addRoles extends Component {
                                         </label>
 
                                     </div>
+                                    <div className='form-element-button'>
+                                        <Button
+                                            className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium'
+                                            onClick={this.addRoles}
+                                        >
+                                            Add Role(s)
+                                        </Button>
+                                        <Button
+                                            className='btn'
+                                            buttonStyle='btn--page'
+                                            buttonSize='btn--medium'
+                                            onClick={this.viewRoles}
+                                            style={{marginLeft: "10px"}}>
+                                            View Role(s)
+                                        </Button>
+                                    </div>
 
-                                    <Button
-                                        className='btn'
-                                        buttonStyle='btn--page'
-                                        buttonSize='btn--medium'
-                                        onClick={this.addRoles}
-                                    >
-                                        Add Role(s)
-                                    </Button>
 
                                 </form>
 
