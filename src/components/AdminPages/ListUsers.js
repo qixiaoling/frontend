@@ -12,7 +12,9 @@ class ListUsers extends Component {
         this.addRole = this.addRole.bind(this);
         this.addUser = this.addUser.bind(this);
         this.updateAppUser = this.updateAppUser.bind(this);
+        this.viewRoles = this.viewRoles.bind(this);
     }
+
 
     componentDidMount() {
             AdminService.getAllUsers().then((res)=>{
@@ -33,6 +35,10 @@ class ListUsers extends Component {
     updateAppUser(id){
         this.props.history.push(`/admin/update-user/${id}`)
     }
+    viewRoles =(e)=>{
+        e.preventDefault();
+        this.props.history.push('/admin-view-roles')
+    }
 
     render() {
         return (
@@ -46,6 +52,14 @@ class ListUsers extends Component {
                             buttonSize='btn--medium'
                             onClick={()=>this.addUser()}
                         >Add User
+                        </Button>
+                        <Button
+                            className='btn'
+                            buttonStyle='btn--page'
+                            buttonSize='btn--medium'
+                            onClick={this.viewRoles}
+                            style={{marginLeft: "10px"}}>
+                            View Role(s)
                         </Button>
                     </div>
 

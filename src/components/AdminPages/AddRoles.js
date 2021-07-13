@@ -31,10 +31,6 @@ class addRoles extends Component {
             this.setState({status: res.status})
         })
     }
-    viewRoles =(e)=>{
-        e.preventDefault();
-        this.props.history.push('/admin-view-roles')
-    }
 
 
     render() {
@@ -73,14 +69,7 @@ class addRoles extends Component {
                                         >
                                             Add Role(s)
                                         </Button>
-                                        <Button
-                                            className='btn'
-                                            buttonStyle='btn--page'
-                                            buttonSize='btn--medium'
-                                            onClick={this.viewRoles}
-                                            style={{marginLeft: "10px"}}>
-                                            View Role(s)
-                                        </Button>
+
                                     </div>
 
 
