@@ -72,9 +72,10 @@ class ListCustomers extends Component {
     addCustomer() {
         this.props.history.push('/add-customer');
     }
-    backToCustomerList = (e)=>{
+
+    backToCustomerList = (e) => {
         e.preventDefault();
-        this.setState({status:''});
+        this.setState({status: ''});
         this.props.history.push('/customers');
     }
 
@@ -104,7 +105,20 @@ class ListCustomers extends Component {
     }
 
     searchCustomer() {
-        this.props.history.push(`/view-customer/${this.state.searchCustomer}`)
+
+        console.log(this.state.customers)
+        const customerArray = this.state.customers.map((cus) => {
+            return cus.customerId;
+        })
+        const stringArray = customerArray.toString();
+
+        if (stringArray.includes(this.state.searchCustomer)) {
+            this.props.history.push(`/view-customer/${this.state.searchCustomer}`)
+        } else {
+            console.log("Oops, we cannot find the customer you just typed in.")
+        }
+
+
     }
 
     handleSearchCustomer(e) {
@@ -268,5 +282,6 @@ class ListCustomers extends Component {
 
 
 }
+
 ListCustomers.contextType = ConsumerContext;
 export default ListCustomers
