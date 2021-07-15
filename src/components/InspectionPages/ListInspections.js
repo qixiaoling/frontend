@@ -14,7 +14,7 @@ class ListInspections extends Component {
             statusAvailability: false,
             statusMsg: '',
             searchInspection: '',
-            searchInspectionError: '',
+            searchInspectionError: false,
 
         }
         this.editInspection = this.editInspection.bind(this);
@@ -25,6 +25,7 @@ class ListInspections extends Component {
         this.handleSearchInspection = this.handleSearchInspection.bind(this);
         this.searchInspection = this.searchInspection.bind(this);
         this.closeStatus = this.closeStatus.bind(this);
+        this.checkInspectionInventory = this.checkInspectionInventory.bind(this);
     }
 
     componentDidMount() {
@@ -71,7 +72,20 @@ class ListInspections extends Component {
     }
 
     searchInspection() {
-        this.props.history.push(`/view-inspection/${this.state.searchInspection}`)
+
+        const inspectionArray = this.state.inspections.map((ins)=>{
+            return ins.inspectionNumber;
+        })
+        const stringArray = inspectionArray.toString();
+        console.log(stringArray)
+        console.log(this.state.searchInspection)
+
+        if((stringArray.includes(this.state.searchInspection)) && (this.state.searchInspection)){
+            this.props.history.push(`/view-inspection/${this.state.searchInspection}`)
+        }else{
+            this.setState({searchInspectionError: true})
+        }
+
     }
 
     handleSearchInspection(e) {
@@ -82,6 +96,10 @@ class ListInspections extends Component {
     closeStatus() {
         this.setState({statusAvailability: false});
     }
+    checkInspectionInventory =(e)=>{
+        e.preventDefault();
+        this.props.history.push('/inspection-details');
+    }
 
     render() {
         return (
@@ -89,10 +107,16 @@ class ListInspections extends Component {
                 <div className="main-container">
                     <div className="information-container">
                         <h2>Inspection List</h2>
-                        <div className='alert alert-danger'>{this.state.searchInspectionError}</div>
                         <br/>
+
+                        {this.state.searchInspectionError &&
+                        <p className='alert alert-danger'>
+                            This inspection is not in the database!
+                        </p>
+                        }
                         <div>
                             <input type='text' placeholder='Search Inspection'
+                                   value={this.state.searchInspection}
                                    onChange={this.handleSearchInspection}/>
                             <Button className='btn'
                                     buttonStyle='btn--page'
@@ -100,6 +124,13 @@ class ListInspections extends Component {
                                     onClick={this.searchInspection}
                             >
                                 Search
+                            </Button>
+                            <Button className='btn'
+                                    buttonStyle='btn--page'
+                                    buttonSize='btn--medium'
+                                    onClick={this.checkInspectionInventory}
+                            >
+                                Total Inspection Details
                             </Button>
 
                         </div>
@@ -173,6 +204,7 @@ class ListInspections extends Component {
                                                                 }}>
                                                             Check Status
                                                         </Button>
+
                                                     </td>
                                                 </tr>
                                             )

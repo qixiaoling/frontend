@@ -32,7 +32,7 @@ class ListCustomers extends Component {
             customers: [],
             foundNotRegisteredCars: [],
             searchCustomer: '',
-            searchCustomerError: '',
+            searchCustomerError: false,
             status: '',
 
         }
@@ -50,6 +50,7 @@ class ListCustomers extends Component {
     }
 
     componentDidMount() {
+
         CustomerService.getCustomers().then((res) => {
             console.log(res.data)
             this.setState({customers: res.data});
@@ -72,9 +73,10 @@ class ListCustomers extends Component {
     addCustomer() {
         this.props.history.push('/add-customer');
     }
-    backToCustomerList = (e)=>{
+
+    backToCustomerList = (e) => {
         e.preventDefault();
-        this.setState({status:''});
+        this.setState({status: ''});
         this.props.history.push('/customers');
     }
 
@@ -104,7 +106,23 @@ class ListCustomers extends Component {
     }
 
     searchCustomer() {
-        this.props.history.push(`/view-customer/${this.state.searchCustomer}`)
+
+        console.log(this.state.customers)
+        const customerArray = this.state.customers.map((cus) => {
+            return cus.customerId;
+        })
+        const stringArray = customerArray.toString();
+        console.log(stringArray)
+        console.log(this.state.searchCustomer)
+
+        if (stringArray.includes(this.state.searchCustomer)&&(this.state.searchCustomer)) {
+            this.props.history.push(`/view-customer/${this.state.searchCustomer}`)
+        } else {
+            this.setState({searchCustomerError: true})
+        }
+
+
+
     }
 
     handleSearchCustomer(e) {
@@ -138,9 +156,14 @@ class ListCustomers extends Component {
                                                     Add Customer
                                                 </Button>
                                             </div>
-                                            <div className='alert alert-danger'>{this.state.searchCustomerError}</div>
+                                            {this.state.searchCustomerError &&
+                                            <p className='alert alert-danger'>
+                                               This customer is not in the database!
+                                            </p>
+                                            }
                                             <div>
                                                 <input type='text' placeholder='Search Customer'
+                                                       value={this.state.searchCustomer}
                                                        onChange={this.handleSearchCustomer}/>
                                                 <Button className='btn'
                                                         buttonStyle='btn--page'
@@ -152,8 +175,10 @@ class ListCustomers extends Component {
                                             </div>
 
                                             {data.consumerWithoutCar.length > 0 &&
-                                            <p className='alert alert-danger'>{data.consumerWithoutCar.length} customers
-                                                has not register cars yet!</p>
+                                            <p className='alert alert-danger'>
+                                                {data.consumerWithoutCar.length} customers
+                                                has not register cars yet!
+                                            </p>
                                             }
                                             <br/>
                                             <div>
@@ -268,5 +293,6 @@ class ListCustomers extends Component {
 
 
 }
+
 ListCustomers.contextType = ConsumerContext;
 export default ListCustomers
