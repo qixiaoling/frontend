@@ -14,7 +14,7 @@ class ListInspections extends Component {
             statusAvailability: false,
             statusMsg: '',
             searchInspection: '',
-            searchInspectionError: '',
+            searchInspectionError: false,
 
         }
         this.editInspection = this.editInspection.bind(this);
@@ -72,7 +72,20 @@ class ListInspections extends Component {
     }
 
     searchInspection() {
-        this.props.history.push(`/view-inspection/${this.state.searchInspection}`)
+
+        const inspectionArray = this.state.inspections.map((ins)=>{
+            return ins.inspectionNumber;
+        })
+        const stringArray = inspectionArray.toString();
+        console.log(stringArray)
+        console.log(this.state.searchInspection)
+
+        if((stringArray.includes(this.state.searchInspection)) && (this.state.searchInspection)){
+            this.props.history.push(`/view-inspection/${this.state.searchInspection}`)
+        }else{
+            this.setState({searchInspectionError: true})
+        }
+
     }
 
     handleSearchInspection(e) {
@@ -94,10 +107,16 @@ class ListInspections extends Component {
                 <div className="main-container">
                     <div className="information-container">
                         <h2>Inspection List</h2>
-                        <div className='alert alert-danger'>{this.state.searchInspectionError}</div>
                         <br/>
+
+                        {this.state.searchInspectionError &&
+                        <p className='alert alert-danger'>
+                            This inspection is not in the database!
+                        </p>
+                        }
                         <div>
                             <input type='text' placeholder='Search Inspection'
+                                   value={this.state.searchInspection}
                                    onChange={this.handleSearchInspection}/>
                             <Button className='btn'
                                     buttonStyle='btn--page'
