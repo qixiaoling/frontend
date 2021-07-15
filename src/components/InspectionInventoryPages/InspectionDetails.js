@@ -22,6 +22,12 @@ class InspectionDetails extends Component {
 
     }
 
+    removingInventory(idOne, idTwo){
+
+       console.log(idOne, idTwo)
+
+    }
+
 
     render() {
         return (
@@ -38,6 +44,7 @@ class InspectionDetails extends Component {
                                     <th>Inventory ItemID</th>
                                     <th>Inventory Item</th>
                                     <th>Quantity</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody className="list-table">
@@ -50,6 +57,17 @@ class InspectionDetails extends Component {
                                                     <td>{ins.inventory.itemId}</td>
                                                     <td>{ins.inventory.itemDescription}</td>
                                                     <td>{ins.inventoryQuantities}</td>
+                                                    <td>
+                                                        <Button
+                                                            onClick={() => {
+                                                                this.removingInventory(ins.inspection.inspectionNumber, ins.inventory.itemId)
+                                                            }}
+                                                            className='btn'
+                                                            buttonStyle='btn--page'
+                                                            buttonSize='btn--medium'
+                                                        >Delete
+                                                        </Button>
+                                                    </td>
                                                 </tr>
                                             )
                                         }
