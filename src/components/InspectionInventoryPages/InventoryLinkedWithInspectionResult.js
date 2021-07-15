@@ -27,6 +27,7 @@ class InventoryLinkedWithInspectionResult extends Component{
         this.props.history.push('/inspections');
     }
 
+
     render() {
         return (
             <>
@@ -41,6 +42,7 @@ class InventoryLinkedWithInspectionResult extends Component{
                                     onClick={this.backToInspectionList}
                             >Back to Inspection List
                             </Button>
+
                         </>
 
                     }

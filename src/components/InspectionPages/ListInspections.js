@@ -25,6 +25,7 @@ class ListInspections extends Component {
         this.handleSearchInspection = this.handleSearchInspection.bind(this);
         this.searchInspection = this.searchInspection.bind(this);
         this.closeStatus = this.closeStatus.bind(this);
+        this.checkInspectionInventory = this.checkInspectionInventory.bind(this);
     }
 
     componentDidMount() {
@@ -82,6 +83,10 @@ class ListInspections extends Component {
     closeStatus() {
         this.setState({statusAvailability: false});
     }
+    checkInspectionInventory =(e)=>{
+        e.preventDefault();
+        this.props.history.push('/inspection-details');
+    }
 
     render() {
         return (
@@ -100,6 +105,13 @@ class ListInspections extends Component {
                                     onClick={this.searchInspection}
                             >
                                 Search
+                            </Button>
+                            <Button className='btn'
+                                    buttonStyle='btn--page'
+                                    buttonSize='btn--medium'
+                                    onClick={this.checkInspectionInventory}
+                            >
+                                Inspection Details
                             </Button>
 
                         </div>
@@ -173,6 +185,7 @@ class ListInspections extends Component {
                                                                 }}>
                                                             Check Status
                                                         </Button>
+
                                                     </td>
                                                 </tr>
                                             )

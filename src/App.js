@@ -33,6 +33,7 @@ import AddRoles from "./components/AdminPages/AddRoles";
 import Welcome from "./components/Welcome";
 import UpdateUsers from "./components/AdminPages/UpdateUsers";
 import ViewRoles from "./components/AdminPages/ViewRoles";
+import InspectionDetails from "./components/InspectionInventoryPages/InspectionDetails";
 import {ConsumerProvider} from "./customerContext";
 import {UserProvider} from "./userContext";
 
@@ -49,7 +50,7 @@ class App extends Component {
 
     //Persisting data on page reload.
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.state.currentUser !== prevState.currentUser){
+        if (this.state.currentUser !== prevState.currentUser) {
             localStorage.setItem('userName', this.state.currentUser);
         }
     }
@@ -102,6 +103,7 @@ class App extends Component {
                                        component={ListInventoryForInspection}/>
                                 <Route path='/list-inventory-for-inspection/:idOne/:idTwo' exact
                                        component={InventoryLinkedWithInspection}/>
+                                <Route path='/inspection-details' exact component={InspectionDetails}/>
                                 <Route path='/invoices' exact component={ListInvoices}/>
                                 <Route path='/update-invoice/:id' exact component={UpdateInvoices}/>
                                 <Route path='/view-invoice/:id' exact component={ViewInvoice}/>
