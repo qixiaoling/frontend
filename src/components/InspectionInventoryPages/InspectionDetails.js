@@ -15,8 +15,8 @@ class InspectionDetails extends Component {
     }
 
     componentDidMount() {
-        InspectionInventoryService.getAll().then(res=>{
-            this.setState({inspectionDetailsList : res.data})
+        InspectionInventoryService.getAll().then(res => {
+            this.setState({inspectionDetailsList: res.data})
             console.log(this.state.inspectionDetailsList)
         })
 
@@ -36,33 +36,36 @@ class InspectionDetails extends Component {
                                 <tr>
                                     <th>Inspection Number</th>
                                     <th>Inventory ItemID</th>
+                                    <th>Inventory Item</th>
                                     <th>Quantity</th>
                                 </tr>
                                 </thead>
                                 <tbody className="list-table">
-                                {/*{*/}
-                                {/*    this.state.inspectionDetailsList.map(*/}
-                                {/*        ins => {*/}
-                                {/*           const{inspection,inventory }*/}
-                                {/*            return (*/}
-                                {/*                <tr key={insDetails.inspectionNumber}>*/}
-                                {/*                    <td>{ins.inspectionNumber}</td>*/}
-                                {/*                    <td>{convertDate(ins.inspectionDate)}</td>*/}
-                                {/*                    <td>{ins.inspectionFee}</td>*/}
-                                {/*                </tr>*/}
-                                {/*            )*/}
-                                {/*        }*/}
-                                {/*    )*/}
-                                {/*}*/}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                                {
+                                    this.state.inspectionDetailsList.map(
+                                        ins => {
+                                            return (
+                                                <tr key={ins.id}>
+                                                    <td>{ins.inspection.inspectionNumber}</td>
+                                                    <td>{ins.inventory.itemId}</td>
+                                                    <td>{ins.inventory.itemDescription}</td>
+                                                    <td>{ins.inventoryQuantities}</td>
+                                                </tr>
+                                            )
+                                        }
+                                    )
+                                    }
+                                    </tbody>
+                                    </table>
+                                    </div>
+                                    </div>
+                                    </div>
 
-            </>
-        )
-    }
-}
+                                    </>
+                                    )
+                                }
+                                }
 
-export default InspectionDetails
+    export
+    default
+    InspectionDetails

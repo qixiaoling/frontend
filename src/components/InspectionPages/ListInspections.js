@@ -111,7 +111,7 @@ class ListInspections extends Component {
                                     buttonSize='btn--medium'
                                     onClick={this.checkInspectionInventory}
                             >
-                                Inspection Details
+                                Total Inspection Details
                             </Button>
 
                         </div>
