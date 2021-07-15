@@ -23,8 +23,11 @@ class InspectionDetails extends Component {
     }
 
     removingInventory(idOne, idTwo){
-
-       console.log(idOne, idTwo)
+        InspectionInventoryService.removeInventory(idOne, idTwo).then(res=>{
+            this.setState({inspectionDetailsList:this.state.inspectionDetailsList.filter(function(ele){
+                    return ele.id.inspectionid !==idOne || ele.id.inventoryid!==idTwo
+                }) })
+        })
 
     }
 
